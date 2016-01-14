@@ -9,13 +9,17 @@
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; (setq x-select-enable-clipboard nil)
-
 ;; Hide redundant UI elements
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 
 (setq ring-bell-function 'ignore)
+(set-default 'cursor-type 'bar)
+;; (setq x-select-enable-clipboard nil)
+
+;; Split vertically by default
+(setq split-width-threshold nil)
+(setq split-width-threshold 1)
 
 ;; Sensitive scrolling
 (setq mouse-wheel-progressive-speed nil)
@@ -39,45 +43,42 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(god-mode
-                      magit
+(defvar my-packages '(magit
                       paredit
                       company
-                      haskell-mode))
+		      haskell-mode))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
 
+;; Custom modal editing
+(defvar navigation-mode-map (make-sparse-keymap))
+
+(define-key navigation-mode-map (kbd "h") 'backward-char)
+(define-key navigation-mode-map (kbd "j") 'next-line)
+(define-key navigation-mode-map (kbd "k") 'previous-line)
+(define-key navigation-mode-map (kbd "l") 'forward-char)
+
+(define-minor-mode navigation-mode
+  "Navigation mode" nil "<N>"
+  navigation-mode-map
+  (setq-local cursor-type
+              (if navigation-mode
+                  'box
+                  (default-value 'cursor-type))))
+
+(define-key global-map (kbd "<escape>") 'navigation-mode)
+
 ;; Magit
 (global-set-key (kbd "C-x g") 'magit-status)
 
-;; God mode
-(require 'god-mode)
-(global-set-key (kbd "<escape>") 'god-local-mode)
-
-(defun my-update-cursor ()
-  (let ((limited-colors-p (> 257 (length (defined-colors)))))
-    (cond (god-local-mode (progn
-                            (set-face-background 'mode-line (if limited-colors-p "white" "#e9e2cb"))
-                            (set-face-background 'mode-line-inactive (if limited-colors-p "white" "#e9e2cb"))))
-          (t (progn
-               (set-face-background 'mode-line (if limited-colors-p "black" "#0a2832"))
-               (set-face-background 'mode-line-inactive (if limited-colors-p "black" "#0a2832")))))))
-
-;(add-hook 'god-mode-enabled-hook 'my-update-cursor)
-;(add-hook 'god-mode-disabled-hook 'my-update-cursor)
-
 ;; Paredit
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
-    (add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
-    (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
 
-;; Vim movement
-;(global-set-key (kbd "C-h") 'backward-char)
-;(global-set-key (kbd "C-j") 'next-line)
-;(global-set-key (kbd "C-k") 'previous-line)
-;(global-set-key (kbd "C-l") 'forward-char)
+(add-hook 'ielm-mode-hook #'enable-paredit-mode)
+(add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
+(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
 
 ;; Haskell
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
@@ -86,22 +87,6 @@
 (require 'haskell-process)
 
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(haskell-process-auto-import-loaded-modules t)
- '(haskell-process-log t)
- '(haskell-process-suggest-remove-import-lines t)
- '(haskell-process-type (quote stack-ghci))
- '(package-selected-packages
-   (quote
-    (magit markdown-mode paredit god-mode haskell-mode evil-leader company))))
-
-;; (define-key haskell-interactive-mode-map
-;;   (kbd "C-l") 'haskell-interactive-mode-clear)
 
 ;; Completion
 (add-hook 'after-init-hook 'global-company-mode)
@@ -119,10 +104,20 @@
 (global-linum-mode)
 
 ;; Backups
-(setq backup-directory-alist '(("." . "~/.emacs-backups")))
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
 
 ;; Custom shit
-
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (paredit magit haskell-mode company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
