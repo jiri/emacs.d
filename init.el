@@ -41,10 +41,6 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
-;; Evil mode
-(evil-mode)
-
-(define-key evil-normal-state-map (kbd ";") 'evil-ex)
 
 ;; Emacs pls
 (setq inhibit-startup-message t)
@@ -72,6 +68,11 @@
 (global-set-key (kbd "C-x k") (lambda () (interactive) (kill-buffer (buffer-name))))
 (global-set-key (kbd "M-[") 'previous-buffer)
 (global-set-key (kbd "M-]") 'next-buffer)
+
+;; Evil mode
+(evil-mode)
+
+(define-key evil-normal-state-map (kbd ";") 'evil-ex)
 
 ;; Magit
 (global-set-key (kbd "C-x g") 'magit-status)
