@@ -21,7 +21,6 @@
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 (setq ring-bell-function 'ignore)
-(set-default 'cursor-type 'bar)
 
 ;; Automatically install packages
 (when (not package-archive-contents)
@@ -73,6 +72,9 @@
 
 ;; Evil mode
 (evil-mode)
+
+(setq evil-default-state 'emacs)
+(setq evil-emacs-state-cursor 'bar)
 
 (define-key evil-normal-state-map (kbd ";") 'evil-ex)
 
