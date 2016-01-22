@@ -20,6 +20,7 @@
 ;; Hide redundant UI elements
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
+(setq frame-title-format nil)
 (setq ring-bell-function 'ignore)
 
 ;; Automatically install packages
