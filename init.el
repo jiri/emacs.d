@@ -37,10 +37,12 @@
                       which-key
 		      evil))
 
-(dolist (p my-packages)
-  (when (not (package-installed-p p))
-    (package-install p)))
+(defun install-if-not-present (packages)
+  (dolist (p packages)
+    (when (not (package-installed-p p))
+      (package-install p))))
 
+(install-if-not-present my-packages)
 
 ;; Emacs pls
 (setq inhibit-startup-message t)
