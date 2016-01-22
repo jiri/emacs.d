@@ -79,6 +79,9 @@
 ;; Magit
 (global-set-key (kbd "C-x g") 'magit-status)
 
+(with-eval-after-load "evil"
+  (add-hook 'with-editor-mode-hook 'evil-insert-state))
+
 ;; Paredit
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
 
@@ -102,6 +105,9 @@
 (add-hook 'dired-mode-hook (lambda ()
 			     (hl-line-mode)
 			     (setq-local cursor-type nil)))
+
+(with-eval-after-load "evil"
+  (add-to-list 'evil-emacs-state-modes 'dired))
 
 (with-eval-after-load "dired"
   (define-key dired-mode-map (kbd "k") 'dired-previous-line)
