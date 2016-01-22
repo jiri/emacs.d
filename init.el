@@ -71,6 +71,38 @@
 (global-set-key (kbd "M-[") 'previous-buffer)
 (global-set-key (kbd "M-]") 'next-buffer)
 
+;; Modeline
+(defvar mode-line-cleaner-alist
+  `(;;Minor modes
+    (paredit-mode   . " p")
+    (company-mode   . " c")
+    (which-key-mode . nil)
+    ;; Major modes
+    (lisp-interaction-mode . " λ ")
+    (haskell-mode	   . ">>=")
+    (emacs-lisp-mode	   . " λ ")))
+
+(defun clean-mode-line ()
+  (interactive)
+  (mapcar (lambda (cleaner)
+	    (let* ((mode (car cleaner))
+		   (mode-str (cdr cleaner))
+		   (old-mode-str (cdr (assq mode minor-mode-alist))))
+	      (when old-mode-str
+		(setcar old-mode-str mode-str))
+	      ;; major mode
+	      (when (eq mode major-mode)
+		(setq mode-name mode-str))))
+	  mode-line-cleaner-alist))
+
+(add-hook 'after-change-major-mode-hook 'clean-mode-line)
+
+(setq-default mode-line-format
+	      '("%e"
+		(:eval (propertize " %m " 'face '(:foreground "#F92672")))
+		(:eval (if (buffer-file-name)
+			   (buffer-file-name)
+			 "%b"))))
 
 ;; Evil mode
 (evil-mode)
