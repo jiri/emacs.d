@@ -35,8 +35,7 @@
 		      haskell-mode
                       monokai-theme
                       which-key
-		      evil
-                      delight))
+		      evil))
 
 (defun install-if-not-present (packages)
   (dolist (p packages)
@@ -72,17 +71,6 @@
 (global-set-key (kbd "M-[") 'previous-buffer)
 (global-set-key (kbd "M-]") 'next-buffer)
 
-;; Delight
-;; Major
-(delight 'emacs-lisp-mode "λ" :major)
-(delight 'lisp-interaction-mode "λ" :major)
-(delight 'haskell-mode ">>=" :major)
-
-;; Minor
-(delight 'paredit-mode " p" "paredit")
-(delight 'company-mode " c" "company")
-(delight 'which-key-mode nil "which-key")
-(delight 'undo-tree-mode nil "undo-tree")
 
 ;; Evil mode
 (evil-mode)
