@@ -76,7 +76,7 @@
 (evil-mode)
 
 (setq evil-default-state 'emacs)
-(setq evil-emacs-state-cursor 'bar)
+(setq evil-emacs-state-cursor '("#F92672" bar))
 
 (define-key evil-normal-state-map (kbd ";") 'evil-ex)
 
