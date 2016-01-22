@@ -34,11 +34,17 @@
                       company
 		      haskell-mode
                       monokai-theme
-                      which-key))
+                      which-key
+		      evil))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
+
+;; Evil mode
+(evil-mode)
+
+(define-key evil-normal-state-map (kbd ";") 'evil-ex)
 
 ;; Emacs pls
 (setq inhibit-startup-message t)
