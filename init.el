@@ -34,8 +34,7 @@
                       company
 		      haskell-mode
                       monokai-theme
-                      which-key
-		      evil))
+                      which-key))
 
 (defun install-if-not-present (packages)
   (dolist (p packages)
@@ -71,6 +70,10 @@
 (global-set-key (kbd "M-[") 'previous-buffer)
 (global-set-key (kbd "M-]") 'next-buffer)
 
+;; Prettier cursor
+(setq-default cursor-type 'bar)
+(set-cursor-color "#F92672")
+
 ;; Modeline
 (defvar mode-line-cleaner-alist
   `(;;Minor modes
@@ -102,19 +105,8 @@
 		(:eval (propertize " %m " 'face '(:foreground "#F92672")))
 		(:eval (propertize "%b"   'face '(:foreground "#E6DB74")))))
 
-;; Evil mode
-(evil-mode)
-
-(setq evil-default-state 'emacs)
-(setq evil-emacs-state-cursor '("#F92672" bar))
-
-(define-key evil-normal-state-map (kbd ";") 'evil-ex)
-
 ;; Magit
 (global-set-key (kbd "C-x g") 'magit-status)
-
-(with-eval-after-load "evil"
-  (add-hook 'with-editor-mode-hook 'evil-insert-state))
 
 ;; Paredit
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
@@ -139,9 +131,6 @@
 (add-hook 'dired-mode-hook (lambda ()
 			     (hl-line-mode)
 			     (setq-local cursor-type nil)))
-
-(with-eval-after-load "evil"
-  (add-to-list 'evil-emacs-state-modes 'dired))
 
 (with-eval-after-load "dired"
   (define-key dired-mode-map (kbd "k") 'dired-previous-line)
