@@ -78,9 +78,9 @@
     (company-mode   . " c")
     (which-key-mode . nil)
     ;; Major modes
-    (lisp-interaction-mode . " λ ")
-    (haskell-mode	   . ">>=")
-    (emacs-lisp-mode	   . " λ ")))
+    (lisp-interaction-mode . "λ")
+    (emacs-lisp-mode	   . "λ")
+    (haskell-mode	   . ">>=")))
 
 (defun clean-mode-line ()
   (interactive)
@@ -100,9 +100,7 @@
 (setq-default mode-line-format
 	      '("%e"
 		(:eval (propertize " %m " 'face '(:foreground "#F92672")))
-		(:eval (if (buffer-file-name)
-			   (buffer-file-name)
-			 "%b"))))
+		(:eval (propertize "%b"   'face '(:foreground "#E6DB74")))))
 
 ;; Evil mode
 (evil-mode)
