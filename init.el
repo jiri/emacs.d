@@ -23,6 +23,9 @@
 (setq frame-title-format nil)
 (setq ring-bell-function 'ignore)
 
+;; Set up exec-path to include homebrew packages
+(setq exec-path (cons "/usr/local/bin/" exec-path))
+
 ;; Automatically install packages
 (when (not package-archive-contents)
   (package-refresh-contents))
