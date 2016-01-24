@@ -93,7 +93,11 @@
 
 ;; Various keybindings
 (global-set-key (kbd "C-j") (lambda () (interactive) (join-line -1)))
-(global-set-key (kbd "C-x k") (lambda () (interactive) (kill-buffer (buffer-name))))
+(global-set-key (kbd "C-x k") (lambda ()
+				(interactive)
+				(if (equal (buffer-name) "*scratch*")
+				    (message "Cannot kill scratch buffer.")
+				  (kill-buffer (buffer-name)))))
 
 ;; Prettier cursor
 (setq-default cursor-type 'bar)
