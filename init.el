@@ -150,6 +150,14 @@
   (define-key dired-mode-map (kbd "g") 'dired-jump)
   (define-key dired-mode-map (kbd "r") 'revert-buffer))
 
+;; Get rid of obnoxious buffers
+(setq-default message-log-max nil)
+(kill-buffer "*Messages*")
+
+(add-hook 'minibuffer-exit-hook (lambda ()
+				  (and (get-buffer "*Completions*")
+				       (kill-buffer "*Completions*"))))
+
 ;; Backups & custom file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file 'noerror 'nomessage)
