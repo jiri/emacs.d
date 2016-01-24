@@ -128,11 +128,23 @@
 (global-prettify-symbols-mode)
 
 ;; Dired mode
+(require 'dired-x)
+
+(put 'dired-find-alternate-file 'disabled nil)
+(setq dired-omit-files "^.DS_Store$")
 (add-hook 'dired-mode-hook (lambda ()
+			     ;; Hide unnecessary files
+			     (dired-omit-mode 1)
+			     ;; hide the cursor
 			     (hl-line-mode)
 			     (setq-local cursor-type nil)))
 
 (with-eval-after-load "dired"
+  (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
+  (define-key dired-mode-map (kbd "^") (lambda ()
+					 (interactive)
+					 (find-alternate-file "..")))
+
   (define-key dired-mode-map (kbd "k") 'dired-previous-line)
   (define-key dired-mode-map (kbd "j") 'dired-next-line)
   (define-key dired-mode-map (kbd "g") 'dired-jump)
