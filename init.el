@@ -66,9 +66,11 @@
 (setq indent-tabs-mode nil)
 
 ;; Various keybindings
-(global-set-key (kbd "C-x k") (lambda () (interactive) (kill-buffer (buffer-name))))
 (global-set-key (kbd "M-[") 'previous-buffer)
 (global-set-key (kbd "M-]") 'next-buffer)
+
+(global-set-key (kbd "C-j") (lambda () (interactive) (join-line -1)))
+(global-set-key (kbd "C-x k") (lambda () (interactive) (kill-buffer (buffer-name))))
 
 ;; Prettier cursor
 (setq-default cursor-type 'bar)
@@ -109,10 +111,15 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 
 ;; Paredit
-(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+(autoload 'enable-paredit-mode "paredit" t)
 
 (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
 (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+
+;; Disable some annoying paredit bindings
+(eval-after-load "paredit"
+  (progn
+    (define-key paredit-mode-map (kbd "C-j") nil)))
 
 ;; Haskell
 (require 'haskell-interactive-mode)
