@@ -65,10 +65,33 @@
 ;; Don't indent with tabs
 (setq indent-tabs-mode nil)
 
-;; Various keybindings
-(global-set-key (kbd "M-[") 'previous-buffer)
-(global-set-key (kbd "M-]") 'next-buffer)
+;; Buffer cycling
+(defun sindriava/next-buffer ()
+  (interactive)
+  (let ((bread-crumb (buffer-name)))
+    (next-buffer)
+    (while
+        (and
+         (not (equal "*scratch*" (buffer-name)))
+         (string-match-p "^\*" (buffer-name))
+         (not (equal bread-crumb (buffer-name))))
+      (next-buffer))))
 
+(defun sindriava/previous-buffer ()
+  (interactive)
+  (let ((bread-crumb (buffer-name)))
+    (previous-buffer)
+    (while
+        (and
+         (not (equal "*scratch*" (buffer-name)))
+         (string-match-p "^\*" (buffer-name))
+         (not (equal bread-crumb (buffer-name))))
+      (previous-buffer))))
+
+(global-set-key (kbd "M-[") 'sindriava/previous-buffer)
+(global-set-key (kbd "M-]") 'sindriava/next-buffer)
+
+;; Various keybindings
 (global-set-key (kbd "C-j") (lambda () (interactive) (join-line -1)))
 (global-set-key (kbd "C-x k") (lambda () (interactive) (kill-buffer (buffer-name))))
 
@@ -156,14 +179,6 @@
   (define-key dired-mode-map (kbd "j") 'dired-next-line)
   (define-key dired-mode-map (kbd "g") 'dired-jump)
   (define-key dired-mode-map (kbd "r") 'revert-buffer))
-
-;; Get rid of obnoxious buffers
-(setq-default message-log-max nil)
-(kill-buffer "*Messages*")
-
-(add-hook 'minibuffer-exit-hook (lambda ()
-				  (and (get-buffer "*Completions*")
-				       (kill-buffer "*Completions*"))))
 
 ;; Backups & custom file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
