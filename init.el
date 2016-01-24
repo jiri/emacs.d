@@ -13,9 +13,9 @@
 
 (load-theme 'monokai t)
 
-(set-face-attribute 'fringe nil
-		    :foreground (face-foreground 'default)
-		    :background (face-background 'default))
+;; (set-face-attribute 'fringe nil
+;; 		    :foreground (face-foreground 'default)
+;; 		    :background (face-background 'default))
 
 ;; Hide redundant UI elements
 (tool-bar-mode 0)
