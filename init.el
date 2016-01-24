@@ -22,6 +22,7 @@
 (scroll-bar-mode 0)
 (setq frame-title-format nil)
 (setq ring-bell-function 'ignore)
+(setq-default truncate-lines 1)
 
 ;; Set up exec-path to include homebrew packages
 (setq exec-path (cons "/usr/local/bin/" exec-path))
@@ -57,11 +58,9 @@
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 (setq scroll-step 1)
 
-;; Don't wrap lines
-(setq-default truncate-lines 1)
-
-;; Don't indent with tabs
+;; Whitespace
 (setq indent-tabs-mode nil)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Buffer cycling
 (defun sindriava/next-buffer ()
