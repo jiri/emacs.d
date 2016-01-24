@@ -49,13 +49,8 @@
 ;; Emacs pls
 (setq inhibit-startup-message t)
 (setq inhibit-startup-echo-area-message "sindriava")
-;; (setq initial-scratch-message "")
 
 (defalias 'yes-or-no-p 'y-or-n-p)
-
-;; Split vertically by default
-(setq split-width-threshold nil)
-(setq split-width-threshold 1)
 
 ;; Sensitive scrolling
 (setq mouse-wheel-progressive-speed nil)
