@@ -140,9 +140,10 @@
 (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
 
 ;; Disable some annoying paredit bindings
-(eval-after-load "paredit"
-  (progn
-    (define-key paredit-mode-map (kbd "C-j") nil)))
+(add-hook 'paredit-mode-hook
+	  (lambda ()
+	    (define-key paredit-mode-map (kbd "C-j") nil)))
+
 
 ;; Haskell
 (require 'haskell-interactive-mode)
