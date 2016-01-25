@@ -142,6 +142,11 @@
 (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
 (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
 
+;; Org mode
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c c") 'org-capture)
+(global-set-key (kbd "C-c b") 'org-iswitchb)
+(global-set-key (kbd "C-c l") 'org-store-link)
 
 ;; Haskell
 (require 'haskell-interactive-mode)
