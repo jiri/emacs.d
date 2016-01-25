@@ -33,9 +33,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(dim
-		      helm
-		      magit
+(defvar my-packages '(magit
                       paredit
                       company
 		      haskell-mode
@@ -142,17 +140,11 @@
 (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
 (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
 
-;; Disable some annoying paredit bindings
-(add-hook 'paredit-mode-hook
-	  (lambda ()
-	    (define-key paredit-mode-map (kbd "C-j") nil)))
-
 
 ;; Haskell
 (require 'haskell-interactive-mode)
 (require 'haskell-process)
 
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 
 ;; Completion
