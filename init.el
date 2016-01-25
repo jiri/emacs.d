@@ -107,9 +107,11 @@
     (company-mode   . " c")
     (which-key-mode . nil)
     ;; Major modes
-    (lisp-interaction-mode . "λ")
-    (emacs-lisp-mode	   . "λ")
-    (haskell-mode	   . ">>=")))
+    (lisp-interaction-mode    . "λ")
+    (emacs-lisp-mode	      . "λ")
+    (haskell-mode	      . ">>=")
+    (haskell-interactive-mode . "Ghci")
+    (haskell-cabal-mode       . "Cabal")))
 
 (defun clean-mode-line ()
   (interactive)
@@ -146,6 +148,13 @@
 (require 'haskell-process)
 
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+
+(custom-set-variables
+ '(haskell-process-type 'stack-ghci)
+
+ '(haskell-process-suggest-remove-import-lines t)
+ '(haskell-process-auto-import-loaded-modules t)
+ '(haskell-process-log t))
 
 ;; Completion
 (global-company-mode)
