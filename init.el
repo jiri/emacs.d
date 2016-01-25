@@ -11,6 +11,8 @@
 			    (height . 25)
 			    (font   . "Input-16")))
 
+(custom-set-variables
+ '(monokai-use-variable-pitch nil))
 (load-theme 'monokai t)
 
 ;; (set-face-attribute 'fringe nil
