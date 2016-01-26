@@ -130,7 +130,10 @@
 (setq-default mode-line-format
 	      '("%e"
 		(:eval (propertize " %m " 'face '(:foreground "#F92672")))
-		(:eval (propertize "%b"   'face '(:foreground "#E6DB74")))))
+		(:eval (propertize "%b"   'face '(:foreground "#E6DB74")))
+		" "
+		(:eval (when (fboundp 'vc-git-branches)
+			 (propertize (car (vc-git-branches)) 'face '(:foreground "#A6E22E"))))))
 
 ;; Magit
 (global-set-key (kbd "C-x g") 'magit-status)
