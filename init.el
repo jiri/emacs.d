@@ -175,6 +175,9 @@ length of PATH (sans directory slashes) down to MAX-LEN."
 				       (fish-path (eshell/pwd) 1)
 				       " ")))
 
+;; Which key
+(which-key-mode)
+
 ;; Magit
 (global-set-key (kbd "C-x g") 'magit-status)
 
