@@ -164,6 +164,11 @@ length of PATH (sans directory slashes) down to MAX-LEN."
 
 (add-hook 'eshell-mode-hook
           (lambda ()
+	    (define-key eshell-mode-map (kbd "C-c C-l")
+	      (lambda ()
+		(interactive)
+		(eshell/clear-scrollback)
+		(eshell-send-input nil nil t)))
 	    (setq eshell-path-env (concat "/usr/local/bin:" eshell-path-env))
 	    (set-face-attribute 'eshell-prompt nil
 				:foreground 'unspecified
