@@ -11,8 +11,7 @@
 			    (height . 25)
 			    (font   . "Input-16")))
 
-(custom-set-variables
- '(monokai-use-variable-pitch nil))
+(setq monokai-use-variable-pitch nil)
 (load-theme 'monokai t)
 
 ;; (set-face-attribute 'fringe nil
@@ -154,12 +153,11 @@
 
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 
-(custom-set-variables
- '(haskell-process-type 'stack-ghci)
+(setq haskell-process-type 'stack-ghci
 
- '(haskell-process-suggest-remove-import-lines t)
- '(haskell-process-auto-import-loaded-modules t)
- '(haskell-process-log t))
+      haskell-process-suggest-remove-import-lines t
+      haskell-process-auto-import-loaded-modules t
+      haskell-process-log t)
 
 ;; Completion
 (global-company-mode)
