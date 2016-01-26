@@ -20,6 +20,7 @@ tramp
 # Org-mode
 .org-id-locations
 *_archive
+bookmarks
 
 # flymake-mode
 *_flymake.*
@@ -39,4 +40,3 @@ tramp
 
 # cask packages
 .cask/
-
