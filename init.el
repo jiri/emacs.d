@@ -193,6 +193,8 @@ length of PATH (sans directory slashes) down to MAX-LEN."
 (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
 
 ;; Org mode
+(setq org-default-notes-file "~/notes.org")
+
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
 (global-set-key (kbd "C-c b") 'org-iswitchb)
