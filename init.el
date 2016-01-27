@@ -136,7 +136,7 @@
 			 (propertize (car (vc-git-branches)) 'face '(:foreground "#A6E22E"))))))
 
 ;; Eshell
-(global-set-key (kbd "C-x C-e") 'eshell)
+(global-set-key (kbd "C-c e") 'eshell)
 
 (defun fish-path (path max-len)
   "Return a potentially trimmed-down version of the directory PATH, replacing
