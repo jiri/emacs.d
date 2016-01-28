@@ -95,8 +95,8 @@
 ;; Modeline
 (defvar mode-line-cleaner-alist
   `(;;Minor modes
-    (paredit-mode   . " p")
-    (company-mode   . " c")
+    (paredit-mode   . " π")
+    (company-mode   . nil)
     (which-key-mode . nil)
     ;; Major modes
     (lisp-interaction-mode    . "λ")
