@@ -37,7 +37,7 @@
 (setq-default truncate-lines 1)
 
 ;; Set up exec-path to include homebrew packages
-(setq exec-path (cons "/usr/local/bin/" exec-path))
+(push "/usr/local/bin/" exec-path)
 
 ;; Emacs pls
 (setq inhibit-startup-message t)
