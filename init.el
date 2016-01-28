@@ -79,6 +79,9 @@
                               (interactive)
                               (sindriava/cycle-until-viable 'previous-buffer)))
 
+;; Rebind some defaults
+(global-set-key (kbd "C-a") 'back-to-indentation)
+
 ;; Various keybindings
 (global-set-key (kbd "C-j") (lambda () (interactive) (join-line -1)))
 (global-set-key (kbd "C-x k") (lambda ()
