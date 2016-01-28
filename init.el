@@ -35,12 +35,9 @@
                       monokai-theme
                       which-key))
 
-(defun install-if-not-present (packages)
-  (dolist (p packages)
-    (when (not (package-installed-p p))
-      (package-install p))))
-
-(install-if-not-present my-packages)
+(dolist (p my-packages)
+  (when (not (package-installed-p p))
+    (package-install p)))
 
 ;; Emacs pls
 (setq inhibit-startup-message t)
