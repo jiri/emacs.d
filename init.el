@@ -120,13 +120,27 @@
 
 (add-hook 'after-change-major-mode-hook 'clean-mode-line)
 
+(defun mode-line-split (left right)
+  (let* ((available-width (- (window-width) (length left) 2)))
+    (format (format " %%s %%%ds " available-width) left right)))
+
+(defun mode-line/git-branch ()
+  (interactive)
+  (when (fboundp 'vc-git-branches)
+    (propertize (car (vc-git-branches))
+                'face '(:foreground "#A6E22E"))))
+
 (setq-default mode-line-format
-	      '("%e"
-		(:eval (propertize " %m " 'face '(:foreground "#F92672")))
-		(:eval (propertize "%b"   'face '(:foreground "#E6DB74")))
-		" "
-		(:eval (when (fboundp 'vc-git-branches)
-			 (propertize (car (vc-git-branches)) 'face '(:foreground "#A6E22E"))))))
+	      '((:eval (mode-line-split
+			(concat
+			 (propertize mode-name
+				     'face '(:foreground "#F92672"))
+			 " "
+			 (propertize (buffer-name)
+				     'face '(:foreground "#E6DB74"))
+			 " ")
+			(propertize (format-mode-line minor-mode-alist)
+				    'face '(:foreground "#75715E"))))))
 
 ;; Eshell
 (global-set-key (kbd "C-c e") 'eshell)
