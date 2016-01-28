@@ -58,30 +58,26 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Buffer cycling
-(defun sindriava/next-buffer ()
-  (interactive)
-  (let ((bread-crumb (buffer-name)))
-    (next-buffer)
-    (while
-        (and
-         (not (equal "*scratch*" (buffer-name)))
-         (string-match-p "^\*" (buffer-name))
-         (not (equal bread-crumb (buffer-name))))
-      (next-buffer))))
+(defvar sindriava/cycle-exclude-buffers
+  '("*Messages*"
+    "*Completions*"
+    "*Backtrace*"))
 
-(defun sindriava/previous-buffer ()
-  (interactive)
+(defun sindriava/cycle-until-viable (action)
   (let ((bread-crumb (buffer-name)))
-    (previous-buffer)
+    (funcall action)
     (while
-        (and
-         (not (equal "*scratch*" (buffer-name)))
-         (string-match-p "^\*" (buffer-name))
-         (not (equal bread-crumb (buffer-name))))
-      (previous-buffer))))
+	(and
+	 (member (buffer-name) sindriava/cycle-exclude-buffers)
+	 (not (equal bread-crumb (buffer-name))))
+      (funcall action))))
 
-(global-set-key (kbd "M-[") 'sindriava/previous-buffer)
-(global-set-key (kbd "M-]") 'sindriava/next-buffer)
+(global-set-key (kbd "M-[") (lambda ()
+                              (interactive)
+                              (sindriava/cycle-until-viable 'next-buffer)))
+(global-set-key (kbd "M-]") (lambda ()
+                              (interactive)
+                              (sindriava/cycle-until-viable 'previous-buffer)))
 
 ;; Various keybindings
 (global-set-key (kbd "C-j") (lambda () (interactive) (join-line -1)))
