@@ -57,6 +57,7 @@
 ;; Buffer cycling
 (defvar sindriava/cycle-exclude-buffers
   '("*Messages*"
+    "*Warnings*"
     "*Completions*"
     "*Backtrace*"))
 
