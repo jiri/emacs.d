@@ -6,6 +6,21 @@
 
 (package-initialize)
 
+;; Automatically install packages
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
+(defvar my-packages '(magit
+                      paredit
+                      company
+		      haskell-mode
+                      monokai-theme
+                      which-key))
+
+(dolist (p my-packages)
+  (when (not (package-installed-p p))
+    (package-install p)))
+
 ;; Theme
 (setq default-frame-alist '((width  . 80)
 			    (height . 25)
@@ -23,21 +38,6 @@
 
 ;; Set up exec-path to include homebrew packages
 (setq exec-path (cons "/usr/local/bin/" exec-path))
-
-;; Automatically install packages
-(when (not package-archive-contents)
-  (package-refresh-contents))
-
-(defvar my-packages '(magit
-                      paredit
-                      company
-		      haskell-mode
-                      monokai-theme
-                      which-key))
-
-(dolist (p my-packages)
-  (when (not (package-installed-p p))
-    (package-install p)))
 
 ;; Emacs pls
 (setq inhibit-startup-message t)
