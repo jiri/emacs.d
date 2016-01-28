@@ -14,10 +14,6 @@
 (setq monokai-use-variable-pitch nil)
 (load-theme 'monokai t)
 
-;; (set-face-attribute 'fringe nil
-;; 		    :foreground (face-foreground 'default)
-;; 		    :background (face-background 'default))
-
 ;; Hide redundant UI elements
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
