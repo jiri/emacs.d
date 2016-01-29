@@ -59,14 +59,18 @@
   '("*Messages*"
     "*Warnings*"
     "*Completions*"
-    "*Backtrace*"))
+    "*Backtrace*"
+    "*Apropos*"
+    "*Help*"
+    "*Disabled Command*"))
 
 (defun sindriava/cycle-until-viable (action)
   (let ((bread-crumb (buffer-name)))
     (funcall action)
     (while
 	(and
-	 (member (buffer-name) sindriava/cycle-exclude-buffers)
+	 (or (member (buffer-name) sindriava/cycle-exclude-buffers)
+	     (string-match-p "\*magit" (buffer-name)))
 	 (not (equal bread-crumb (buffer-name))))
       (funcall action))))
 
