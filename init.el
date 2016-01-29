@@ -86,7 +86,9 @@
 				(interactive)
 				(if (equal (buffer-name) "*scratch*")
 				    (message "Cannot kill scratch buffer.")
-				  (kill-buffer (buffer-name)))))
+				  (progn
+				    (kill-buffer (buffer-name))
+				    (sindriava/cycle-until-viable 'next-buffer)))))
 
 ;; Prettier cursor
 (setq-default cursor-type 'bar)
