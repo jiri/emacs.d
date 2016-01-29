@@ -78,10 +78,13 @@
                               (sindriava/cycle-until-viable 'previous-buffer)))
 
 ;; Rebind some defaults
-(global-set-key (kbd "C-a") 'back-to-indentation)
+(global-set-key (kbd "C-a") (lambda ()
+			      (interactive)
+			      (let ((old-point (point)))
+				(back-to-indentation)
+				(when (= (point) old-point)
+				  (beginning-of-line)))))
 
-;; Various keybindings
-(global-set-key (kbd "C-j") (lambda () (interactive) (join-line -1)))
 (global-set-key (kbd "C-x k") (lambda ()
 				(interactive)
 				(if (equal (buffer-name) "*scratch*")
