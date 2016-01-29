@@ -97,7 +97,7 @@
 ;; Modeline
 (defvar mode-line-cleaner-alist
   `(;;Minor modes
-    (paredit-mode   . " π")
+    (paredit-mode   . "π")
     (company-mode   . nil)
     (which-key-mode . nil)
     ;; Major modes
@@ -114,7 +114,7 @@
 		   (mode-str (cdr cleaner))
 		   (old-mode-str (cdr (assq mode minor-mode-alist))))
 	      (when old-mode-str
-		(setcar old-mode-str mode-str))
+		(setcar old-mode-str (concat (when mode-str " ") mode-str)))
 	      ;; major mode
 	      (when (eq mode major-mode)
 		(setq mode-name mode-str))))
