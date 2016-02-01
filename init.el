@@ -15,7 +15,13 @@
                       company
 		      haskell-mode
                       monokai-theme
-                      which-key))
+                      which-key
+
+		      ;; Clojure
+		      clojure-mode
+		      clojure-mode-extra-font-locking
+		      cider
+		      rainbow-delimiters))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -107,6 +113,7 @@
     (paredit-mode   . "π")
     (company-mode   . nil)
     (which-key-mode . nil)
+    (cider-mode . "cider")
     ;; Major modes
     (lisp-interaction-mode    . "λ")
     (emacs-lisp-mode	      . "λ")
@@ -208,6 +215,8 @@ length of PATH (sans directory slashes) down to MAX-LEN."
 (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
 (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
 
+(add-hook 'paredit-mode-hook 'rainbow-delimiters-mode)
+
 ;; Org mode
 (setq org-default-notes-file "~/notes.org")
 
@@ -227,6 +236,29 @@ length of PATH (sans directory slashes) down to MAX-LEN."
       haskell-process-suggest-remove-import-lines t
       haskell-process-auto-import-loaded-modules t
       haskell-process-log t)
+
+;; Clojure
+(require 'clojure-mode-extra-font-locking)
+
+(add-hook 'clojure-mode-hook 'paredit-mode)
+
+;; CIDER
+(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+(add-hook 'cider-mode-hook 'paredit-mode)
+
+(setq cider-repl-pop-to-buffer-on-connect t)
+(setq cider-show-error-buffer t)
+(setq cider-auto-select-error-buffer t)
+(setq cider-repl-history-file "~/.emacs.d/cider-history")
+;;(setq cider-repl-wrap-history t)
+
+(add-hook 'cider-repl-mode-hook
+	  (lambda ()
+	    (define-key cider-repl-mode-map (kbd "<up>") 'cider-repl-previous-input)
+	    (define-key cider-repl-mode-map (kbd "<down>") 'cider-repl-next-input)
+
+	    (define-key cider-repl-mode-map (kbd "C-c C-k") 'cider-repl-clear-buffer)
+	    (define-key cider-repl-mode-map (kbd "C-c C-c") 'kill-whole-line)))
 
 ;; Completion
 (global-company-mode)
