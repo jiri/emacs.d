@@ -272,24 +272,30 @@ length of PATH (sans directory slashes) down to MAX-LEN."
 (require 'dired-x)
 
 (put 'dired-find-alternate-file 'disabled nil)
-(setq dired-omit-files "^.DS_Store$")
+
 (add-hook 'dired-mode-hook (lambda ()
-			     ;; Hide unnecessary files
+			     ;; Hide unnecessary files & info
+			     (setq dired-omit-files "^\\..*$")
 			     (dired-omit-mode 1)
+
+			     (dired-hide-details-mode)
+
 			     ;; hide the cursor
 			     (hl-line-mode)
 			     (setq-local cursor-type nil)))
 
 (with-eval-after-load "dired"
-  (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
-  (define-key dired-mode-map (kbd "^") (lambda ()
-					 (interactive)
-					 (find-alternate-file "..")))
+  (set-face-attribute 'dired-header nil
+		      :foreground "#F92672"
+		      :background 'unspecified
+		      :weight 'bold)
 
-  (define-key dired-mode-map (kbd "k") 'dired-previous-line)
-  (define-key dired-mode-map (kbd "j") 'dired-next-line)
-  (define-key dired-mode-map (kbd "g") 'dired-jump)
-  (define-key dired-mode-map (kbd "r") 'revert-buffer))
+  (define-key dired-mode-map (kbd ".") 'dired-omit-mode)
+
+  (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
+  (define-key dired-mode-map (kbd "DEL") (lambda ()
+					   (interactive)
+					   (find-alternate-file ".."))))
 
 ;; Backups & custom file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
