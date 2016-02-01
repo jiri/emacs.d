@@ -42,6 +42,8 @@
 (setq ring-bell-function 'ignore)
 (setq-default truncate-lines 1)
 
+(global-set-key (kbd "s-t") 'ignore)
+
 ;; Set up exec-path to include homebrew packages
 (push "/usr/local/bin/" exec-path)
 
