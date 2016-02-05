@@ -272,6 +272,8 @@ length of PATH (sans directory slashes) down to MAX-LEN."
 ;; Completion
 (global-company-mode)
 
+(setq company-idle-delay 0.25)
+
 ;; Prettify symbols
 (global-prettify-symbols-mode)
 
