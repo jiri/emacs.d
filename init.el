@@ -59,7 +59,7 @@
 (setq scroll-step 1)
 
 ;; Whitespace
-(setq indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Buffer cycling
