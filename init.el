@@ -310,6 +310,8 @@ length of PATH (sans directory slashes) down to MAX-LEN."
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file 'noerror 'nomessage)
 
+(setq create-lockfiles nil)
+
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
