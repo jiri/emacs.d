@@ -16,6 +16,7 @@
 		      haskell-mode
                       monokai-theme
                       which-key
+		      yasnippet
 
 		      ;; Clojure
 		      clojure-mode
@@ -155,6 +156,8 @@
     (company-mode   . nil)
     (which-key-mode . nil)
     (cider-mode . "cider")
+    (yas-minor-mode . "y")
+
     ;; Major modes
     (lisp-interaction-mode    . "λ")
     (emacs-lisp-mode	      . "λ")
@@ -249,6 +252,12 @@ length of PATH (sans directory slashes) down to MAX-LEN."
 
 ;; Magit
 (global-set-key (kbd "C-x g") 'magit-status)
+
+;; Yasnippet
+(setq yas-snippet-dirs
+      '("~/.emacs.d/snippets"))
+
+(yas-global-mode)
 
 ;; Paredit
 (autoload 'enable-paredit-mode "paredit" t)
