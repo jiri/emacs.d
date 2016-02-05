@@ -253,12 +253,12 @@ length of PATH (sans directory slashes) down to MAX-LEN."
 
 ;; CIDER
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
-(add-hook 'cider-mode-hook 'paredit-mode)
+(add-hook 'cider-repl-mode-hook 'enable-paredit-mode)
 
 (setq cider-repl-pop-to-buffer-on-connect t)
 (setq cider-show-error-buffer t)
 (setq cider-auto-select-error-buffer t)
-(setq cider-repl-history-file "~/.emacs.d/cider-history")
+(setq cider-repl-history-file "~/.cider-history")
 ;;(setq cider-repl-wrap-history t)
 
 (add-hook 'cider-repl-mode-hook
