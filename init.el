@@ -104,11 +104,13 @@
 
 (global-set-key (kbd "C-x k") (lambda ()
 				(interactive)
-				(if (equal (buffer-name) "*scratch*")
-				    (message "Cannot kill scratch buffer.")
-				  (progn
-				    (kill-buffer (buffer-name))
-				    (sindriava/cycle-until-viable 'next-buffer)))))
+				(let ((buffer (buffer-name)))
+				  (if (equal buffer "*scratch*")
+				      (message "Cannot kill scratch buffer.")
+				    (progn
+				      (kill-buffer buffer)
+				      (sindriava/cycle-until-viable 'next-buffer))))))
+
 
 ;; Prettier cursor
 (setq-default cursor-type 'bar)
