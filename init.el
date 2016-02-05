@@ -62,6 +62,11 @@
 (setq-default indent-tabs-mode nil)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; Buffer menu
+(add-hook 'buffer-menu-mode-hook (lambda ()
+                                   (setq-local cursor-type nil)
+                                   (hl-line-mode)))
+
 ;; Buffer cycling
 (defvar sindriava/cycle-exclude-buffers
   '("*Messages*"
