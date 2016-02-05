@@ -139,6 +139,11 @@
 
 (global-set-key (kbd "C-x t") 'toggle-window-split)
 
+(defadvice quit-window (before quit-window-always-kill)
+  "Make sure that live windows stay quit"
+  (ad-set-arg 0 t))
+(ad-activate 'quit-window)
+
 ;; Prettier cursor
 (setq-default cursor-type 'bar)
 (set-cursor-color "#F92672")
