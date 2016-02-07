@@ -17,6 +17,7 @@
                       monokai-theme
                       which-key
 		      yasnippet
+                      expand-region
 
 		      ;; Clojure
 		      clojure-mode
@@ -62,6 +63,10 @@
 ;; Whitespace
 (setq-default indent-tabs-mode nil)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; Region settings
+(delete-selection-mode)
+(global-set-key (kbd "C-SPC") 'er/expand-region)
 
 ;; Buffer menu
 (add-hook 'buffer-menu-mode-hook (lambda ()
