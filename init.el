@@ -52,6 +52,7 @@
 ;; Emacs pls
 (setq inhibit-startup-message t)
 (setq inhibit-startup-echo-area-message "sindriava")
+(setq ad-redefinition-action 'accept)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
