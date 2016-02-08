@@ -162,6 +162,7 @@
     (which-key-mode . nil)
     (cider-mode . "cider")
     (yas-minor-mode . "y")
+    (auto-revert-mode . nil)
 
     ;; Major modes
     (lisp-interaction-mode    . "λ")
@@ -277,6 +278,9 @@ length of PATH (sans directory slashes) down to MAX-LEN."
       '("~/.emacs.d/snippets"))
 
 (yas-global-mode)
+
+;; Automatically revert all buffers
+(global-auto-revert-mode)
 
 ;; Paredit
 (autoload 'enable-paredit-mode "paredit" t)
