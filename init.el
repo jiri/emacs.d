@@ -71,6 +71,10 @@
 (global-set-key (kbd "C-SPC") 'er/expand-region)
 (global-set-key (kbd "C-S-SPC") 'er/contract-region)
 
+;; Killing & Yanking
+(global-set-key (kbd "C-w") 'kill-ring-save)
+(global-set-key (kbd "M-w") 'kill-region)
+
 ;; Buffer menu
 (add-hook 'buffer-menu-mode-hook (lambda ()
                                    (setq-local cursor-type nil)
