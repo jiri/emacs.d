@@ -67,7 +67,9 @@
 
 ;; Region settings
 (delete-selection-mode)
+
 (global-set-key (kbd "C-SPC") 'er/expand-region)
+(global-set-key (kbd "C-S-SPC") 'er/contract-region)
 
 ;; Buffer menu
 (add-hook 'buffer-menu-mode-hook (lambda ()
