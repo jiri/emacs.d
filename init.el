@@ -78,6 +78,8 @@
 ;; Region settings
 (delete-selection-mode)
 
+(setq expand-region-fast-keys-enabled nil)
+
 (global-set-key (kbd "C-SPC") 'er/expand-region)
 (global-set-key (kbd "C-S-SPC") 'er/contract-region)
 
