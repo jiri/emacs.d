@@ -56,6 +56,9 @@
 (advice-add 'shell-command-to-string
             :filter-return 'strip-trailing-newline)
 
+;; Use bash instead of the default shell to make stuff consistent
+(setq-default shell-file-name "bash")
+
 ;; Emacs pls
 (setq inhibit-startup-message t)
 (setq inhibit-startup-echo-area-message "sindriava")
