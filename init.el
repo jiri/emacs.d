@@ -49,6 +49,13 @@
 ;; Set up exec-path to include homebrew packages
 (push "/usr/local/bin/" exec-path)
 
+;; Fix `shell-command-to-string'
+(defun strip-trailing-newline (str)
+  (replace-regexp-in-string "\n*$" "" str))
+
+(advice-add 'shell-command-to-string
+            :filter-return 'strip-trailing-newline)
+
 ;; Emacs pls
 (setq inhibit-startup-message t)
 (setq inhibit-startup-echo-area-message "sindriava")
