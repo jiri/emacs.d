@@ -49,6 +49,11 @@
 ;; Try not to quit emacs
 (global-set-key (kbd "s-q") 'delete-frame)
 
+;; Start server if it's not already started
+(require 'server)
+(unless (server-running-p)
+  (server-start))
+
 ;; Set up exec-path to include homebrew packages
 (push "/usr/local/bin/" exec-path)
 
