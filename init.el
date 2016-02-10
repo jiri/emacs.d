@@ -46,6 +46,9 @@
 
 (global-set-key (kbd "s-t") 'ignore)
 
+;; Try not to quit emacs
+(global-set-key (kbd "s-q") 'delete-frame)
+
 ;; Set up exec-path to include homebrew packages
 (push "/usr/local/bin/" exec-path)
 
