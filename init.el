@@ -46,9 +46,6 @@
 
 (global-set-key (kbd "s-t") 'ignore)
 
-;; Try not to quit emacs
-(global-set-key (kbd "s-q") 'delete-frame)
-
 ;; Start server if it's not already started
 (require 'server)
 (unless (server-running-p)
@@ -128,6 +125,9 @@
                               (sindriava/cycle-until-viable 'previous-buffer)))
 
 ;; Rebind some defaults
+(global-set-key (kbd "<escape>") 'keyboard-quit)
+(global-set-key (kbd "s-q") 'delete-frame)
+
 (global-set-key (kbd "C-a") (lambda ()
 			      (interactive)
 			      (let ((old-point (point)))
