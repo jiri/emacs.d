@@ -399,3 +399,16 @@ length of PATH (sans directory slashes) down to MAX-LEN."
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
+
+;; Center newly created frames on the screen
+(defun sindriava/center-frame (frame)
+  "Center `frame' on display."
+  (set-frame-position frame
+                      (/ (- (display-pixel-width)
+                            (frame-pixel-width frame))
+                         2)
+                      (/ (- (display-pixel-height)
+                            (frame-pixel-height frame))
+                         2)))
+
+(push 'sindriava/center-frame after-make-frame-functions)
