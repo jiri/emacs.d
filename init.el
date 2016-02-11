@@ -310,9 +310,6 @@ length of PATH (sans directory slashes) down to MAX-LEN."
 
 (yas-global-mode)
 
-;; Automatically revert all buffers
-(global-auto-revert-mode)
-
 ;; Paredit
 (autoload 'enable-paredit-mode "paredit" t)
 
