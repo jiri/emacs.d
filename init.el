@@ -319,6 +319,9 @@ length of PATH (sans directory slashes) down to MAX-LEN."
 (add-hook 'paredit-mode-hook 'rainbow-delimiters-mode)
 
 ;; Org mode
+(setq org-src-fontify-natively t)
+(setq org-src-window-setup 'current-window)
+
 (setq org-default-notes-file "~/notes.org")
 
 (global-set-key (kbd "C-c a") 'org-agenda)
