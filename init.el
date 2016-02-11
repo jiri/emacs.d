@@ -85,7 +85,11 @@
 
 (setq expand-region-fast-keys-enabled nil)
 
-(global-set-key (kbd "C-SPC") 'er/expand-region)
+(global-set-key (kbd "C-SPC") (lambda ()
+                                (interactive)
+                                (if (region-active-p)
+                                    (er/expand-region 1)
+                                  (set-mark (point)))))
 (global-set-key (kbd "C-S-SPC") 'er/contract-region)
 
 ;; Killing & Yanking
