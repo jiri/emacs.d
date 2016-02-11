@@ -18,6 +18,7 @@
                       which-key
 		      yasnippet
                       expand-region
+                      browse-kill-ring
                       c-eldoc
 
 		      ;; Clojure
@@ -100,6 +101,8 @@
 ;; Killing & Yanking
 (global-set-key (kbd "C-w") 'kill-ring-save)
 (global-set-key (kbd "M-w") 'kill-region)
+
+(global-set-key (kbd "M-y") 'browse-kill-ring)
 
 ;; Buffer menu
 (add-hook 'buffer-menu-mode-hook (lambda ()
