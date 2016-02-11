@@ -18,6 +18,7 @@
                       which-key
 		      yasnippet
                       expand-region
+                      c-eldoc
 
 		      ;; Clojure
 		      clojure-mode
@@ -340,6 +341,15 @@ length of PATH (sans directory slashes) down to MAX-LEN."
       haskell-process-suggest-remove-import-lines t
       haskell-process-auto-import-loaded-modules t
       haskell-process-log t)
+
+;; C
+(setq-default c-default-style "k&r"
+              c-basic-offset 4)
+
+(add-hook 'c-mode-common-hook (lambda ()
+                                (c-turn-on-eldoc-mode)
+                                (set (make-local-variable 'company-backends)
+                                     '((company-yasnippet)))))
 
 ;; Clojure
 (require 'clojure-mode-extra-font-locking)
