@@ -93,6 +93,10 @@
                                   (set-mark (point)))))
 (global-set-key (kbd "C-S-SPC") 'er/contract-region)
 
+;; Search
+(global-set-key (kbd "C-s") 'isearch-forward-regexp)
+(global-set-key (kbd "C-r") 'isearch-backward-regexp)
+
 ;; Killing & Yanking
 (global-set-key (kbd "C-w") 'kill-ring-save)
 (global-set-key (kbd "M-w") 'kill-region)
