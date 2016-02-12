@@ -27,9 +27,12 @@
 		      cider
 		      rainbow-delimiters))
 
+(defun installed-from-archive-p (pkg)
+  (assq pkg package-alist))
+
 (dolist (p my-packages)
-  (when (not (package-installed-p p))
-    (package-install p)))
+  (when (not (installed-from-archive-p p))
+    (package-install (cadr (assq p package-archive-contents)))))
 
 ;; Theme
 (setq default-frame-alist '((width  . 80)
