@@ -19,6 +19,7 @@
 		      yasnippet
                       expand-region
                       browse-kill-ring
+                      org
                       c-eldoc
 
 		      ;; Clojure
