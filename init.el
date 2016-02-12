@@ -114,23 +114,14 @@
                                    (hl-line-mode)))
 
 ;; Buffer cycling
-(defvar sindriava/cycle-exclude-buffers
-  '("*Messages*"
-    "*Warnings*"
-    "*Completions*"
-    "*Backtrace*"
-    "*Apropos*"
-    "*Help*"
-    "*Disabled Command*"))
-
 (defun sindriava/cycle-until-viable (action)
   (let ((bread-crumb (buffer-name)))
     (funcall action)
     (while
 	(and
-	 (or (member (buffer-name) sindriava/cycle-exclude-buffers)
-	     (string-match-p "\*magit" (buffer-name)))
-	 (not (equal bread-crumb (buffer-name))))
+         (not (equal bread-crumb (buffer-name)))
+         (not (equal (buffer-name) "*scratch*"))
+         (or (string-match-p "^\*" (buffer-name))))
       (funcall action))))
 
 (global-set-key (kbd "M-[") (lambda ()
