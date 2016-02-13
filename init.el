@@ -80,6 +80,7 @@
 (setq ad-redefinition-action 'accept)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
+(setq confirm-nonexistent-file-or-buffer nil)
 
 ;; Sensitive scrolling
 (setq mouse-wheel-progressive-speed nil)
