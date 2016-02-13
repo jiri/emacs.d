@@ -42,7 +42,7 @@
 ;; Theme
 (setq default-frame-alist '((width  . 80)
 			    (height . 25)
-			    (font   . "Input-16")))
+			    (font   . "Input-14")))
 
 (setq monokai-use-variable-pitch nil)
 (load-theme 'monokai t)
