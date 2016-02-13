@@ -24,7 +24,6 @@
 
                       ;; Python
                       elpy
-                      jedi
 
 		      ;; Clojure
 		      clojure-mode
@@ -344,14 +343,13 @@ length of PATH (sans directory slashes) down to MAX-LEN."
 (elpy-enable)
 (elpy-use-cpython "/usr/local/bin/python3")
 
+(setq elpy-rpc-python-command "/usr/local/bin/python3")
+(setq elpy-rpc-backend "jedi")
+
 (push "python3" python-shell-completion-native-disabled-interpreters)
 
-(add-hook 'python-mode-hook 'jedi:setup)
-(add-hook 'elpy-mode-hook (lambda ()
-                            (highlight-indentation-mode -1)))
-
-(setq jedi:setup-keys t)
-(setq jedi:complete-on-dot t)
+(remove-hook 'elpy-modules 'elpy-module-flymake)
+(remove-hook 'elpy-modules 'elpy-module-highlight-indentation)
 
 ;; Haskell
 (require 'haskell-interactive-mode)
