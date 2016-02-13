@@ -198,16 +198,18 @@
 ;; Modeline
 (defvar mode-line-cleaner-alist
   `(;;Minor modes
-    (paredit-mode   . "π")
-    (company-mode   . nil)
+    (paredit-mode . "π")
+    (company-mode . nil)
     (which-key-mode . nil)
     (cider-mode . "cider")
     (yas-minor-mode . "y")
     (auto-revert-mode . nil)
+    (elpy-mode . nil)
 
     ;; Major modes
     (lisp-interaction-mode    . "λ")
     (emacs-lisp-mode	      . "λ")
+    (python-mode              . "Py")
     (haskell-mode	      . ">>=")
     (haskell-interactive-mode . "Ghci")
     (haskell-cabal-mode       . "Cabal")))
