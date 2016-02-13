@@ -156,8 +156,8 @@
 				  (if (equal buffer "*scratch*")
 				      (message "Cannot kill scratch buffer.")
 				    (progn
-				      (kill-buffer buffer)
-				      (sindriava/cycle-until-viable 'next-buffer))))))
+                                      (sindriava/cycle-until-viable 'next-buffer)
+                                      (kill-buffer buffer))))))
 
 ;; Window management
 (defun toggle-window-split ()
