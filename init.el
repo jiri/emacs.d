@@ -22,6 +22,10 @@
                       org
                       c-eldoc
 
+                      ;; Python
+                      elpy
+                      jedi
+
 		      ;; Clojure
 		      clojure-mode
 		      clojure-mode-extra-font-locking
@@ -331,6 +335,19 @@ length of PATH (sans directory slashes) down to MAX-LEN."
 (global-set-key (kbd "C-c c") 'org-capture)
 (global-set-key (kbd "C-c b") 'org-iswitchb)
 (global-set-key (kbd "C-c l") 'org-store-link)
+
+;; Python
+(elpy-enable)
+(elpy-use-cpython "/usr/local/bin/python3")
+
+(push "python3" python-shell-completion-native-disabled-interpreters)
+
+(add-hook 'python-mode-hook 'jedi:setup)
+(add-hook 'elpy-mode-hook (lambda ()
+                            (highlight-indentation-mode -1)))
+
+(setq jedi:setup-keys t)
+(setq jedi:complete-on-dot t)
 
 ;; Haskell
 (require 'haskell-interactive-mode)
