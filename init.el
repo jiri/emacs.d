@@ -341,6 +341,10 @@ length of PATH (sans directory slashes) down to MAX-LEN."
 (global-set-key (kbd "C-c b") 'org-iswitchb)
 (global-set-key (kbd "C-c l") 'org-store-link)
 
+(with-eval-after-load 'org
+  (define-key org-mode-map (kbd "C-RET") 'org-insert-heading)
+  (define-key org-mode-map (kbd "M-RET") 'org-insert-heading-respect-content))
+
 ;; Persistent clocks
 (setq org-clock-persist 'history)
 (org-clock-persistence-insinuate)
