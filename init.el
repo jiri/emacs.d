@@ -402,7 +402,7 @@ length of PATH (sans directory slashes) down to MAX-LEN."
 	    (define-key cider-repl-mode-map (kbd "C-c C-c") 'kill-whole-line)))
 
 ;; Completion
-(global-company-mode)
+(add-hook 'prog-mode-hook 'company-mode)
 
 (setq company-idle-delay 0.25)
 
