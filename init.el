@@ -341,6 +341,10 @@ length of PATH (sans directory slashes) down to MAX-LEN."
 (global-set-key (kbd "C-c b") 'org-iswitchb)
 (global-set-key (kbd "C-c l") 'org-store-link)
 
+;; Persistent clocks
+(setq org-clock-persist 'history)
+(org-clock-persistence-insinuate)
+
 ;; Python
 (elpy-enable)
 (elpy-use-cpython "/usr/local/bin/python3")
