@@ -184,6 +184,7 @@
       (select-window first-win)
       (if this-win-2nd (other-window 1))))))
 
+(global-set-key (kbd "C-o") 'other-window)
 (global-set-key (kbd "C-x t") 'toggle-window-split)
 
 (defadvice quit-window (before quit-window-always-kill)
