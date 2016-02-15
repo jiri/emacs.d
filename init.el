@@ -466,3 +466,6 @@ length of PATH (sans directory slashes) down to MAX-LEN."
                          2)))
 
 (push 'sindriava/center-frame after-make-frame-functions)
+
+(add-hook 'window-setup-hook (lambda ()
+                               (sindriava/center-frame (selected-frame))))
