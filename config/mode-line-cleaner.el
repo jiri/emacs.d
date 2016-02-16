@@ -5,13 +5,11 @@
     (cider-mode . "cider")
     (yas-minor-mode . "y")
     (auto-revert-mode . nil)
-    (elpy-mode . nil)
     (smartparens-mode . "σ")
 
     ;; Major modes
     (lisp-interaction-mode    . "λ")
     (emacs-lisp-mode	      . "λ")
-    (python-mode              . "Py")
     (haskell-mode	      . ">>=")
     (haskell-interactive-mode . "Ghci")
     (haskell-cabal-mode       . "Cabal")))

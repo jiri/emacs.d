@@ -298,18 +298,7 @@ length of PATH (sans directory slashes) down to MAX-LEN."
 (org-clock-persistence-insinuate)
 
 ;; Python
-(elpy-enable)
-(elpy-use-cpython "/usr/local/bin/python3")
-
-(setq elpy-rpc-python-command "/usr/local/bin/python3")
-(setq elpy-rpc-backend "jedi")
-
-(push "python3" python-shell-completion-native-disabled-interpreters)
-
-(remove-hook 'elpy-modules 'elpy-module-flymake)
-(remove-hook 'elpy-modules 'elpy-module-highlight-indentation)
-
-(add-hook 'python-mode-hook 'smartparens-mode)
+(require 'lang-python)
 
 ;; Haskell
 (require 'haskell-interactive-mode)
