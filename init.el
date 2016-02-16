@@ -1,3 +1,6 @@
+;; Set up modular configuration
+(push (expand-file-name "config" user-emacs-directory) load-path)
+
 ;; Package setup
 (require 'package)
 
