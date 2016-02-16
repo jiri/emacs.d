@@ -273,7 +273,6 @@ length of PATH (sans directory slashes) down to MAX-LEN."
 ;; Paredit
 (autoload 'enable-paredit-mode "paredit" t)
 
-(add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
 (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
 
 (add-hook 'paredit-mode-hook 'rainbow-delimiters-mode)
@@ -296,6 +295,9 @@ length of PATH (sans directory slashes) down to MAX-LEN."
 ;; Persistent clocks
 (setq org-clock-persist 'history)
 (org-clock-persistence-insinuate)
+
+;; Emacs Lisp
+(require 'lang-emacs-lisp)
 
 ;; Python
 (require 'lang-python)

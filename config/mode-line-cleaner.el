@@ -5,11 +5,7 @@
     (cider-mode . "cider")
     (yas-minor-mode . "y")
     (auto-revert-mode . nil)
-    (smartparens-mode . "σ")
-
-    ;; Major modes
-    (lisp-interaction-mode    . "λ")
-    (emacs-lisp-mode	      . "λ")))
+    (smartparens-mode . "σ")))
 
 (defun mode-line-clean (mode &optional str)
   "Register a name replacement `str' for `mode'."
