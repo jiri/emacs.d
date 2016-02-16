@@ -301,17 +301,7 @@ length of PATH (sans directory slashes) down to MAX-LEN."
 (require 'lang-python)
 
 ;; Haskell
-(require 'haskell-interactive-mode)
-(require 'haskell-process)
-
-(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
-(add-hook 'haskell-mode-hook 'smartparens-mode)
-
-(setq haskell-process-type 'stack-ghci
-
-      haskell-process-suggest-remove-import-lines t
-      haskell-process-auto-import-loaded-modules t
-      haskell-process-log t)
+(require 'lang-haskell)
 
 ;; C
 (setq-default c-default-style "k&r"

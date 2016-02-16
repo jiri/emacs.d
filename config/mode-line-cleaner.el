@@ -9,10 +9,7 @@
 
     ;; Major modes
     (lisp-interaction-mode    . "λ")
-    (emacs-lisp-mode	      . "λ")
-    (haskell-mode	      . ">>=")
-    (haskell-interactive-mode . "Ghci")
-    (haskell-cabal-mode       . "Cabal")))
+    (emacs-lisp-mode	      . "λ")))
 
 (defun mode-line-clean (mode &optional str)
   "Register a name replacement `str' for `mode'."
