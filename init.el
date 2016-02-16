@@ -68,14 +68,6 @@
 ;; Use bash instead of the default shell to make stuff consistent
 (setq-default shell-file-name "bash")
 
-;; Emacs pls
-(setq inhibit-startup-message t)
-(setq inhibit-startup-echo-area-message "sindriava")
-(setq ad-redefinition-action 'accept)
-
-(defalias 'yes-or-no-p 'y-or-n-p)
-(setq confirm-nonexistent-file-or-buffer nil)
-
 ;; Sensitive scrolling
 (setq mouse-wheel-progressive-speed nil)
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
@@ -236,14 +228,7 @@
 (require 'lang-haskell)
 
 ;; C
-(setq-default c-default-style "k&r"
-              c-basic-offset 4)
-
-(add-hook 'c-mode-common-hook (lambda ()
-                                (c-turn-on-eldoc-mode)
-                                (set (make-local-variable 'company-backends)
-                                     '((company-yasnippet)))))
-(add-hook 'c-mode-common-hook 'smartparens-mode)
+(require 'lang-c)
 
 ;; Clojure
 (require 'lang-clojure)

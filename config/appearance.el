@@ -11,6 +11,14 @@
 ;; Don't wrap lines by default
 (setq-default truncate-lines 1)
 
+;; Disable startup screen
+(setq inhibit-startup-message t)
+(setq inhibit-startup-echo-area-message "sindriava")
+
+;; Make prompts a bit easier to deal with
+(defalias 'yes-or-no-p 'y-or-n-p)
+(setq confirm-nonexistent-file-or-buffer nil)
+
 ;; Center frames on the screen
 (defun sindriava/center-frame (&optional frame)
   "Center `frame' on the screen. If it's `nil', center the selected frame."
