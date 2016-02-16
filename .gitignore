@@ -4,6 +4,9 @@ snippets/
 # Custom file
 custom.el
 
+# Persistence files
+org-clock-save.el
+
 # Cache
 .cache/
 
