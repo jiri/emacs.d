@@ -72,30 +72,27 @@
 
 ;; Eshell
 (global-set-key (kbd "C-c e") 'eshell)
-
 (eval-after-load 'eshell '(require 'eshell-config))
 
 ;; Which key
 (which-key-mode)
+(mode-line-clean 'which-key-mode)
 
 ;; Magit
 (global-set-key (kbd "C-x g") 'magit-status)
-
 (eval-after-load 'magit '(require 'magit-config))
 
 ;; Yasnippet
-(setq yas-snippet-dirs
-      '("~/.emacs.d/snippets"))
-
+(setq yas-snippet-dirs '("~/.emacs.d/snippets"))
 (yas-global-mode)
+(mode-line-clean 'yas-minor-mode "y")
+
+;; Smartparens
+(mode-line-clean 'smartparens-mode "σ")
 
 ;; Paredit
-(autoload 'enable-paredit-mode "paredit" t)
-
-(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
-
+(add-hook 'eval-expression-minibuffer-setup-hook 'enable-paredit-mode)
 (add-hook 'paredit-mode-hook 'rainbow-delimiters-mode)
-
 
 ;; Org mode
 (global-set-key (kbd "C-c a") 'org-agenda)
@@ -105,24 +102,17 @@
 
 (eval-after-load 'org '(require 'org-config))
 
-;; Emacs Lisp
+;; Programming languages
 (require 'lang-emacs-lisp)
-
-;; Python
 (require 'lang-python)
-
-;; Haskell
 (require 'lang-haskell)
-
-;; C
 (require 'lang-c)
-
-;; Clojure
 (require 'lang-clojure)
 
 ;; Completion
 (add-hook 'prog-mode-hook 'company-mode)
 
+(mode-line-clean 'company-mode)
 (setq company-idle-delay 0.25)
 
 ;; Prettify symbols
@@ -142,6 +132,7 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
+;; Grab focus when new frame is created
 (push 'select-frame-set-input-focus after-make-frame-functions)
 
 ;; Run on full power
