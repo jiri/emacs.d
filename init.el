@@ -277,24 +277,14 @@ length of PATH (sans directory slashes) down to MAX-LEN."
 
 (add-hook 'paredit-mode-hook 'rainbow-delimiters-mode)
 
+
 ;; Org mode
-(setq org-src-fontify-natively t)
-(setq org-src-window-setup 'current-window)
-
-(setq org-default-notes-file "~/notes.org")
-
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
 (global-set-key (kbd "C-c b") 'org-iswitchb)
 (global-set-key (kbd "C-c l") 'org-store-link)
 
-(with-eval-after-load 'org
-  (define-key org-mode-map (kbd "C-RET") 'org-insert-heading)
-  (define-key org-mode-map (kbd "M-RET") 'org-insert-heading-respect-content))
-
-;; Persistent clocks
-(setq org-clock-persist 'history)
-(org-clock-persistence-insinuate)
+(eval-after-load 'org '(require 'org-config))
 
 ;; Emacs Lisp
 (require 'lang-emacs-lisp)
