@@ -1,6 +1,16 @@
 ;; Frame geometry
 (setq default-frame-alist '((width . 80) (height . 25)))
 
+;; Disable GUI cruft
+(when (fboundp 'tool-bar-mode) (tool-bar-mode 0))
+(when (fboundp 'scroll-bar-mode) (scroll-bar-mode 0))
+
+(setq frame-title-format nil)
+(setq ring-bell-function 'ignore)
+
+;; Don't wrap lines by default
+(setq-default truncate-lines 1)
+
 ;; Center frames on the screen
 (defun sindriava/center-frame (&optional frame)
   "Center `frame' on the screen. If it's `nil', center the selected frame."

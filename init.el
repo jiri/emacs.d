@@ -46,15 +46,8 @@
 ;; Theme
 (require 'appearance)
 
-;; Hide redundant UI elements
-(tool-bar-mode 0)
-(scroll-bar-mode 0)
-(setq frame-title-format nil)
-(setq ring-bell-function 'ignore)
-(setq-default truncate-lines 1)
-
+;; OSX specific config
 (setq ns-pop-up-frames nil)
-
 (global-set-key (kbd "s-t") 'ignore)
 
 ;; Start server if it's not already started
