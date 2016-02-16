@@ -1,10 +1,4 @@
-(defvar mode-line-cleaner-alist
-  `(;;Minor modes
-    (company-mode . nil)
-    (which-key-mode . nil)
-    (yas-minor-mode . "y")
-    (auto-revert-mode . nil)
-    (smartparens-mode . "σ")))
+(defvar mode-line-cleaner-alist nil)
 
 (defun mode-line-clean (mode &optional str)
   "Register a name replacement `str' for `mode'."
