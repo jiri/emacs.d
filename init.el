@@ -53,6 +53,8 @@
 (setq ring-bell-function 'ignore)
 (setq-default truncate-lines 1)
 
+(setq ns-pop-up-frames nil)
+
 (global-set-key (kbd "s-t") 'ignore)
 
 ;; Start server if it's not already started
