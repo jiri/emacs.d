@@ -461,24 +461,7 @@ length of PATH (sans directory slashes) down to MAX-LEN."
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
-;; Center newly created frames on the screen
-(defun sindriava/center-frame (&optional frame)
-  "Center `frame' on display."
-  (interactive)
-  (let ((f (or frame (selected-frame))))
-    (set-frame-position f
-                        (/ (- (display-pixel-width)
-                              (frame-pixel-width f))
-                           2)
-                        (/ (- (display-pixel-height)
-                              (frame-pixel-height f))
-                           2))))
-
-(push 'sindriava/center-frame after-make-frame-functions)
 (push 'select-frame-set-input-focus after-make-frame-functions)
-
-(add-hook 'window-setup-hook (lambda ()
-                               (sindriava/center-frame (selected-frame))))
 
 ;; Run on full power
 (put 'upcase-region 'disabled nil)
