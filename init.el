@@ -365,34 +365,8 @@ length of PATH (sans directory slashes) down to MAX-LEN."
 ;; Prettify symbols
 (global-prettify-symbols-mode)
 
-;; Dired mode
-(require 'dired-x)
-
-(put 'dired-find-alternate-file 'disabled nil)
-
-(add-hook 'dired-mode-hook (lambda ()
-			     ;; Hide unnecessary files & info
-			     (setq dired-omit-files "^\\..*$")
-			     (dired-omit-mode 1)
-
-			     (dired-hide-details-mode)
-
-			     ;; hide the cursor
-			     (hl-line-mode)
-			     (setq-local cursor-type nil)))
-
-(with-eval-after-load "dired"
-  (set-face-attribute 'dired-header nil
-		      :foreground "#F92672"
-		      :background 'unspecified
-		      :weight 'bold)
-
-  (define-key dired-mode-map (kbd ".") 'dired-omit-mode)
-
-  (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
-  (define-key dired-mode-map (kbd "DEL") (lambda ()
-					   (interactive)
-					   (find-alternate-file ".."))))
+;; Dired
+(eval-after-load 'dired '(require 'dired-config))
 
 ;; Backups & custom file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
