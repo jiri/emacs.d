@@ -253,27 +253,7 @@
 (add-hook 'c-mode-common-hook 'smartparens-mode)
 
 ;; Clojure
-(require 'clojure-mode-extra-font-locking)
-
-(add-hook 'clojure-mode-hook 'paredit-mode)
-
-;; CIDER
-(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
-(add-hook 'cider-repl-mode-hook 'enable-paredit-mode)
-
-(setq cider-repl-pop-to-buffer-on-connect t)
-(setq cider-show-error-buffer t)
-(setq cider-auto-select-error-buffer t)
-(setq cider-repl-history-file "~/.cider-history")
-;;(setq cider-repl-wrap-history t)
-
-(add-hook 'cider-repl-mode-hook
-	  (lambda ()
-	    (define-key cider-repl-mode-map (kbd "<up>") 'cider-repl-previous-input)
-	    (define-key cider-repl-mode-map (kbd "<down>") 'cider-repl-next-input)
-
-	    (define-key cider-repl-mode-map (kbd "C-c C-k") 'cider-repl-clear-buffer)
-	    (define-key cider-repl-mode-map (kbd "C-c C-c") 'kill-whole-line)))
+(require 'lang-clojure)
 
 ;; Completion
 (add-hook 'prog-mode-hook 'company-mode)

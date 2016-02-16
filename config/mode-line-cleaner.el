@@ -2,7 +2,6 @@
   `(;;Minor modes
     (company-mode . nil)
     (which-key-mode . nil)
-    (cider-mode . "cider")
     (yas-minor-mode . "y")
     (auto-revert-mode . nil)
     (smartparens-mode . "σ")))
