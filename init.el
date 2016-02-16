@@ -3,15 +3,12 @@
 
 ;; Package setup
 (require 'package)
+(require 'setup-packages)
 
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
 
 (package-initialize)
-
-;; Automatically install packages
-(when (not package-archive-contents)
-  (package-refresh-contents))
 
 (defvar my-packages '(magit
                       paredit
@@ -24,24 +21,14 @@
                       browse-kill-ring
                       org
                       c-eldoc
-
                       smartparens
-
-                      ;; Python
                       elpy
-
-		      ;; Clojure
 		      clojure-mode
 		      clojure-mode-extra-font-locking
 		      cider
 		      rainbow-delimiters))
 
-(defun installed-from-archive-p (pkg)
-  (assq pkg package-alist))
-
-(dolist (p my-packages)
-  (when (not (installed-from-archive-p p))
-    (package-install (cadr (assq p package-archive-contents)))))
+(install-packages my-packages)
 
 ;; Theme
 (require 'appearance)
