@@ -474,3 +474,8 @@ length of PATH (sans directory slashes) down to MAX-LEN."
 
 (add-hook 'window-setup-hook (lambda ()
                                (sindriava/center-frame (selected-frame))))
+
+;; Run on full power
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
