@@ -29,5 +29,8 @@
 
 (load-theme 'monokai t)
 
+;; Modeline
+(require 'mode-line-config)
+
 ;; Provide module
 (provide 'appearance)

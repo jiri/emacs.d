@@ -198,62 +198,6 @@
 (setq-default cursor-type 'bar)
 (set-cursor-color "#F92672")
 
-;; Modeline
-(defvar mode-line-cleaner-alist
-  `(;;Minor modes
-    (paredit-mode . "π")
-    (company-mode . nil)
-    (which-key-mode . nil)
-    (cider-mode . "cider")
-    (yas-minor-mode . "y")
-    (auto-revert-mode . nil)
-    (elpy-mode . nil)
-    (smartparens-mode . "σ")
-
-    ;; Major modes
-    (lisp-interaction-mode    . "λ")
-    (emacs-lisp-mode	      . "λ")
-    (python-mode              . "Py")
-    (haskell-mode	      . ">>=")
-    (haskell-interactive-mode . "Ghci")
-    (haskell-cabal-mode       . "Cabal")))
-
-(defun clean-mode-line ()
-  (interactive)
-  (dolist (cleaner mode-line-cleaner-alist)
-    (let* ((mode (car cleaner))
-           (mode-str (cdr cleaner))
-           (old-mode-str (cdr (assq mode minor-mode-alist))))
-      (when old-mode-str
-        (setcar old-mode-str (concat (when mode-str " ") mode-str)))
-      ;; major mode
-      (when (eq mode major-mode)
-        (setq mode-name mode-str)))))
-
-(add-hook 'after-change-major-mode-hook 'clean-mode-line)
-
-(defun mode-line-split (left right)
-  (let* ((available-width (- (window-width) (length left) 2)))
-    (format (format " %%s %%%ds " available-width) left right)))
-
-(defun mode-line/git-branch ()
-  (interactive)
-  (when (fboundp 'vc-git-branches)
-    (propertize (car (vc-git-branches))
-                'face '(:foreground "#A6E22E"))))
-
-(setq-default mode-line-format
-	      '((:eval (mode-line-split
-			(concat
-			 (propertize mode-name
-				     'face '(:foreground "#F92672"))
-			 " "
-			 (propertize (buffer-name)
-				     'face '(:foreground "#E6DB74"))
-			 " ")
-			(propertize (format-mode-line minor-mode-alist)
-				    'face '(:foreground "#75715E"))))))
-
 ;; Eshell
 (global-set-key (kbd "C-c e") 'eshell)
 
