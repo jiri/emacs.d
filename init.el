@@ -22,6 +22,8 @@
                       org
                       c-eldoc
 
+                      smartparens
+
                       ;; Python
                       elpy
 
@@ -208,6 +210,7 @@
     (yas-minor-mode . "y")
     (auto-revert-mode . nil)
     (elpy-mode . nil)
+    (smartparens-mode . "σ")
 
     ;; Major modes
     (lisp-interaction-mode    . "λ")
@@ -364,11 +367,14 @@ length of PATH (sans directory slashes) down to MAX-LEN."
 (remove-hook 'elpy-modules 'elpy-module-flymake)
 (remove-hook 'elpy-modules 'elpy-module-highlight-indentation)
 
+(add-hook 'python-mode-hook 'smartparens-mode)
+
 ;; Haskell
 (require 'haskell-interactive-mode)
 (require 'haskell-process)
 
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+(add-hook 'haskell-mode-hook 'smartparens-mode)
 
 (setq haskell-process-type 'stack-ghci
 
@@ -384,6 +390,7 @@ length of PATH (sans directory slashes) down to MAX-LEN."
                                 (c-turn-on-eldoc-mode)
                                 (set (make-local-variable 'company-backends)
                                      '((company-yasnippet)))))
+(add-hook 'c-mode-common-hook 'smartparens-mode)
 
 ;; Clojure
 (require 'clojure-mode-extra-font-locking)
