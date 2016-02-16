@@ -42,6 +42,10 @@
 ;; TODO - Create fallbacks
 (set-face-attribute 'default nil :font "Input-14")
 
+;; Prettier cursor
+(setq-default cursor-type 'bar)
+(set-cursor-color "#F92672")
+
 ;; Theme
 (setq monokai-use-variable-pitch nil)
 

@@ -83,10 +83,6 @@
 ;; Keybindings
 (require 'bindings)
 
-;; Prettier cursor
-(setq-default cursor-type 'bar)
-(set-cursor-color "#F92672")
-
 ;; Eshell
 (global-set-key (kbd "C-c e") 'eshell)
 
