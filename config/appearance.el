@@ -1,6 +1,14 @@
 ;; Frame geometry
 (setq default-frame-alist '((width . 80) (height . 25)))
 
+;; Theme
+(setq monokai-use-variable-pitch nil)
+(load-theme 'monokai t)
+
+;; Font
+;; TODO - Create fallbacks
+(set-face-attribute 'default nil :font "Input-14")
+
 ;; Disable GUI cruft
 (when (fboundp 'tool-bar-mode) (tool-bar-mode 0))
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode 0))
@@ -38,18 +46,9 @@
 ;; Center the initial frame after Emacs starts
 (add-hook 'window-setup-hook (lambda () (sindriava/center-frame (selected-frame))))
 
-;; Font
-;; TODO - Create fallbacks
-(set-face-attribute 'default nil :font "Input-14")
-
 ;; Prettier cursor
 (setq-default cursor-type 'bar)
 (set-cursor-color "#F92672")
-
-;; Theme
-(setq monokai-use-variable-pitch nil)
-
-(load-theme 'monokai t)
 
 ;; Modeline
 (require 'mode-line-config)

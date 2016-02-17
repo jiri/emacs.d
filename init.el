@@ -3,12 +3,13 @@
 
 ;; Package setup
 (require 'package)
-(require 'setup-packages)
 
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
 
 (package-initialize)
+
+(require 'setup-packages)
 
 (defvar my-packages '(magit
                       paredit
