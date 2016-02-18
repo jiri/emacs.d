@@ -1,11 +1,24 @@
+;; Initialize `package'
+(package-initialize nil)
+
+;; Add MELPA to `package-archives'
+(unless (assoc "melpa" package-archives)
+  (add-to-list 'package-archives
+               '("melpa" . "http://melpa.org/packages/") t))
+
+(unless package-archive-contents
+  (package-refresh-contents))
+
+;; Set up `use-package'
+(when (not (package-installed-p 'use-package))
+  (package-install 'use-package))
+
+(setq use-package-always-ensure t)
 ;; Set up modular configuration
 (push (expand-file-name "config" user-emacs-directory) load-path)
 
 ;; Package setup
 (require 'package)
-
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
 
 (package-initialize)
 
