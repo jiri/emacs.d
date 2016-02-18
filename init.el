@@ -14,6 +14,7 @@
   (package-install 'use-package))
 
 (setq use-package-always-ensure t)
+
 ;; Set up modular configuration
 (push (expand-file-name "config" user-emacs-directory) load-path)
 
@@ -40,8 +41,7 @@
 		      clojure-mode
 		      clojure-mode-extra-font-locking
 		      cider
-		      rainbow-delimiters
-                      golden-ratio))
+		      rainbow-delimiters))
 
 (install-packages my-packages)
 
@@ -49,8 +49,11 @@
 (require 'appearance)
 
 ;; Golden ratio
-(golden-ratio-mode)
-(mode-line-clean 'golden-ratio-mode "φ")
+(use-package golden-ratio
+  :config
+  (progn
+    (golden-ratio-mode)
+    (mode-line-clean 'golden-ratio-mode "φ")))
 
 ;; OSX specific config
 (setq ns-pop-up-frames nil)
