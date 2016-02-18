@@ -1,3 +1,8 @@
+;; Add MELPA to `package-archives'
+(unless (assoc "melpa" package-archives)
+  (add-to-list 'package-archives
+               '("melpa" . "https://melpa.org/packages/") t))
+
 ;; Automatically install packages
 (when (not package-archive-contents)
   (package-refresh-contents))
