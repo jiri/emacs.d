@@ -28,7 +28,6 @@
 (defvar my-packages '(company
 		      haskell-mode
                       monokai-theme
-                      yasnippet
                       expand-region
                       browse-kill-ring
                       org
@@ -122,9 +121,13 @@
     (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)))
 
 ;; Yasnippet
-(setq yas-snippet-dirs '("~/.emacs.d/snippets"))
-(yas-global-mode)
-(mode-line-clean 'yas-minor-mode "y")
+(use-package yasnippet
+  :init
+  (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+  :config
+  (progn
+    (add-hook 'prog-mode-hook 'yas-minor-mode)
+    (mode-line-clean 'yas-minor-mode "y")))
 
 ;; Smartparens
 (mode-line-clean 'smartparens-mode "σ")
