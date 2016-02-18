@@ -29,8 +29,7 @@
                       company
 		      haskell-mode
                       monokai-theme
-                      which-key
-		      yasnippet
+                      yasnippet
                       expand-region
                       browse-kill-ring
                       org
@@ -96,8 +95,11 @@
 (eval-after-load 'eshell '(require 'eshell-config))
 
 ;; Which key
-(which-key-mode)
-(mode-line-clean 'which-key-mode)
+(use-package which-key
+  :config
+  (progn
+    (which-key-mode)
+    (mode-line-clean 'which-key-mode)))
 
 ;; Magit
 (use-package magit
