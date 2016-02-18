@@ -27,12 +27,17 @@
 		      clojure-mode
 		      clojure-mode-extra-font-locking
 		      cider
-		      rainbow-delimiters))
+		      rainbow-delimiters
+                      golden-ratio))
 
 (install-packages my-packages)
 
 ;; Theme
 (require 'appearance)
+
+;; Golden ratio
+(golden-ratio-mode)
+(mode-line-clean 'golden-ratio-mode "φ")
 
 ;; OSX specific config
 (setq ns-pop-up-frames nil)
