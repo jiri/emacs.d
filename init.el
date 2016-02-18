@@ -30,7 +30,6 @@
                       monokai-theme
                       expand-region
                       browse-kill-ring
-                      org
                       c-eldoc
                       elpy
 		      clojure-mode
@@ -144,12 +143,16 @@
     (mode-line-clean 'paredit-mode "π")))
 
 ;; Org mode
-(global-set-key (kbd "C-c a") 'org-agenda)
-(global-set-key (kbd "C-c c") 'org-capture)
-(global-set-key (kbd "C-c b") 'org-iswitchb)
-(global-set-key (kbd "C-c l") 'org-store-link)
-
-(eval-after-load 'org '(require 'org-config))
+(use-package org
+  :defer t
+  :pin "melpa"
+  :bind
+  (("C-c a" . org-agenda)
+   ("C-c c" . org-capture)
+   ("C-c b" . org-iswitchb)
+   ("C-c l" . org-store-link))
+  :config
+  (require 'org-config))
 
 ;; Programming languages
 (require 'lang-emacs-lisp)
