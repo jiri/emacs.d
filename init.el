@@ -25,8 +25,7 @@
 
 (require 'setup-packages)
 
-(defvar my-packages '(magit
-                      paredit
+(defvar my-packages '(paredit
                       company
 		      haskell-mode
                       monokai-theme
@@ -101,8 +100,26 @@
 (mode-line-clean 'which-key-mode)
 
 ;; Magit
-(global-set-key (kbd "C-x g") 'magit-status)
-(eval-after-load 'magit '(require 'magit-config))
+(use-package magit
+  :defer t
+  :bind ("C-x g" . magit-status)
+  :config
+  (progn
+    (defun magit-fullscreen (f &rest args)
+      "Open `magit-status' full-screen"
+      (window-configuration-to-register :magit-fullscreen)
+      (apply f args)
+      (delete-other-windows))
+
+    (advice-add 'magit-status :around #'magit-fullscreen)
+
+    (defun magit-quit-session ()
+      "Restores the previous window configuration and kills the magit buffer"
+      (interactive)
+      (kill-buffer)
+      (jump-to-register :magit-fullscreen))
+
+    (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)))
 
 ;; Yasnippet
 (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
