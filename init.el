@@ -25,8 +25,7 @@
 
 (require 'setup-packages)
 
-(defvar my-packages '(paredit
-                      company
+(defvar my-packages '(company
 		      haskell-mode
                       monokai-theme
                       yasnippet
@@ -38,8 +37,7 @@
                       elpy
 		      clojure-mode
 		      clojure-mode-extra-font-locking
-		      cider
-		      rainbow-delimiters))
+		      cider))
 
 (install-packages my-packages)
 
@@ -132,9 +130,14 @@
 (mode-line-clean 'smartparens-mode "σ")
 
 ;; Paredit
-(add-hook 'eval-expression-minibuffer-setup-hook 'enable-paredit-mode)
-(add-hook 'paredit-mode-hook 'rainbow-delimiters-mode)
-(mode-line-clean 'paredit-mode "π")
+(use-package paredit
+  :config
+  (progn
+    (use-package rainbow-delimiters)
+    (add-hook 'eval-expression-minibuffer-setup-hook 'enable-paredit-mode)
+    (add-hook 'paredit-mode-hook 'rainbow-delimiters-mode)
+
+    (mode-line-clean 'paredit-mode "π")))
 
 ;; Org mode
 (global-set-key (kbd "C-c a") 'org-agenda)
