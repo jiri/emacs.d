@@ -32,7 +32,6 @@
                       browse-kill-ring
                       org
                       c-eldoc
-                      smartparens
                       elpy
 		      clojure-mode
 		      clojure-mode-extra-font-locking
@@ -130,7 +129,9 @@
     (mode-line-clean 'yas-minor-mode "y")))
 
 ;; Smartparens
-(mode-line-clean 'smartparens-mode "σ")
+(use-package smartparens
+  :config
+  (mode-line-clean 'smartparens-mode "σ"))
 
 ;; Paredit
 (use-package paredit
