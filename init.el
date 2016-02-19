@@ -28,8 +28,7 @@
 
 (require 'setup-packages)
 
-(defvar my-packages '(haskell-mode
-                      monokai-theme
+(defvar my-packages '(monokai-theme
                       expand-region
                       browse-kill-ring
                       c-eldoc))
