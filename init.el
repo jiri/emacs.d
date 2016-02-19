@@ -25,8 +25,7 @@
 
 (require 'setup-packages)
 
-(defvar my-packages '(company
-		      haskell-mode
+(defvar my-packages '(haskell-mode
                       monokai-theme
                       expand-region
                       browse-kill-ring
@@ -162,10 +161,13 @@
 (require 'lang-clojure)
 
 ;; Completion
-(add-hook 'prog-mode-hook 'company-mode)
-
-(mode-line-clean 'company-mode)
-(setq company-idle-delay 0.25)
+(use-package company
+  :init
+  (setq company-idle-delay 0.25)
+  :config
+  (progn
+   (add-hook 'prog-mode-hook 'company-mode)
+   (mode-line-clean 'company-mode)))
 
 ;; Prettify symbols
 (global-prettify-symbols-mode)
