@@ -170,6 +170,11 @@
 ;; Prettify symbols
 (global-prettify-symbols-mode)
 
+;; Avy
+(use-package avy
+  :bind (("C-;" . avy-goto-word-1)
+         ("C-:" . avy-goto-char)))
+
 ;; Dired
 (eval-after-load 'dired '(require 'dired-config))
 
