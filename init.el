@@ -1,4 +1,6 @@
 ;; Initialize `package'
+(require 'package)
+
 (package-initialize nil)
 
 ;; Add MELPA to `package-archives'
@@ -20,17 +22,6 @@
 
 ;; Set up modular configuration
 (push (expand-file-name "config" user-emacs-directory) load-path)
-
-;; Package setup
-(require 'package)
-
-(package-initialize)
-
-(require 'setup-packages)
-
-(defvar my-packages '())
-
-(install-packages my-packages)
 
 ;; Temporary workaround for problems with `package.el' and `use-package'
 ;; TODO - Revisit this
