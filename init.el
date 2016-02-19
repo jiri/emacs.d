@@ -28,8 +28,7 @@
 
 (require 'setup-packages)
 
-(defvar my-packages '(monokai-theme
-                      expand-region
+(defvar my-packages '(expand-region
                       browse-kill-ring
                       c-eldoc))
 

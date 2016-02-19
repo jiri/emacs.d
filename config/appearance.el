@@ -2,8 +2,11 @@
 (setq default-frame-alist '((width . 80) (height . 25)))
 
 ;; Theme
-(setq monokai-use-variable-pitch nil)
-(load-theme 'monokai t)
+(use-package monokai-theme
+  :init
+  (setq monokai-use-variable-pitch nil)
+  :config
+  (load-theme 'monokai t))
 
 ;; Font
 ;; TODO - Create fallbacks
