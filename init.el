@@ -172,8 +172,18 @@
 
 ;; Avy
 (use-package avy
-  :bind (("C-;" . avy-goto-word-1)
-         ("C-:" . avy-goto-char)))
+  :bind (("C-;" . avy-goto-char)
+         ("C-:" . avy-goto-word-1))
+  :config
+  (use-package golden-ratio
+    :ensure nil
+    :config
+    (progn
+      ;; Resize windows after Avy jumps between them
+      (defun avy-golden-ratio (&rest args)
+        (golden-ratio))
+
+      (advice-add 'avy-action-goto :after 'avy-golden-ratio))))
 
 ;; Dired
 (eval-after-load 'dired '(require 'dired-config))
