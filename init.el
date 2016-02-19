@@ -28,8 +28,7 @@
 
 (require 'setup-packages)
 
-(defvar my-packages '(expand-region
-                      c-eldoc))
+(defvar my-packages '(c-eldoc))
 
 (install-packages my-packages)
 

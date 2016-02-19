@@ -1,14 +1,17 @@
 ;; Region settings
 (delete-selection-mode)
 
-(setq expand-region-fast-keys-enabled nil)
-
-(global-set-key (kbd "C-SPC") (lambda ()
-                                (interactive)
-                                (if (region-active-p)
-                                    (er/expand-region 1)
-                                  (set-mark (point)))))
-(global-set-key (kbd "C-S-SPC") 'er/contract-region)
+(use-package expand-region
+  :init
+  (setq expand-region-fast-keys-enabled nil)
+  :config
+  (progn
+    (global-set-key (kbd "C-SPC") (lambda ()
+                                    (interactive)
+                                    (if (region-active-p)
+                                        (er/expand-region 1)
+                                      (set-mark (point)))))
+    (global-set-key (kbd "C-S-SPC") 'er/contract-region)))
 
 ;; Search
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
