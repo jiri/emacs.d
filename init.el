@@ -28,7 +28,7 @@
 
 (require 'setup-packages)
 
-(defvar my-packages '(c-eldoc))
+(defvar my-packages '())
 
 (install-packages my-packages)
 
