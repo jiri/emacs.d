@@ -98,8 +98,10 @@
 (require 'bindings)
 
 ;; Eshell
-(global-set-key (kbd "C-c e") 'eshell)
-(eval-after-load 'eshell '(require 'eshell-config))
+(use-package eshell
+  :bind ("C-c e" . eshell)
+  :config
+  (require 'eshell-config))
 
 ;; Which key
 (use-package which-key
