@@ -33,8 +33,7 @@
                       expand-region
                       browse-kill-ring
                       c-eldoc
-                      elpy
-		      clojure-mode
+                      clojure-mode
 		      clojure-mode-extra-font-locking
 		      cider))
 
