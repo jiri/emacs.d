@@ -55,6 +55,10 @@
 (global-set-key (kbd "<escape>") 'keyboard-quit)
 (global-set-key (kbd "s-q") 'delete-frame)
 
+;; `C-x C-c' is way too easy to press accidentally.
+(global-unset-key (kbd "C-x C-c"))
+(global-set-key (kbd "C-S-x C-S-c") 'save-buffers-kill-terminal)
+
 ;; Tweak live windows
 (defun quit-window-always-kill (f &rest args)
   "Make sure that live windows stay quit"
