@@ -1,5 +1,6 @@
 ;; Set up Clojure
 (use-package clojure-mode
+  :defer t
   :config
   (progn
     (use-package clojure-mode-extra-font-locking)

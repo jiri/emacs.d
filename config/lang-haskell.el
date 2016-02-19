@@ -1,5 +1,6 @@
 ;; Set up Haskell
 (use-package haskell-mode
+  :defer t
   :init
   (setq haskell-process-type 'stack-ghci
 
