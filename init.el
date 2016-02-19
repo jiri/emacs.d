@@ -115,6 +115,14 @@
 
     (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)))
 
+;; Git modes
+(use-package gitconfig-mode
+  :defer t)
+(use-package gitattributes-mode
+  :defer t)
+(use-package gitignore-mode
+  :defer t)
+
 ;; Gist
 (use-package gist
   :bind ("C-c p" . gist-region-or-buffer))
