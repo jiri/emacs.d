@@ -1,3 +1,12 @@
+;; Temporary workaround for problems with `package.el' and `use-package'
+;; TODO - Revisit this
+(defun package-from-archive (f &rest args)
+  "Check if package was installed by `package.el'"
+  (and (apply f args)
+       (assq (car args) package-alist)))
+
+(advice-add 'package-installed-p :around 'package-from-archive)
+
 ;; Initialize `package'
 (package-initialize nil)
 
@@ -144,7 +153,7 @@
 ;; Org mode
 (use-package org
   :defer t
-  :pin "melpa"
+  :pin gnu
   :bind
   (("C-c a" . org-agenda)
    ("C-c c" . org-capture)
