@@ -32,10 +32,7 @@
                       monokai-theme
                       expand-region
                       browse-kill-ring
-                      c-eldoc
-                      clojure-mode
-		      clojure-mode-extra-font-locking
-		      cider))
+                      c-eldoc))
 
 (install-packages my-packages)
 
