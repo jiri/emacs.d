@@ -190,6 +190,10 @@
 ;; Dired
 (eval-after-load 'dired '(require 'dired-config))
 
+;; Clean up miscellaneous minor modes
+(mode-line-clean 'auto-revert-mode "α")
+(mode-line-clean 'isearch-mode)
+
 ;; Backups & custom file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file 'noerror 'nomessage)
