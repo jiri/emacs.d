@@ -185,6 +185,10 @@
 
       (advice-add 'avy-action-goto :after 'avy-golden-ratio))))
 
+;; Anchored transpose
+(use-package anchored-transpose
+  :bind ("C-t" . anchored-transpose))
+
 ;; Dired
 (eval-after-load 'dired '(require 'dired-config))
 
