@@ -1,12 +1,3 @@
-;; Temporary workaround for problems with `package.el' and `use-package'
-;; TODO - Revisit this
-(defun package-from-archive (f &rest args)
-  "Check if package was installed by `package.el'"
-  (and (apply f args)
-       (assq (car args) package-alist)))
-
-(advice-add 'package-installed-p :around 'package-from-archive)
-
 ;; Initialize `package'
 (package-initialize nil)
 
@@ -48,6 +39,16 @@
 		      cider))
 
 (install-packages my-packages)
+
+;; Temporary workaround for problems with `package.el' and `use-package'
+;; TODO - Revisit this
+(defun package-from-archive (f &rest args)
+  "Make an exception for `org' when checking if package is installed"
+  (if (equal (car args) 'org)
+      (assq 'org package-alist)
+    (apply f args)))
+
+(advice-add 'package-installed-p :around 'package-from-archive)
 
 ;; Theme
 (require 'appearance)
