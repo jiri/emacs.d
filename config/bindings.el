@@ -18,7 +18,8 @@
 (global-set-key (kbd "C-w") 'kill-ring-save)
 (global-set-key (kbd "M-w") 'kill-region)
 
-(global-set-key (kbd "M-y") 'browse-kill-ring)
+(use-package browse-kill-ring
+  :bind ("M-y" . browse-kill-ring))
 
 ;; Buffer bindings
 (require 'bindings-buffer)

@@ -29,7 +29,6 @@
 (require 'setup-packages)
 
 (defvar my-packages '(expand-region
-                      browse-kill-ring
                       c-eldoc))
 
 (install-packages my-packages)
