@@ -96,7 +96,7 @@
 ;; Magit
 (use-package magit
   :defer t
-  :bind ("C-x g" . magit-status)
+  :bind ("C-c g" . magit-status)
   :config
   (progn
     (defun magit-fullscreen (f &rest args)
