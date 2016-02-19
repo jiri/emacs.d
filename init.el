@@ -19,10 +19,13 @@
   (package-refresh-contents))
 
 ;; Set up `use-package'
-(when (not (package-installed-p 'use-package))
+(unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
 (setq use-package-always-ensure t)
+(setq use-package-verbose t)
+
+(setq load-prefer-newer t)
 
 ;; Set up modular configuration
 (push (expand-file-name "config" user-emacs-directory) load-path)
