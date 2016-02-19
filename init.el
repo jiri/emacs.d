@@ -115,6 +115,10 @@
 
     (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)))
 
+;; Gist
+(use-package gist
+  :bind ("C-c p" . gist-region-or-buffer))
+
 ;; Yasnippet
 (use-package yasnippet
   :init
