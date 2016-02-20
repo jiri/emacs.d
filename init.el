@@ -99,6 +99,12 @@
     (global-unset-key (kbd "C-x c"))
     (global-set-key (kbd "C-c h") 'helm-command-prefix)
 
+    ;; Override some default keybindings
+    (global-set-key (kbd "C-c h o") 'helm-occur)
+    (global-set-key (kbd "C-c h SPC") 'helm-all-mark-rings)
+    (global-set-key (kbd "C-c h x") 'helm-register)
+    (global-set-key (kbd "C-c h g") 'helm-google-suggest)
+
     ;; Keep helm at the bottom
     (use-package shackle
       :init
