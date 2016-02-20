@@ -91,6 +91,10 @@
   (setq helm-M-x-fuzzy-match t)
   :config
   (progn
+    ;; Swap `C-z' and `<tab>'
+    (define-key helm-map (kbd "TAB") 'helm-execute-persistent-action)
+    (define-key helm-map (kbd "C-z") 'helm-select-action)
+
     ;; Turn on Helm globally
     (helm-mode 1)
     (mode-line-clean 'helm-mode)))
