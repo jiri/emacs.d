@@ -92,6 +92,12 @@
         helm-split-window-in-side-p t)
   :config
   (progn
+    ;; Set up `helm-command-prefix'
+    (require 'helm-config)
+
+    (global-unset-key (kbd "C-x c"))
+    (global-set-key (kbd "C-c h") 'helm-command-prefix)
+
     ;; Keep helm at the bottom
     (use-package shackle
       :init
