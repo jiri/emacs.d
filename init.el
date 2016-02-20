@@ -95,6 +95,14 @@
     (define-key helm-map (kbd "TAB") 'helm-execute-persistent-action)
     (define-key helm-map (kbd "C-z") 'helm-select-action)
 
+    ;; Prevent `golden-ratio' from interfering with `helm'
+    (with-eval-after-load 'golden-ratio
+      (defun sindriava/helm-alive-p ()
+        (if (boundp 'helm-alive-p)
+            (symbol-value 'helm-alive-p)))
+
+      (add-to-list 'golden-ratio-inhibit-functions 'sindriava/helm-alive-p))
+
     ;; Turn on Helm globally
     (helm-mode 1)
     (mode-line-clean 'helm-mode)))
