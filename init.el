@@ -88,8 +88,12 @@
    ("M-x"     . helm-M-x)
    ("M-y"     . helm-show-kill-ring))
   :init
-  (setq helm-M-x-fuzzy-match t
-        helm-split-window-in-side-p t
+  (setq helm-split-window-in-side-p t
+        helm-M-x-fuzzy-match t
+        helm-semantic-fuzzy-match t
+        helm-imenu-fuzzy-match t
+        helm-apropos-fuzzy-match t
+        helm-locate-fuzzy-match t
         helm-locate-command "mdfind -name %s %s")
   :config
   (progn
