@@ -88,9 +88,17 @@
    ("M-x"     . helm-M-x)
    ("M-y"     . helm-show-kill-ring))
   :init
-  (setq helm-M-x-fuzzy-match t)
+  (setq helm-M-x-fuzzy-match t
+        helm-split-window-in-side-p t)
   :config
   (progn
+    ;; Keep helm at the bottom
+    (use-package shackle
+      :init
+      (setq shackle-rules '(("\\`\\*helm.*?\\*\\'" :regexp t :align t :ratio 0.4)))
+      :config
+      (shackle-mode))
+
     ;; Swap `C-z' and `<tab>'
     (define-key helm-map (kbd "TAB") 'helm-execute-persistent-action)
     (define-key helm-map (kbd "C-z") 'helm-select-action)
