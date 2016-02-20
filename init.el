@@ -89,7 +89,8 @@
    ("M-y"     . helm-show-kill-ring))
   :init
   (setq helm-M-x-fuzzy-match t
-        helm-split-window-in-side-p t)
+        helm-split-window-in-side-p t
+        helm-locate-command "mdfind -name %s %s")
   :config
   (progn
     ;; Set up `helm-command-prefix'
