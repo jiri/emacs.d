@@ -111,6 +111,10 @@
 
       (add-to-list 'golden-ratio-inhibit-functions 'sindriava/helm-alive-p))
 
+    ;; Hide the `mode-line' in `helm' buffers
+    (defun helm-display-mode-line (source &optional force)
+      (setq mode-line-format nil))
+
     ;; Turn on Helm globally
     (helm-mode 1)
     (mode-line-clean 'helm-mode)))
