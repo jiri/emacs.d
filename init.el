@@ -109,6 +109,10 @@
     (global-set-key (kbd "C-c h x") 'helm-register)
     (global-set-key (kbd "C-c h g") 'helm-google-suggest)
 
+    ;; Use `curl' when possible
+    (when (executable-find "curl")
+      (setq helm-google-suggest-use-curl-p t))
+
     ;; Keep helm at the bottom
     (use-package shackle
       :init
