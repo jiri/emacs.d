@@ -80,6 +80,21 @@
 ;; Keybindings
 (require 'bindings)
 
+;; Helm
+(use-package helm
+  :bind
+  (("C-x C-f" . helm-find-files)
+   ("C-x b"   . helm-mini)
+   ("M-x"     . helm-M-x)
+   ("M-y"     . helm-show-kill-ring))
+  :init
+  (setq helm-M-x-fuzzy-match t)
+  :config
+  (progn
+    ;; Turn on Helm globally
+    (helm-mode 1)
+    (mode-line-clean 'helm-mode)))
+
 ;; Eshell
 (use-package eshell
   :bind ("C-c e" . eshell)
