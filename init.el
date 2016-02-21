@@ -238,6 +238,8 @@
 (require 'lang-c)
 (require 'lang-clojure)
 
+(use-package fish-mode)
+
 ;; Completion
 (use-package company
   :init
