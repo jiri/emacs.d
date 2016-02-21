@@ -84,6 +84,11 @@
 ;; Keybindings
 (require 'bindings)
 
+;; Shackle
+(use-package shackle
+  :config
+  (shackle-mode))
+
 ;; Helm
 (use-package helm
   :demand
@@ -125,9 +130,7 @@
     ;; Keep helm at the bottom
     (use-package shackle
       :init
-      (setq shackle-rules '(("\\`\\*helm.*?\\*\\'" :regexp t :align t :ratio 0.4)))
-      :config
-      (shackle-mode))
+      (push '(("\\`\\*helm.*?\\*\\'" :regexp t :align t :ratio 0.4)) shackle-rules))
 
     ;; Swap `C-z' and `<tab>'
     (define-key helm-map (kbd "TAB") 'helm-execute-persistent-action)
