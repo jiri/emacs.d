@@ -132,9 +132,8 @@
       (setq helm-google-suggest-use-curl-p t))
 
     ;; Keep helm at the bottom
-    (use-package shackle
-      :init
-      (push '(("\\`\\*helm.*?\\*\\'" :regexp t :align t :ratio 0.4)) shackle-rules))
+    (with-eval-after-load 'shackle
+      (push '("\\`\\*helm.*?\\*\\'" :regexp t :align t :ratio 0.4) shackle-rules))
 
     ;; Swap `C-z' and `<tab>'
     (define-key helm-map (kbd "TAB") 'helm-execute-persistent-action)
@@ -259,15 +258,12 @@
   :bind (("C-;" . avy-goto-char)
          ("C-:" . avy-goto-word-1))
   :config
-  (use-package golden-ratio
-    :ensure nil
-    :config
-    (progn
-      ;; Resize windows after Avy jumps between them
-      (defun avy-golden-ratio (&rest args)
-        (golden-ratio))
+  (with-eval-after-load 'golden-ratio
+    ;; Resize windows after Avy jumps between them
+    (defun avy-golden-ratio (&rest args)
+      (golden-ratio))
 
-      (advice-add 'avy-action-goto :after 'avy-golden-ratio))))
+    (advice-add 'avy-action-goto :after 'avy-golden-ratio)))
 
 ;; Anchored transpose
 (use-package anchored-transpose
