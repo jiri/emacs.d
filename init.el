@@ -148,12 +148,6 @@
     (helm-mode 1)
     (mode-line-clean 'helm-mode)))
 
-;; Eshell
-(use-package eshell
-  :bind ("C-c e" . eshell)
-  :config
-  (require 'eshell-config))
-
 ;; Which key
 (use-package which-key
   :config
