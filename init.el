@@ -77,6 +77,10 @@
 ;; Make shell scripts executable on save
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
+;; Configure `re-builder'
+(with-eval-after-load 're-builder
+  (setq reb-re-syntax 'string))
+
 ;; Keybindings
 (require 'bindings)
 
