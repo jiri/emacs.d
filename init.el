@@ -86,6 +86,10 @@
 
 ;; Helm
 (use-package helm
+  :preface
+  (setq initial-scratch-message
+      (concat ";; This buffer is for text that is not saved, and for Lisp evaluation.\n"
+              ";; To create a file, visit it with \\[helm-find-files] and enter text in its buffer.\n\n"))
   :bind
   (("C-x C-f" . helm-find-files)
    ("C-x b"   . helm-mini)
