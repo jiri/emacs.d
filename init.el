@@ -182,7 +182,11 @@
       (kill-buffer)
       (jump-to-register :magit-fullscreen))
 
-    (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)))
+    (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
+
+    ;; Set up `shackle' for `magit'
+    (with-eval-after-load 'shackle
+      (push '("\\`\\*magit-diff: .*?\\'" :regexp t :noselect t) shackle-rules))))
 
 ;; Git modes
 (use-package gitconfig-mode
