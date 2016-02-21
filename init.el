@@ -86,6 +86,7 @@
 
 ;; Helm
 (use-package helm
+  :demand
   :preface
   (setq initial-scratch-message
       (concat ";; This buffer is for text that is not saved, and for Lisp evaluation.\n"
