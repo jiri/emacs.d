@@ -41,7 +41,9 @@
   :config
   (progn
     (golden-ratio-mode)
-    (mode-line-clean 'golden-ratio-mode "φ")))
+    (mode-line-clean 'golden-ratio-mode "φ")
+
+    (advice-add 'select-window :after (lambda (&rest args) (golden-ratio)))))
 
 ;; OSX specific config
 (setq ns-pop-up-frames nil)
@@ -86,6 +88,8 @@
 
 ;; Shackle
 (use-package shackle
+  :init
+  (setq shackle-default-rule '(:select t))
   :config
   (shackle-mode))
 
