@@ -274,7 +274,8 @@
   :bind ("C-t" . anchored-transpose))
 
 ;; Dired
-(eval-after-load 'dired '(require 'dired-config))
+(with-eval-after-load 'dired
+  (require 'dired-config))
 
 ;; Clean up miscellaneous minor modes
 (mode-line-clean 'auto-revert-mode "α")
