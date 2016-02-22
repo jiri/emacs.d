@@ -257,6 +257,11 @@
 ;; Prettify symbols
 (global-prettify-symbols-mode)
 
+;; Hydra
+(use-package hydra
+  :init
+  (setq hydra-is-helpful nil))
+
 ;; Avy
 (use-package avy
   :bind (("C-;" . avy-goto-char)
