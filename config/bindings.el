@@ -3,13 +3,26 @@
   :init
   (setq expand-region-fast-keys-enabled nil)
   :config
-  (progn
-    (global-set-key (kbd "C-SPC") (lambda ()
-                                    (interactive)
-                                    (if (region-active-p)
-                                        (er/expand-region 1)
-                                      (set-mark (point)))))
-    (global-set-key (kbd "C-S-SPC") 'er/contract-region)))
+  (with-eval-after-load 'hydra
+    (defhydra hydra-mark
+      (:body-pre (call-interactively 'set-mark-command))
+
+      ;; Paired symbols
+      ("P" er/mark-inside-pairs)
+      ("p" er/mark-outside-pairs)
+      ("Q" er/mark-inside-quotes)
+      ("q" er/mark-outside-quotes)
+
+      ;; Semantic constructs
+      ("d" er/mark-defun)
+      ("s" er/mark-symbol)
+      ("c" er/mark-comment)
+
+      ;; Operations
+      ("k" kill-region :quit t)
+      ("w" kill-ring-save :quit t))
+
+    (global-set-key (kbd "C-SPC") 'hydra-mark/body)))
 
 ;; Search
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
