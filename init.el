@@ -277,6 +277,10 @@
 (with-eval-after-load 'dired
   (require 'dired-config))
 
+;; Music
+(use-package helm-itunes
+  :bind ("C-c s" . helm-itunes))
+
 ;; Clean up miscellaneous minor modes
 (mode-line-clean 'auto-revert-mode "α")
 (mode-line-clean 'isearch-mode)
