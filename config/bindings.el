@@ -1,6 +1,4 @@
 ;; Region settings
-(delete-selection-mode)
-
 (use-package expand-region
   :init
   (setq expand-region-fast-keys-enabled nil)
