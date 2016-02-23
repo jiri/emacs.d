@@ -27,8 +27,12 @@
 
     ;; Clean up mode names
     (mode-line-clean 'python-mode "Py")
-    (mode-line-clean 'elpy-mode)
-    ))
+    (mode-line-clean 'elpy-mode)))
+
+;; Set up Hy
+(use-package hy-mode
+  :config
+  (add-hook 'hy-mode-hook 'paredit-mode))
 
 ;; Provide module
 (provide 'lang-python)
