@@ -225,9 +225,12 @@
 (use-package paredit
   :config
   (progn
-    (use-package rainbow-delimiters)
     (add-hook 'eval-expression-minibuffer-setup-hook 'enable-paredit-mode)
-    (add-hook 'paredit-mode-hook 'rainbow-delimiters-mode)
+    (add-hook 'inferior-lisp-mode-hook 'enable-paredit-mode)
+
+    (use-package rainbow-delimiters
+      :config
+      (add-hook 'paredit-mode-hook 'rainbow-delimiters-mode))
 
     (mode-line-clean 'paredit-mode "π")))
 
