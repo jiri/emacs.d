@@ -1,4 +1,9 @@
-;; Setup Elpy
+;; Set up virtualenv
+(use-package virtualenvwrapper
+  :init
+  (setq venv-location '("~/Code/Python/virtualenvs")))
+
+;; Set up Elpy
 (use-package elpy
   :after python
   :init
