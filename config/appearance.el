@@ -8,9 +8,13 @@
   :config
   (load-theme 'monokai t))
 
-;; Font
-;; TODO - Create fallbacks
-(set-face-attribute 'default nil :font "Input-14")
+;; Fonts
+(defun font-available-p (font)
+  "Check if FONT is available on the system."
+  (member font (font-family-list)))
+
+(when (font-available-p "Input")
+  (set-face-attribute 'default nil :font "Input-14"))
 
 ;; Disable GUI cruft
 (when (fboundp 'tool-bar-mode) (tool-bar-mode 0))
