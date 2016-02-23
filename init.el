@@ -54,8 +54,12 @@
 (unless (server-running-p)
   (server-start))
 
-;; Set up exec-path to include homebrew packages
-(push "/usr/local/bin/" exec-path)
+;; `PATH' configuration
+(defun add-to-path (dir)
+  (setenv "PATH" (concat dir ":" (getenv "PATH"))))
+
+;; Set up `PATH' to include homebrew packages
+(add-to-path "/usr/local/bin")
 
 ;; Fix `shell-command-to-string'
 (defun strip-trailing-newline (str)
