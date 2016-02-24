@@ -1,22 +1,21 @@
 ;; Set up virtualenv
 (use-package virtualenvwrapper
   :init
-  (setq venv-location '("~/Code/Python/virtualenvs")))
+  (setq venv-location "~/.virtualenvs")
+  (setenv "WORKON_HOME" "~/.virtualenvs"))
 
 ;; Set up Elpy
 (use-package elpy
   :after python
   :init
-  (setq elpy-rpc-python-command "/usr/local/bin/python3"
-        elpy-rpc-backend "jedi")
+  (setq elpy-rpc-backend "jedi")
   :config
   (progn
     (elpy-enable)
-    (elpy-use-cpython "/usr/local/bin/python3")
 
     ;; Disable shell completion due to a probable bug with Emacs 25
     ;; TODO - Revise this
-    (push "python3" python-shell-completion-native-disabled-interpreters)
+    (push "python" python-shell-completion-native-disabled-interpreters)
 
     ;; Disable unused `elpy' modules
     (remove-hook 'elpy-modules 'elpy-module-flymake)
