@@ -13,6 +13,22 @@
       ("Q" er/mark-inside-quotes)
       ("q" er/mark-outside-quotes)
 
+      ;; Syntactic constructs
+      ("l" (lambda ()
+             "Select current like"
+             (interactive)
+             (if (and (region-active-p)
+                      (not (equal (point) (mark))))
+                 (progn
+                   (move-end-of-line nil)
+                   (forward-char))
+               (progn
+                 (move-beginning-of-line nil)
+                 (set-mark-command nil)
+                 (move-end-of-line nil)
+                 (forward-char)
+                 (setq deactivate-mark nil)))))
+
       ;; Semantic constructs
       ("d" er/mark-defun)
       ("s" er/mark-symbol)
