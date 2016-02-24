@@ -55,14 +55,10 @@
   (server-start))
 
 ;; `PATH' configuration
-(defun add-to-path (dir)
-  (setenv "PATH" (concat dir ":" (getenv "PATH"))))
-
-;; Set up `PATH' to include homebrew packages
-(add-to-path "/usr/local/bin")
-
-;; Set up `PATH' to include LaTeX
-(add-to-path "/Library/TeX/texbin")
+(use-package exec-path-from-shell
+  :config
+  (when (memq window-system '(mac ns))
+    (exec-path-from-shell-initialize)))
 
 ;; Fix `shell-command-to-string'
 (defun strip-trailing-newline (str)
