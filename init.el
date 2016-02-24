@@ -165,6 +165,16 @@
     (which-key-mode)
     (mode-line-clean 'which-key-mode)))
 
+;; MPC
+(use-package mpc
+  :bind ("C-c m" . mpc)
+  :config
+  (with-eval-after-load 'golden-ratio
+    (defun sindriava/mpc-active-p ()
+      (string-match-p "^mpc-" (format "%s" major-mode)))
+
+    (add-to-list 'golden-ratio-inhibit-functions 'sindriava/mpc-active-p)))
+
 ;; Magit
 (use-package magit
   :defer t
