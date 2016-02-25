@@ -323,14 +323,6 @@
 (use-package anchored-transpose
   :bind ("C-t" . anchored-transpose))
 
-;; Music
-(use-package emms
-  :config
-  (progn
-    (require 'emms-setup)
-    (emms-standard)
-    (emms-default-players)))
-
 ;; Dired
 (with-eval-after-load 'dired
   (require 'dired-config))
