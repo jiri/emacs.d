@@ -170,17 +170,30 @@
   :config
   (progn
     ;; Helper functions
-    (defun sindriava/mpc-song-title ()
-      "Get the title of the song that's currently playing"
-      (let ((pos (simple-mpc-get-current-playlist-position)))
-        (when (> pos 0)
-          (nth-value (1- pos) (split-string (shell-command-to-string "mpc playlist") "\n")))))
+    (defun sindriava/mpc-song-title (pos)
+      "Get the title of the song at index POS"
+      (when (> pos 0)
+        (nth-value (1- pos) (split-string (shell-command-to-string "mpc playlist") "\n"))))
 
-    (defun sindriava/now-playing ()
-      "A widget for showing the current song's name"
-      (let ((song (sindriava/mpc-song-title)))
+    (defun sindriava/previous-song ()
+      "A widget for showing the title of the previous song"
+      (let* ((pos (simple-mpc-get-current-playlist-position)))
+        (sindriava/maybe-title "Just played: " (1- pos))))
+
+    (defun sindriava/current-song ()
+      "A widget for showing the title of the current song"
+      (let* ((pos (simple-mpc-get-current-playlist-position)))
+        (sindriava/maybe-title "Now playing: " pos)))
+
+    (defun sindriava/next-song ()
+      "A widget showing the title of the next song"
+      (let* ((pos (simple-mpc-get-current-playlist-position)))
+        (sindriava/maybe-title "Coming next: " (1+ pos))))
+
+    (defun sindriava/maybe-title (label pos)
+      (let ((song (sindriava/mpc-song-title pos)))
         (if song
-            (concat "Now playing: " (sindriava/mpc-song-title))
+            (concat label song)
           "")))
 
     ;; Define a hydra for controlling `simple-mpc'
@@ -189,9 +202,9 @@
        :post (setq hydra-is-helpful nil)
        :hint nil)
       (concat "\n"
-              "   ^_t_^" "\n"
-              " _p_   _n_   %s(sindriava/now-playing)" "\n"
-              "   ^_s_^" "\n")
+              "   ^_t_^     %s(sindriava/previous-song)" "\n"
+              " _p_   _n_   %s(sindriava/current-song)" "\n"
+              "   ^_s_^     %s(sindriava/next-song)" "\n")
       ("n" simple-mpc-next)
       ("p" simple-mpc-prev)
       ("c" simple-mpc-view-current-playlist :color blue)
