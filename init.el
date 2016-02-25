@@ -165,15 +165,44 @@
     (which-key-mode)
     (mode-line-clean 'which-key-mode)))
 
-;; MPC
-(use-package mpc
-  :bind ("C-c m" . mpc)
+;; Music
+(use-package simple-mpc
   :config
-  (with-eval-after-load 'golden-ratio
-    (defun sindriava/mpc-active-p ()
-      (string-match-p "^mpc-" (format "%s" major-mode)))
+  (progn
+    ;; Helper functions
+    (defun sindriava/mpc-song-title ()
+      "Get the title of the song that's currently playing"
+      (let ((pos (simple-mpc-get-current-playlist-position)))
+        (when (> pos 0)
+          (nth-value (1- pos) (split-string (shell-command-to-string "mpc playlist") "\n")))))
 
-    (add-to-list 'golden-ratio-inhibit-functions 'sindriava/mpc-active-p)))
+    (defun sindriava/now-playing ()
+      "A widget for showing the current song's name"
+      (let ((song (sindriava/mpc-song-title)))
+        (if song
+            (concat "Now playing: " (sindriava/mpc-song-title))
+          "")))
+
+    ;; Define a hydra for controlling `simple-mpc'
+    (defhydra hydra-mpc
+      (:body-pre (setq hydra-is-helpful t)
+       :post (setq hydra-is-helpful nil)
+       :hint nil)
+      (concat "\n"
+              "   ^_t_^" "\n"
+              " _p_   _n_   %s(sindriava/now-playing)" "\n"
+              "   ^_s_^" "\n")
+      ("n" simple-mpc-next)
+      ("p" simple-mpc-prev)
+      ("c" simple-mpc-view-current-playlist :color blue)
+      ("s" simple-mpc-query :color blue)
+      ("t" simple-mpc-toggle)
+      ("SPC" simple-mpc-toggle :color blue))
+
+    (global-set-key (kbd "C-c m") 'hydra-mpc/body)
+
+    ;; Hide `simple-mpc' modes
+    (mode-line-clean 'simple-mpc-current-playlist-mode)))
 
 ;; Magit
 (use-package magit
