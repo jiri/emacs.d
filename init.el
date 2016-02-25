@@ -165,15 +165,57 @@
     (which-key-mode)
     (mode-line-clean 'which-key-mode)))
 
-;; MPC
-(use-package mpc
-  :bind ("C-c m" . mpc)
+;; Music
+(use-package simple-mpc
   :config
-  (with-eval-after-load 'golden-ratio
-    (defun sindriava/mpc-active-p ()
-      (string-match-p "^mpc-" (format "%s" major-mode)))
+  (progn
+    ;; Helper functions
+    (defun sindriava/mpc-song-title (pos)
+      "Get the title of the song at index POS"
+      (when (> pos 0)
+        (nth-value (1- pos) (split-string (shell-command-to-string "mpc playlist") "\n"))))
 
-    (add-to-list 'golden-ratio-inhibit-functions 'sindriava/mpc-active-p)))
+    (defun sindriava/previous-song ()
+      "A widget for showing the title of the previous song"
+      (let* ((pos (simple-mpc-get-current-playlist-position)))
+        (sindriava/maybe-title "Just played: " (1- pos))))
+
+    (defun sindriava/current-song ()
+      "A widget for showing the title of the current song"
+      (let* ((pos (simple-mpc-get-current-playlist-position)))
+        (sindriava/maybe-title "Now playing: " pos)))
+
+    (defun sindriava/next-song ()
+      "A widget showing the title of the next song"
+      (let* ((pos (simple-mpc-get-current-playlist-position)))
+        (sindriava/maybe-title "Coming next: " (1+ pos))))
+
+    (defun sindriava/maybe-title (label pos)
+      (let ((song (sindriava/mpc-song-title pos)))
+        (if song
+            (concat label song)
+          "")))
+
+    ;; Define a hydra for controlling `simple-mpc'
+    (defhydra hydra-mpc
+      (:body-pre (setq hydra-is-helpful t)
+       :post (setq hydra-is-helpful nil)
+       :hint nil)
+      (concat "\n"
+              "   ^_t_^     %s(sindriava/previous-song)" "\n"
+              " _p_   _n_   %s(sindriava/current-song)" "\n"
+              "   ^_s_^     %s(sindriava/next-song)" "\n")
+      ("n" simple-mpc-next)
+      ("p" simple-mpc-prev)
+      ("c" simple-mpc-view-current-playlist :color blue)
+      ("s" simple-mpc-query :color blue)
+      ("t" simple-mpc-toggle)
+      ("SPC" simple-mpc-toggle :color blue))
+
+    (global-set-key (kbd "C-c m") 'hydra-mpc/body)
+
+    ;; Hide `simple-mpc' modes
+    (mode-line-clean 'simple-mpc-current-playlist-mode)))
 
 ;; Magit
 (use-package magit
@@ -293,14 +335,6 @@
 ;; Anchored transpose
 (use-package anchored-transpose
   :bind ("C-t" . anchored-transpose))
-
-;; Music
-(use-package emms
-  :config
-  (progn
-    (require 'emms-setup)
-    (emms-standard)
-    (emms-default-players)))
 
 ;; Dired
 (with-eval-after-load 'dired
