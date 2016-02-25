@@ -170,31 +170,15 @@
   :config
   (progn
     ;; Helper functions
-    (defun sindriava/mpc-song-title (pos)
-      "Get the title of the song at index POS"
-      (when (> pos 0)
-        (nth-value (1- pos) (split-string (shell-command-to-string "mpc playlist") "\n"))))
+    (defun sindriava/note ()
+      (propertize "♬" 'face '(:foreground "#F92672")))
 
-    (defun sindriava/previous-song ()
-      "A widget for showing the title of the previous song"
+    (defun sindriava/song-title (offset)
       (let* ((pos (simple-mpc-get-current-playlist-position)))
-        (sindriava/maybe-title "Just played: " (1- pos))))
-
-    (defun sindriava/current-song ()
-      "A widget for showing the title of the current song"
-      (let* ((pos (simple-mpc-get-current-playlist-position)))
-        (sindriava/maybe-title "Now playing: " pos)))
-
-    (defun sindriava/next-song ()
-      "A widget showing the title of the next song"
-      (let* ((pos (simple-mpc-get-current-playlist-position)))
-        (sindriava/maybe-title "Coming next: " (1+ pos))))
-
-    (defun sindriava/maybe-title (label pos)
-      (let ((song (sindriava/mpc-song-title pos)))
-        (if song
-            (concat label song)
-          "")))
+        (or (when (> pos 0)
+              (nth-value (+ pos offset -1)
+                         (split-string (shell-command-to-string "mpc playlist") "\n")))
+            "")))
 
     ;; Define a hydra for controlling `simple-mpc'
     (defhydra hydra-mpc
@@ -202,15 +186,17 @@
        :post (setq hydra-is-helpful nil)
        :hint nil)
       (concat "\n"
-              "   ^_t_^     %s(sindriava/previous-song)" "\n"
-              " _p_   _n_   %s(sindriava/current-song)" "\n"
-              "   ^_s_^     %s(sindriava/next-song)" "\n")
+              "   ^_t_^       %s(sindriava/song-title -1)" "\n"
+              " _p_   _n_   %s(sindriava/note) %s(sindriava/song-title 0)" "\n"
+              "   ^_s_^       %s(sindriava/song-title 1)" "\n")
       ("n" simple-mpc-next)
       ("p" simple-mpc-prev)
       ("c" simple-mpc-view-current-playlist :color blue)
       ("s" simple-mpc-query :color blue)
       ("t" simple-mpc-toggle)
-      ("SPC" simple-mpc-toggle :color blue))
+      ("SPC" simple-mpc-toggle :color blue)
+
+      ("q" nil :color blue))
 
     (global-set-key (kbd "C-c m") 'hydra-mpc/body)
 
