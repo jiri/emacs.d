@@ -174,11 +174,11 @@
       (propertize "♬" 'face '(:foreground "#F92672")))
 
     (defun sindriava/song-title (offset)
-      (let* ((pos (simple-mpc-get-current-playlist-position)))
-        (or (when (> pos 0)
-              (nth-value (+ pos offset -1)
-                         (split-string (shell-command-to-string "mpc playlist") "\n")))
-            "")))
+      (let* ((ix (simple-mpc-get-current-playlist-position))
+             (pos (+ ix offset))
+             (songs (split-string (shell-command-to-string "mpc playlist") "\n"))
+             (title (when (> pos 0) (nth-value (1- pos) songs))))
+        (propertize (or title "") 'face (when (/= offset 0) '(:foreground "#75715E")))))
 
     ;; Define a hydra for controlling `simple-mpc'
     (defhydra hydra-mpc
