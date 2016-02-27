@@ -15,8 +15,8 @@
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
-(setq use-package-always-ensure t)
-(setq use-package-verbose t)
+(setq use-package-always-ensure t
+      use-package-verbose t)
 
 (setq load-prefer-newer t)
 
@@ -71,9 +71,9 @@
 (setq-default shell-file-name "bash")
 
 ;; Sensitive scrolling
-(setq mouse-wheel-progressive-speed nil)
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
-(setq scroll-step 1)
+(setq mouse-wheel-progressive-speed nil
+      mouse-wheel-scroll-amount '(1 ((shift) . 1))
+      scroll-step 1)
 
 ;; Whitespace
 (setq-default indent-tabs-mode nil)
@@ -364,12 +364,9 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file 'noerror 'nomessage)
 
-(setq create-lockfiles nil)
-
-(setq backup-directory-alist
-      `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
+(setq create-lockfiles nil
+      backup-directory-alist `((".*" . ,temporary-file-directory))
+      auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
 ;; Grab focus when new frame is created
 (push 'select-frame-set-input-focus after-make-frame-functions)
