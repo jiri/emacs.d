@@ -251,6 +251,10 @@
 
     (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
 
+    ;; Customize `magit' faces
+    (set-face-attribute 'magit-branch-current nil
+                        :box nil)
+
     ;; Set up `shackle' for `magit'
     (with-eval-after-load 'shackle
       (push '("\\`\\*magit-diff: .*?\\'" :regexp t :noselect t) shackle-rules))))
