@@ -267,10 +267,6 @@
 (use-package gitignore-mode
   :defer t)
 
-;; Gist
-(use-package gist
-  :bind ("C-c p" . gist-region-or-buffer))
-
 ;; Yasnippet
 (use-package yasnippet
   :init
