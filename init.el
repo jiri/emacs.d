@@ -156,13 +156,17 @@
 
     ;; Customize the appearance of `helm' buffers
     (set-face-attribute 'helm-source-header nil
-                        :background 'unspecified
                         :foreground "#AE81FF"
+                        :background 'unspecified
                         :weight 'bold)
 
     (set-face-attribute 'helm-selection nil
                         :foreground (face-attribute 'default :foreground)
                         :underline nil)
+
+    (set-face-attribute 'helm-match nil
+                        :foreground "#A6E22E"
+                        :background "#272822")
 
     (set-face-attribute 'minibuffer-prompt nil
                         :foreground "#AE81FF"
