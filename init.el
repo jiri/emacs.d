@@ -154,6 +154,28 @@
     (defun helm-display-mode-line (source &optional force)
       (setq mode-line-format nil))
 
+    ;; Customize the appearance of `helm' buffers
+    (set-face-attribute 'helm-source-header nil
+                        :background 'unspecified
+                        :foreground "#AE81FF"
+                        :weight 'bold)
+
+    (set-face-attribute 'helm-selection nil
+                        :foreground (face-attribute 'default :foreground)
+                        :underline nil)
+
+    (set-face-attribute 'minibuffer-prompt nil
+                        :foreground "#AE81FF"
+                        :weight 'bold)
+
+    (defun sindriava/helm-custom ()
+      "Customize helm faces"
+      (interactive)
+      (with-helm-buffer
+        (buffer-face-set '(:foreground "#75715E"))))
+
+    (add-hook 'helm-update-hook 'sindriava/helm-custom)
+
     ;; Turn on Helm globally
     (helm-mode 1)
     (mode-line-clean 'helm-mode)))
