@@ -1,4 +1,5 @@
 * Sindriava's Emacs config
+  [[./Screenshot.png]]
 ** Installation
    Just clone this repository to your =~/.emacs.d/= folder. It will download all the necessary plugins and set itself up.
 
