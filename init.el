@@ -275,6 +275,13 @@
   (progn
     (yas-reload-all)
     (add-hook 'prog-mode-hook 'yas-minor-mode)
+
+    ;; Rebind `yasnippet' from `TAB' to `C-<return>'
+    (define-key yas-minor-mode-map (kbd "<tab>") nil)
+    (define-key yas-minor-mode-map (kbd "TAB") nil)
+
+    (with-eval-after-load 'company
+      (define-key yas-minor-mode-map (kbd "C-<return>") 'company-yasnippet))
     (mode-line-clean 'yas-minor-mode "y")))
 
 ;; Smartparens
