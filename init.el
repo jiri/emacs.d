@@ -282,6 +282,11 @@
 
     (with-eval-after-load 'company
       (define-key yas-minor-mode-map (kbd "C-<return>") 'company-yasnippet))
+
+    ;; Set up `company-yasnippet'
+    (with-eval-after-load 'company
+      (add-to-list 'company-backends 'company-yasnippet t))
+
     (mode-line-clean 'yas-minor-mode "y")))
 
 ;; Smartparens
