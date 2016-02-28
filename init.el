@@ -273,6 +273,7 @@
   (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
   :config
   (progn
+    (yas-reload-all)
     (add-hook 'prog-mode-hook 'yas-minor-mode)
     (mode-line-clean 'yas-minor-mode "y")))
 
