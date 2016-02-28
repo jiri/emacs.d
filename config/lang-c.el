@@ -1,23 +1,31 @@
-;; Style config
-(setq-default c-default-style "k&r"
-              c-basic-offset 4)
-
-;; Enable appropriate minor modes
-(use-package c-eldoc
-  :config
-  (add-hook 'c-mode-common-hook 'c-turn-on-eldoc-mode))
-
-(use-package smartparens
-  :config
-  (add-hook 'c-mode-common-hook 'smartparens-mode))
-
-(use-package company
+(use-package cedet
   :config
   (progn
-    (use-package yasnippet)
-    (add-hook 'c-mode-common-hook (lambda ()
-                                    (set (make-local-variable 'company-backends)
-                                         '((company-yasnippet)))))))
+    ;; Completion
+    (require 'semantic)
+    (global-semanticdb-minor-mode)
+    (global-semantic-idle-scheduler-mode)
+
+    (add-hook 'c-mode-common-hook 'semantic-mode)
+
+    (with-eval-after-load 'company
+      (defun sindriava/indent-or-complete ()
+        "Indent if appropriate, start completion otherwise."
+        (interactive)
+        (if (looking-at "\\_>")
+            (company-complete-common)
+          (indent-according-to-mode)))
+
+      (define-key c-mode-map (kbd "TAB") 'sindriava/indent-or-complete)
+      (define-key c++-mode-map (kbd "TAB") 'sindriava/indent-or-complete))
+
+    ;; Compilation
+    (defun sindriava/compile ()
+      (interactive)
+      (setq-local compilation-read-command nil)
+      (call-interactively 'compile))
+
+    (define-key c-mode-map (kbd "C-c C-c") 'sindriava/compile)))
 
 ;; Provide module
 (provide 'lang-c)
