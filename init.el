@@ -89,6 +89,11 @@
 ;; Keybindings
 (require 'bindings)
 
+;; Hydra
+(use-package hydra
+  :init
+  (setq hydra-is-helpful nil))
+
 ;; Shackle
 (use-package shackle
   :init
@@ -339,11 +344,6 @@
 
 ;; Prettify symbols
 (global-prettify-symbols-mode)
-
-;; Hydra
-(use-package hydra
-  :init
-  (setq hydra-is-helpful nil))
 
 ;; Avy
 (use-package avy
