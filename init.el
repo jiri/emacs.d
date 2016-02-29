@@ -89,6 +89,16 @@
 ;; Keybindings
 (require 'bindings)
 
+;; Keyfreq
+(use-package keyfreq
+  :init
+  (setq keyfreq-excluded-commands
+        '(self-insert-command))
+  :config
+  (progn
+    (keyfreq-mode)
+    (keyfreq-autosave-mode)))
+
 ;; Hydra
 (use-package hydra
   :init
