@@ -36,7 +36,11 @@
 
       ;; Operations
       ("k" kill-region :quit t)
-      ("w" kill-ring-save :quit t))
+      ("w" kill-ring-save :quit t)
+
+      ;; `expand-region'
+      ("x" er/expand-region)
+      ("c" er/contract-region))
 
     (global-set-key (kbd "C-SPC") 'hydra-mark/body)))
 
