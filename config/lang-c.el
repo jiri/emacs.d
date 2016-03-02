@@ -1,15 +1,16 @@
 (use-package cedet
   :config
   (progn
+    ;; Style
+    (setq c-basic-offset 4)
+
     ;; Completion
     (with-eval-after-load 'company
-
       (require 'semantic)
       (global-semanticdb-minor-mode)
       (global-semantic-idle-scheduler-mode)
 
       (add-hook 'c-mode-common-hook 'semantic-mode)
-
 
       (defun sindriava/indent-or-complete ()
         "Indent if appropriate, start completion otherwise."
