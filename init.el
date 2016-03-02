@@ -89,6 +89,9 @@
 ;; Keybindings
 (require 'bindings)
 
+;; Allow selection to be overwritten
+(delete-selection-mode)
+
 ;; Keyfreq
 (use-package keyfreq
   :init
