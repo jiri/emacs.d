@@ -288,7 +288,8 @@
 ;; Yasnippet
 (use-package yasnippet
   :init
-  (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+  (setq yas-snippet-dirs '("~/.emacs.d/site-snippets"
+                           "~/.emacs.d/snippets"))
   :config
   (progn
     (yas-reload-all)
