@@ -352,6 +352,7 @@
 (require 'lang-haskell)
 (require 'lang-c)
 (require 'lang-clojure)
+(require 'lang-tex)
 
 (use-package fish-mode)
 
