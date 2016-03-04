@@ -15,7 +15,13 @@
 				     'face '(:foreground "#F92672"))
 			 " "
 			 (propertize (buffer-name)
-				     'face '(:foreground "#E6DB74")))
+				     'face '(:foreground "#E6DB74"))
+                         (when (and (or (eq major-mode 'python-mode)
+                                        (eq major-mode 'hy-mode))
+                                    (boundp 'pyvenv-virtual-env))
+                           (concat " "
+                                   (propertize pyvenv-virtual-env-name
+                                               'face '(:foreground "#A6E22E")))))
 			(propertize (format-mode-line minor-mode-alist)
 				    'face '(:foreground "#75715E"))))))
 
