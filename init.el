@@ -152,6 +152,14 @@
     (when (executable-find "curl")
       (setq helm-google-suggest-use-curl-p t))
 
+    ;; Don't show `.' or `..' in `helm-find-files'
+    (defun advice/remove-dotdot (f file)
+      (unless (string-match "\\(?:/\\|\\`\\)\\.\\{1,2\\}\\'" file)
+        (funcall f file)))
+
+    (advice-add 'helm-ff-filter-candidate-one-by-one
+                :around 'advice/remove-dotdot)
+
     ;; Keep helm at the bottom
     (with-eval-after-load 'shackle
       (push '("\\`\\*helm.*?\\*\\'" :regexp t :align t :ratio 0.4) shackle-rules))
