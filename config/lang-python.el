@@ -1,9 +1,3 @@
-;; Set up virtualenv
-(use-package virtualenvwrapper
-  :init
-  (setq venv-location "~/.virtualenvs")
-  (setenv "WORKON_HOME" "~/.virtualenvs"))
-
 ;; Set up Elpy
 (use-package elpy
   :after python
@@ -23,6 +17,9 @@
 
     ;; Enable appropriate minor modes
     (add-hook 'python-mode-hook 'smartparens-mode)
+
+    ;; Enter a `default' virtualenv on start
+    (add-hook 'python-mode-hook (lambda () (pyvenv-workon "default")))
 
     ;; Clean up mode names
     (mode-line-clean 'python-mode "Py")
