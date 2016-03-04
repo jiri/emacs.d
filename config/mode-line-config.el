@@ -21,7 +21,7 @@
                                     (boundp 'pyvenv-virtual-env))
                            (concat " "
                                    (propertize pyvenv-virtual-env-name
-                                               'face '(:foreground "#A6E22E")))))
+                                               'face '(:foreground "#66D9EF")))))
 			(propertize (format-mode-line minor-mode-alist)
 				    'face '(:foreground "#75715E"))))))
 
