@@ -16,6 +16,11 @@
 			 " "
 			 (propertize (buffer-name)
 				     'face '(:foreground "#E6DB74"))
+                         (when (and (fboundp 'vc-git-branches)
+                                    (car (vc-git-branches)))
+                           (concat " "
+                                   (propertize (car (vc-git-branches))
+                                               'face '(:foreground "#A6E22E"))))
                          (when (and (or (eq major-mode 'python-mode)
                                         (eq major-mode 'hy-mode))
                                     (boundp 'pyvenv-virtual-env))
