@@ -367,8 +367,20 @@
   (setq company-idle-delay 0.25)
   :config
   (progn
-   (add-hook 'prog-mode-hook 'company-mode)
-   (mode-line-clean 'company-mode)))
+    ;; Emoji completion
+    (use-package company-emoji
+      :init
+      (setq company-emoji-insert-unicode nil)
+      :config
+      (add-hook 'text-mode-hook (lambda ()
+                                  (add-to-list 'company-backends
+                                               'company-emoji))))
+
+    ;; Enable completion in all programming modes
+    (add-hook 'prog-mode-hook 'company-mode)
+    (add-hook 'text-mode-hook 'company-mode)
+
+    (mode-line-clean 'company-mode)))
 
 ;; Prettify symbols
 (global-prettify-symbols-mode)
