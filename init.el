@@ -49,6 +49,11 @@
 (setq ns-pop-up-frames nil)
 (global-set-key (kbd "s-t") 'ignore)
 
+;; Enable emoji rendering
+(set-fontset-font t 'symbol
+                  (font-spec :family "Apple Color Emoji" :size 11.0)
+                  nil 'prepend)
+
 ;; Start server if it's not already started
 (require 'server)
 (unless (server-running-p)
