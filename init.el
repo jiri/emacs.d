@@ -241,13 +241,21 @@
     (defhydra hydra-mpc
       (:body-pre (setq hydra-is-helpful t)
        :post (setq hydra-is-helpful nil)
-       :hint nil)
+       :hint nil
+       :color amaranth)
       (concat "\n"
-              "   ^_t_^       %s(sindriava/song-title -1)" "\n"
-              " _p_   _n_   %s(sindriava/note) %s(sindriava/song-title 0)" "\n"
-              "   ^_s_^       %s(sindriava/song-title 1)" "\n")
+              "   %s(sindriava/song-title -1)" "\n"
+              " %s(sindriava/note) %s(sindriava/song-title 0)" "\n"
+              "   %s(sindriava/song-title 1)" "\n")
       ("n" simple-mpc-next)
+      ("<down>" simple-mpc-next)
+
       ("p" simple-mpc-prev)
+      ("<up>" simple-mpc-prev)
+
+      ("<left>" simple-mpc-seek-backward)
+      ("<right>" simple-mpc-seek-forward)
+
       ("c" simple-mpc-view-current-playlist :color blue)
       ("s" simple-mpc-query :color blue)
       ("t" simple-mpc-toggle)
