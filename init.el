@@ -49,6 +49,11 @@
 (setq ns-pop-up-frames nil)
 (global-set-key (kbd "s-t") 'ignore)
 
+;; Disable annoying side-scrolling messages
+(dolist (dir '("-left" "-right"))
+  (dolist (mul '("" "double-" "triple-"))
+    (global-set-key (kbd (concat "<" mul "wheel" dir ">")) 'ignore)))
+
 ;; Enable emoji rendering
 (set-fontset-font t 'symbol
                   (font-spec :family "Apple Color Emoji" :size 11.0)
