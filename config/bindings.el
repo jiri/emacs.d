@@ -4,6 +4,7 @@
   (setq expand-region-fast-keys-enabled nil)
   :config
   (with-eval-after-load 'hydra
+    ;; TODO - Make these mode-dependent?
     (defhydra hydra-mark
       (:body-pre (call-interactively 'set-mark-command))
 
@@ -12,6 +13,8 @@
       ("p" er/mark-outside-pairs)
       ("Q" er/mark-inside-quotes)
       ("q" er/mark-outside-quotes)
+      ("t" er/mark-inner-tag)
+      ("T" er/mark-outer-tag)
 
       ;; Syntactic constructs
       ("l" (lambda ()
