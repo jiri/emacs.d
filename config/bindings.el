@@ -15,7 +15,7 @@
 
       ;; Syntactic constructs
       ("l" (lambda ()
-             "Select current like"
+             "Select current line"
              (interactive)
              (if (and (region-active-p)
                       (not (equal (point) (mark))))
