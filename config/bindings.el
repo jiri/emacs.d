@@ -34,10 +34,6 @@
       ("s" er/mark-symbol)
       ("c" er/mark-comment)
 
-      ;; Operations
-      ("k" kill-region :quit t)
-      ("w" kill-ring-save :quit t)
-
       ;; `expand-region'
       ("x" er/expand-region)
       ("c" er/contract-region))
