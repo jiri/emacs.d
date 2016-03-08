@@ -66,6 +66,8 @@
     (when (= (point) old-point)
       (beginning-of-line))))
 
+(global-set-key (kbd "C-a") 'sindriava/beginning-of-line)
+
 (defun sindriava/kill-buffer ()
   "Kill buffer (except for `*scratch*') and cycle to the next one."
   (interactive)
@@ -76,10 +78,8 @@
         (sindriava/cycle-until-viable 'next-buffer)
         (kill-buffer buffer)))))
 
-(global-set-key (kbd "C-a") 'sindriava/beginning-of-line)
 (global-set-key (kbd "C-x k") 'sindriava/kill-buffer)
 
-(global-set-key (kbd "<escape>") 'keyboard-quit)
 (global-set-key (kbd "s-q") 'delete-frame)
 
 ;; Tweak live windows
