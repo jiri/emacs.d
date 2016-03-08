@@ -418,8 +418,11 @@
 (with-eval-after-load 'dired
   (require 'dired-config))
 
+;; Automatically revert files to what's on the disk
+(global-auto-revert-mode)
+(mode-line-clean 'auto-revert-mode)
+
 ;; Clean up miscellaneous minor modes
-(mode-line-clean 'auto-revert-mode "α")
 (mode-line-clean 'isearch-mode)
 
 ;; Backups & custom file
