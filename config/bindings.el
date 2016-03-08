@@ -13,8 +13,8 @@
       ("p" er/mark-outside-pairs)
       ("Q" er/mark-inside-quotes)
       ("q" er/mark-outside-quotes)
-      ("t" er/mark-inner-tag)
-      ("T" er/mark-outer-tag)
+      ("T" er/mark-inner-tag)
+      ("t" er/mark-outer-tag)
 
       ;; Syntactic constructs
       ("l" (lambda ()
