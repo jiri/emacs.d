@@ -9,7 +9,7 @@
 
 (defun mode-line/mode-name ()
   "The name of the current major mode."
-  (propertize mode-name
+  (propertize (format-mode-line mode-name)
               'face '(:foreground "#F92672")))
 
 (defun mode-line/buffer-name ()
