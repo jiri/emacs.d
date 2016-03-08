@@ -10,5 +10,8 @@
 (setq org-clock-persist 'history)
 (org-clock-persistence-insinuate)
 
+;; Czech support for LaTeX exporting
+(push '("czech" "babel" nil) org-latex-default-packages-alist)
+
 ;; Provide module
 (provide 'org-config)
