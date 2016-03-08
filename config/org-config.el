@@ -23,5 +23,10 @@
 ;; Czech support for LaTeX exporting
 (push '("czech" "babel" nil) org-latex-default-packages-alist)
 
+;; Remove annoying boxes in agenda view
+(dolist (f '(org-agenda-structure
+             org-agenda-date))
+  (set-face-attribute f nil :box nil))
+
 ;; Provide module
 (provide 'org-config)
