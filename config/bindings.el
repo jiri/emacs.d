@@ -38,6 +38,7 @@
       ("c" er/mark-comment)
 
       ;; `expand-region'
+      ("C-SPC" er/expand-region)
       ("x" er/expand-region)
       ("c" er/contract-region))
 
