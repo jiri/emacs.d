@@ -1,3 +1,6 @@
+;; Show all headlines when a document is opened
+(setq org-startup-folded 'content)
+
 ;; Better source code editing
 (setq org-src-fontify-natively t)
 (setq org-src-window-setup 'current-window)
