@@ -7,6 +7,8 @@
     ;; TODO - Make these mode-dependent?
     (defhydra hydra-mark
       (:body-pre (call-interactively 'set-mark-command))
+      ;; Rectangle selection
+      ("r" rectangle-mark-mode)
 
       ;; Paired symbols
       ("P" er/mark-inside-pairs)
