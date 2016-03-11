@@ -258,6 +258,12 @@
       ("p" simple-mpc-prev)
       ("<up>" simple-mpc-prev)
 
+      ("b" simple-mpc-seek-backward)
+      ("<left>" simple-mpc-seek-backward)
+
+      ("f" simple-mpc-seek-forward)
+      ("<right>" simple-mpc-seek-forward)
+
       ("<left>" simple-mpc-seek-backward)
       ("<right>" simple-mpc-seek-forward)
 
