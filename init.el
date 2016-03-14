@@ -380,6 +380,30 @@
 
 (use-package fish-mode)
 
+(use-package rust-mode
+  :config
+  (progn
+    (use-package racer
+      :init
+      (setq racer-cmd "/Users/sindriava/.multirust/toolchains/stable/cargo/bin/racer"
+            racer-rust-src-path "/usr/local/src/rust/src/")
+      :config
+      (progn
+        (add-hook 'rust-mode-hook 'racer-mode)
+        (add-hook 'racer-mode-hook 'eldoc-mode)
+
+        ;; (use-package company-racer
+        ;;   :config
+        ;;   (with-eval-after-load 'company
+        ;;     (add-to-list 'company-backends 'company-racer)))
+        ))
+
+    (use-package cargo
+      :config
+      (add-hook 'rust-mode-hook 'cargo-minor-mode))
+
+    (use-package toml-mode)))
+
 ;; Completion
 (use-package company
   :init
