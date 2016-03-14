@@ -1,3 +1,9 @@
+;; Set up modifier keys
+(setq mac-command-modifier 'super
+      mac-option-modifier 'meta
+      mac-function-modifier 'hyper
+      default-input-method "MacOSX")
+
 ;; Initialize `package'
 (require 'package)
 
