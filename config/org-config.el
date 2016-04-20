@@ -2,8 +2,11 @@
 (setq org-startup-folded 'content)
 
 ;; Better source code editing
-(setq org-src-fontify-natively t)
-(setq org-src-window-setup 'current-window)
+(setq org-src-fontify-natively t
+      org-src-window-setup 'current-window)
+
+;; Support shift select
+(setq org-support-shift-select t)
 
 ;; Improve keybindings
 (define-key org-mode-map (kbd "C-<return>") 'org-insert-heading)
