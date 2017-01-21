@@ -100,6 +100,10 @@
   (progn
     (global-set-key (kbd "C-SPC") 'er/expand-region)
     (global-set-key (kbd "C-S-SPC") 'er/contract-region)))
+(use-package avy
+  :config
+  (global-set-key (kbd "C-:") 'avy-goto-char))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -107,7 +111,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (magit use-package rainbow-delimiters paredit monokai-theme))))
+    (helm smooth-scroll avy hydra expand-region magit use-package rainbow-delimiters paredit monokai-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
