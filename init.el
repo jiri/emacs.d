@@ -89,6 +89,13 @@
       (beginning-of-line))))
 
 (global-set-key (kbd "C-a") 'sindriava/beginning-of-line)
+
+;; Plugins
+(use-package expand-region
+  :config
+  (progn
+    (global-set-key (kbd "C-SPC") 'er/expand-region)
+    (global-set-key (kbd "C-S-SPC") 'er/contract-region)))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
