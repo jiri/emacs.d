@@ -79,6 +79,16 @@
     (set-face-attribute 'magit-branch-current nil
                         :box nil)))
 
+;; Rebind some defaults
+(defun sindriava/beginning-of-line ()
+  "Move to first non-whitespace character on `C-a' first."
+  (interactive)
+  (let ((old-point (point)))
+    (back-to-indentation)
+    (when (= (point) old-point)
+      (beginning-of-line))))
+
+(global-set-key (kbd "C-a") 'sindriava/beginning-of-line)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
