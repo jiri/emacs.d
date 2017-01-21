@@ -90,6 +90,10 @@
 
 (global-set-key (kbd "C-a") 'sindriava/beginning-of-line)
 
+;; Prettier cursor
+(setq-default cursor-type 'bar)
+(set-cursor-color "#F92672")
+
 ;; Plugins
 (use-package expand-region
   :config
