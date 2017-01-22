@@ -9,6 +9,11 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
+;; Smoother scrolling
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 3)))
+(setq mouse-wheel-progressive-speed nil)
+(setq mouse-wheel-follow-mouse t)
+
 ;; Set up `use-package'
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
