@@ -9,6 +9,23 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
+;; Backups & custom file
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load custom-file 'noerror 'nomessage)
+
+(setq create-lockfiles nil
+      backup-directory-alist `((".*" . ,temporary-file-directory))
+      auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+
+;; What the .emacs.d?! version
+;; Write backup files to own directory
+;; (setq backup-directory-alist
+;;       `(("." . ,(expand-file-name
+;;                  (concat user-emacs-directory "backups")))))
+;;
+;; ;; Make backups of files, even when they're in version control
+;; (setq vc-make-backup-files t)
+
 ;; Smoother scrolling
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 3)))
 (setq mouse-wheel-progressive-speed nil)
