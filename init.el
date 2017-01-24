@@ -121,6 +121,12 @@
 
 (global-set-key (kbd "C-a") 'sindriava/beginning-of-line)
 
+;; TODO: Fetch buffer cycling from old config
+(require 'ibuf-ext)
+(add-to-list 'ibuffer-never-show-predicates "^\\*")
+
+(global-set-key (kbd "C-x b") 'ibuffer)
+
 ;; Prettier cursor
 (setq-default cursor-type 'bar)
 (set-cursor-color "#F92672")
