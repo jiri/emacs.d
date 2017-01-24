@@ -1,3 +1,5 @@
+;; TODO: Syntax highlighting in minibuffer (lisp eval)
+
 (require 'package)
 
 (package-initialize nil)
@@ -63,6 +65,7 @@
   :config
   (load-theme 'monokai t))
 
+;; Font settings
 (defun font-available-p (font)
   "Check if FONT is available on the system"
   (member font (font-family-list)))
@@ -107,7 +110,7 @@
     (set-face-attribute 'magit-branch-current nil
                         :box nil)))
 
-;; Rebind some defaults
+;; Keyboard bindings
 (defun sindriava/beginning-of-line ()
   "Move to first non-whitespace character on `C-a' first."
   (interactive)
