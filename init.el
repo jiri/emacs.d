@@ -26,10 +26,15 @@
 ;; ;; Make backups of files, even when they're in version control
 ;; (setq vc-make-backup-files t)
 
+;; Niceities
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 ;; Smoother scrolling
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 3)))
 (setq mouse-wheel-progressive-speed nil)
 (setq mouse-wheel-follow-mouse t)
+
+(delete-selection-mode)
 
 ;; Set up `use-package'
 (unless (package-installed-p 'use-package)
