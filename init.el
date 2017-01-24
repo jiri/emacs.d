@@ -37,12 +37,13 @@
 ;; Niceities
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+(delete-selection-mode)
+(setq delete-active-region t)
+
 ;; Smoother scrolling
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 3)))
 (setq mouse-wheel-progressive-speed nil)
 (setq mouse-wheel-follow-mouse t)
-
-(delete-selection-mode)
 
 ;; Set up paredit
 (use-package paredit
