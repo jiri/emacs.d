@@ -9,6 +9,12 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
+;; Set up `use-package'
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+
+(setq use-package-always-ensure t)
+
 ;; Backups & custom file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file 'noerror 'nomessage)
@@ -35,12 +41,6 @@
 (setq mouse-wheel-follow-mouse t)
 
 (delete-selection-mode)
-
-;; Set up `use-package'
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
-
-(setq use-package-always-ensure t)
 
 ;; Set up paredit
 (use-package paredit
