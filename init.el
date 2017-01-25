@@ -122,11 +122,15 @@
 
 (global-set-key (kbd "C-a") 'sindriava/beginning-of-line)
 
-;; TODO: Fetch buffer cycling from old config
-(require 'ibuf-ext)
-(add-to-list 'ibuffer-never-show-predicates "^\\*")
 
-(global-set-key (kbd "C-x b") 'ibuffer)
+;; Set up `ido-mode'
+(use-package ido
+  :config
+  (progn
+    (use-package smex
+      :config
+      (global-set-key (kbd "M-x") 'smex))
+    (ido-mode)))
 
 ;; Prettier cursor
 (setq-default cursor-type 'bar)
