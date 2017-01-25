@@ -122,6 +122,28 @@
 
 (global-set-key (kbd "C-a") 'sindriava/beginning-of-line)
 
+(defun sindriava/cycle-until-viable (action)
+  "Cycle buffers while the current buffer is disabled."
+  (let ((bread-crumb (buffer-name)))
+    (funcall action)
+    (while
+	(and
+         (not (equal bread-crumb (buffer-name)))
+         (not (equal (buffer-name) "*scratch*"))
+         (or (string-match-p "^\*" (buffer-name))))
+      (funcall action))))
+
+(defun sindriava/kill-buffer ()
+  "Kill buffer (except for `*scratch*') and cycle to the next one."
+  (interactive)
+  (let ((buffer (buffer-name)))
+    (if (equal buffer "*scratch*")
+	(message "Cannot kill scratch buffer.")
+      (progn
+	(sindriava/cycle-until-viable 'next-buffer)
+	(kill-buffer buffer)))))
+
+(global-set-key (kbd "C-x k") 'sindriava/kill-buffer)
 
 ;; Set up `ido-mode'
 (use-package ido
