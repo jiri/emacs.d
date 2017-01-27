@@ -159,11 +159,55 @@
 (set-cursor-color "#F92672")
 
 ;; Plugins
+(use-package hydra)
+
 (use-package expand-region
+  :init
+  (setq expand-region-fast-keys-enabled nil)
   :config
-  (progn
-    (global-set-key (kbd "C-SPC") 'er/expand-region)
-    (global-set-key (kbd "C-S-SPC") 'er/contract-region)))
+  (with-eval-after-load 'hydra
+    ;; TODO - Make these mode-dependent?
+    (defhydra hydra-mark
+      (:body-pre (call-interactively 'set-mark-command))
+      ;; Rectangle selection
+      ("r" rectangle-mark-mode)
+
+      ;; Paired symbols
+      ("p" er/mark-outside-pairs)
+      ("P" er/mark-inside-pairs)
+      ("q" er/mark-outside-quotes)
+      ("Q" er/mark-inside-quotes)
+      ("t" er/mark-outer-tag)
+      ("T" er/mark-inner-tag)
+
+      ;; Syntactic constructs
+      ("l" (lambda ()
+             "Select current line"
+             (interactive)
+             (if (and (region-active-p)
+                      (not (equal (point) (mark))))
+                 (progn
+                   (move-end-of-line nil)
+                   (forward-char))
+               (progn
+                 (move-beginning-of-line nil)
+                 (set-mark-command nil)
+                 (move-end-of-line nil)
+                 (forward-char)
+                 (setq deactivate-mark nil)))))
+
+      ;; Semantic constructs
+      ("d" er/mark-defun)
+      ("s" er/mark-symbol)
+      (";" er/mark-comment)
+
+      ;; `expand-region'
+      ("C-SPC" er/expand-region)
+      ("x" er/expand-region)
+      ("c" er/contract-region))
+
+    (global-set-key (kbd "C-SPC") 'hydra-mark/body)))
+
 (use-package avy
   :config
   (global-set-key (kbd "C-:") 'avy-goto-char))
