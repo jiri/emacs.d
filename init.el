@@ -85,6 +85,9 @@
 (setq inhibit-startup-message t)
 (setq inhibit-startup-echo-area-message "sindriava")
 
+;; Modify file I/O
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;; Magit
 (use-package magit
   :defer t
