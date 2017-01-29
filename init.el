@@ -155,6 +155,13 @@
     (use-package smex
       :config
       (global-set-key (kbd "M-x") 'smex))
+
+    (defun match-starred-not-scratch (x)
+      (and (not (string= x "*scratch*"))
+	   (string-match-p "^\\*.*\\*$" x)))
+
+    (add-to-list 'ido-ignore-buffers 'match-starred-not-scratch)
+
     (ido-mode)))
 
 ;; Prettier cursor
