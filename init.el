@@ -25,6 +25,12 @@
       backup-directory-alist `((".*" . ,temporary-file-directory))
       auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
+;; `PATH' configuration
+(use-package exec-path-from-shell
+  :config
+  (when (memq window-system '(mac ns))
+    (exec-path-from-shell-initialize)))
+
 ;; What the .emacs.d?! version
 ;; Write backup files to own directory
 ;; (setq backup-directory-alist
