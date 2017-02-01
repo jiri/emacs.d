@@ -25,6 +25,30 @@
       backup-directory-alist `((".*" . ,temporary-file-directory))
       auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
+;; Mode line cleaner
+(defvar mode-line-cleaner-alist nil)
+
+(defun mode-line-clean (mode &optional str)
+  "Register a name replacement STR for MODE"
+  (push `(,mode . ,str) mode-line-cleaner-alist))
+
+(defun mode-line-cleaner ()
+  "Substitute mode names according to `mode-line-cleaner-alist'."
+  (let ((cleaner-modes (delete-dups
+			(mapcar 'car mode-line-cleaner-alist))))
+    (dolist (mode cleaner-modes)
+      (let* ((mode-str (cdr (assq mode mode-line-cleaner-alist)))
+	     (old-mode-str (cdr (assq mode minor-mode-alist))))
+	;; Minor modes
+	(when old-mode-str
+	  (setcar old-mode-str (concat (when mode-str " ") mode-str)))
+
+	;; Major mode
+	(when (eq mode major-mode)
+	  (setq mode-name mode-str))))))
+
+(add-hook 'after-change-major-mode-hook 'mode-line-cleaner)
+
 ;; `PATH' configuration
 (use-package exec-path-from-shell
   :config
@@ -233,27 +257,3 @@
 (use-package avy
   :config
   (global-set-key (kbd "C-:") 'avy-goto-char))
-
-;; Mode line cleaner
-(defvar mode-line-cleaner-alist nil)
-
-(defun mode-line-clean (mode &optional str)
-  "Reguster a name replacement STR for MODE"
-  (push `(,mode . ,str) mode-line-cleaner-alist))
-
-(defun mode-line-cleaner ()
-  "Substitute mode names according to `mode-line-cleaner-alist'."
-  (let ((cleaner-modes (delete-dups
-			(mapcar 'car mode-line-cleaner-alist))))
-    (dolist (mode cleaner-modes)
-      (let* ((mode-str (cdr (assq mode mode-line-cleaner-alist)))
-	     (old-mode-str (cdr (assq mode minor-mode-alist))))
-	;; Minor modes
-	(when old-mode-str
-	  (setcar old-mode-str (concat (when mode-str " ") mode-str)))
-
-	;; Major mode
-	(when (eq mode major-mode)
-	  (setq mode-name mode-str))))))
-
-(add-hook 'after-change-major-mode-hook 'mode-line-cleaner)
