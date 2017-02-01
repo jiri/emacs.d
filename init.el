@@ -60,6 +60,8 @@
 (add-hook 'after-change-major-mode-hook 'mode-line-cleaner)
 
 ;; `PATH' configuration
+(setq shell-file-name "bash")
+
 (use-package exec-path-from-shell
   :config
   (when (memq window-system '(mac ns))
