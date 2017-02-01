@@ -30,6 +30,11 @@
       backup-directory-alist `((".*" . ,temporary-file-directory))
       auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
+;; Disable annoying side-scrolling messages
+(dolist (dir '("-left" "-right"))
+  (dolist (mul '("" "double-" "triple-"))
+    (global-set-key (kbd (concat "<" mul "wheel" dir ">")) 'ignore)))
+
 ;; Mode line cleaner
 (defvar mode-line-cleaner-alist nil)
 
