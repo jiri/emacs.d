@@ -148,6 +148,9 @@
 ;; Modify file I/O
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; Org mode
+(use-package org)
+
 ;; Magit
 (use-package magit
   :defer t
