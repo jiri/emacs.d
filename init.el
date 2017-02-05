@@ -122,6 +122,9 @@
   :config
   (load-theme 'monokai t))
 
+(global-prettify-symbols-mode)
+(mode-line-clean 'prettify-symbols-mode "pret")
+
 ;; Font settings
 (defun font-available-p (font)
   "Check if FONT is available on the system"
