@@ -211,6 +211,8 @@
 (use-package ido
   :config
   (progn
+    (setq ido-enable-flex-matching t)
+
     (use-package smex
       :config
       (global-set-key (kbd "M-x") 'smex))
