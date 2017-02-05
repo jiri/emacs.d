@@ -154,7 +154,9 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Org mode
-(use-package org)
+(use-package org
+  :config
+  (setq org-html-validation-link nil))
 
 ;; Magit
 (use-package magit
