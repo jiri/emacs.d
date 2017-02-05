@@ -1,5 +1,6 @@
-* TODO What to do next [0/3]
+* TODO What to do next [0/4]
 
 - [ ] Syntax highlighting in minibuffer (lisp eval)
 - [ ] Kill-ring management
 - [ ] Center frames
+- [ ] Disable the selection hydra in Magit
