@@ -156,7 +156,9 @@
 ;; Org mode
 (use-package org
   :config
-  (setq org-html-validation-link nil))
+  (progn
+    (setq org-html-checkbox-type 'html)
+    (setq org-html-validation-link nil)))
 
 ;; Magit
 (use-package magit
