@@ -131,7 +131,8 @@
   (member font (font-family-list)))
 
 (when (font-available-p "Input")
-  (set-face-attribute 'default nil :font "Input-13"))
+  ;;(set-face-attribute 'default nil :font "Input-13")
+  (add-to-list 'default-frame-alist '(font . "Input-13")))
 
 ;; Disable GUI cruft
 (when (fboundp 'tool-bar-mode) (tool-bar-mode 0))
@@ -227,7 +228,8 @@
 
 ;; Prettier cursor
 (setq-default cursor-type 'bar)
-(set-cursor-color "#F92672")
+;;(set-cursor-color "#F92672")
+(add-to-list 'default-frame-alist '(cursor-color . "#F92672"))
 
 ;; Plugins
 (use-package hydra)
