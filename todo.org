@@ -1,0 +1,5 @@
+* TODO What to do next [0/3]
+
+- [ ] Syntax highlighting in minibuffer (lisp eval)
+- [ ] Kill-ring management
+- [ ] Center frames

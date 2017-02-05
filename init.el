@@ -1,4 +1,3 @@
-;; TODO: Syntax highlighting in minibuffer (lisp eval)
 
 ;; Initialize `package'
 (require 'package)
