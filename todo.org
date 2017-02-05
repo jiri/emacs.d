@@ -1,6 +1,9 @@
-* TODO What to do next [0/4]
+* TODO What to do next [0/7]
 
 - [ ] Syntax highlighting in minibuffer (lisp eval)
 - [ ] Kill-ring management
 - [ ] Center frames
 - [ ] Disable the selection hydra in Magit
+- [ ] FontAwesome icons in the modeline
+- [ ] Frame centering
+- [ ] Better font loading with =after-make-frame-functions=
