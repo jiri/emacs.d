@@ -25,6 +25,15 @@
 
 (setq load-prefer-newer t)
 
+;; Workaround for problems with `package.el' and pre-installed packages
+(defun package-from-archive (f &rest args)
+  "Make an exception for `org' when checking if package is installed"
+  (if (equal (car args) 'org)
+      (assq 'org package-alist)
+    (apply f args)))
+
+(advice-add 'package-installed-p :around 'package-from-archive)
+
 ;; Backups & custom file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file 'noerror 'nomessage)
