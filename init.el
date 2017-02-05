@@ -270,12 +270,20 @@
       ;; Semantic constructs
       ("d" er/mark-defun)
       ("s" er/mark-symbol)
-      (";" er/mark-comment)
 
       ;; `expand-region'
       ("C-SPC" er/expand-region)
       ("x" er/expand-region)
-      ("c" er/contract-region))
+      ("c" er/contract-region)
+
+      ;; Actions
+      (";" (lambda ()
+      	     (interactive)
+      	     (when (region-active-p)
+      	       (comment-or-uncomment-region (region-beginning)
+      					    (region-end)))
+      	     (setq deactivate-mark nil)))
+      ("=" indent-region))
 
     (global-set-key (kbd "C-SPC") 'hydra-mark/body)))
 
