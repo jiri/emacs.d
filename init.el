@@ -1,3 +1,7 @@
+;; Start the server if it's not running already
+(require 'server)
+(unless (server-running-p)
+  (server-start))
 
 ;; Initialize `package'
 (require 'package)
