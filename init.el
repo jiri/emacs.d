@@ -123,16 +123,21 @@
   (load-theme 'monokai t))
 
 (global-prettify-symbols-mode)
-(mode-line-clean 'prettify-symbols-mode "pret")
 
 ;; Font settings
 (defun font-available-p (font)
   "Check if FONT is available on the system"
   (member font (font-family-list)))
 
-(when (font-available-p "Input")
-  ;;(set-face-attribute 'default nil :font "Input-13")
-  (add-to-list 'default-frame-alist '(font . "Input-13")))
+;; NOTE: Starting Emacs as a daemon doesn't load up a GUI frame, so functions
+;; in `init.el' relying on that won't work. In the future, this can be circum-
+;; vented using `after-make-frame-functions' to register a callback that gets
+;; called on all new frames.
+
+;; (when (font-available-p "Input")
+;;   (set-face-attribute 'default nil :font "Input-13"))
+
+(add-to-list 'default-frame-alist '(font . "Input-13"))
 
 ;; Disable GUI cruft
 (when (fboundp 'tool-bar-mode) (tool-bar-mode 0))
