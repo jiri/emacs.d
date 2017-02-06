@@ -193,6 +193,9 @@
                         :box nil)))
 
 ;; Keyboard bindings
+;; Prevent ⌘ + q from killing the Emacs server
+(global-set-key (kbd "s-q") 'save-buffers-kill-terminal)
+
 (defun sindriava/beginning-of-line ()
   "Move to first non-whitespace character on `C-a' first."
   (interactive)
