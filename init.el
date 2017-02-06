@@ -42,6 +42,15 @@
       backup-directory-alist `((".*" . ,temporary-file-directory))
       auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
+;; What the .emacs.d?! version
+;; Write backup files to own directory
+;; (setq backup-directory-alist
+;;       `(("." . ,(expand-file-name
+;;                  (concat user-emacs-directory "backups")))))
+;;
+;; ;; Make backups of files, even when they're in version control
+;; (setq vc-make-backup-files t)
+
 ;; Disable annoying side-scrolling messages
 (dolist (dir '("-left" "-right"))
   (dolist (mul '("" "double-" "triple-"))
@@ -77,15 +86,6 @@
 (use-package exec-path-from-shell
   :config
   (exec-path-from-shell-initialize))
-
-;; What the .emacs.d?! version
-;; Write backup files to own directory
-;; (setq backup-directory-alist
-;;       `(("." . ,(expand-file-name
-;;                  (concat user-emacs-directory "backups")))))
-;;
-;; ;; Make backups of files, even when they're in version control
-;; (setq vc-make-backup-files t)
 
 ;; Niceities
 (defalias 'yes-or-no-p 'y-or-n-p)
