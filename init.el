@@ -72,12 +72,11 @@
 (add-hook 'after-change-major-mode-hook 'mode-line-cleaner)
 
 ;; `PATH' configuration
-(setq shell-file-name "bash")
+(setq shell-file-name "zsh")
 
 (use-package exec-path-from-shell
   :config
-  (when (memq window-system '(mac ns))
-    (exec-path-from-shell-initialize)))
+  (exec-path-from-shell-initialize))
 
 ;; What the .emacs.d?! version
 ;; Write backup files to own directory
