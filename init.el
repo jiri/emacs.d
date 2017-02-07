@@ -136,7 +136,7 @@
 ;; (when (font-available-p "Input")
 ;;   (set-face-attribute 'default nil :font "Input-13"))
 
-(add-to-list 'default-frame-alist '(font . "Input-13"))
+(add-to-list 'default-frame-alist '(font . "Input-14"))
 
 ;; Disable GUI cruft
 (when (fboundp 'tool-bar-mode) (tool-bar-mode 0))
