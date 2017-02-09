@@ -12,6 +12,7 @@
  - [ ] Frame centering
  - [ ] Better font loading with =after-make-frame-functions=
  - [ ] Bind =avy-pop-mark=
+ - [ ] Configure =org-clock-idle-time=
 
 ** Tree-style buffers
 
