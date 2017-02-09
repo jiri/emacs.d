@@ -1,9 +1,19 @@
-* TODO What to do next [0/7]
+* Emacs config
 
-- [ ] Syntax highlighting in minibuffer (lisp eval)
-- [ ] Kill-ring management
-- [ ] Center frames
-- [ ] Disable the selection hydra in Magit
-- [ ] FontAwesome icons in the modeline
-- [ ] Frame centering
-- [ ] Better font loading with =after-make-frame-functions=
+** TODO What to do next [0/7]
+
+ - [ ] Syntax highlighting in minibuffer (lisp eval)
+ - [ ] Kill-ring management
+ - [ ] Center frames
+ - [ ] Disable the selection hydra in Magit
+ - [ ] Prettier modeline
+   - [ ] Finish up modeline cleaner
+   - [ ] FontAwesome icons in the modeline
+ - [ ] Frame centering
+ - [ ] Better font loading with =after-make-frame-functions=
+ - [ ] Bind =avy-pop-mark=
+
+** Tree-style buffers
+
+Every buffer could have a parent and after killing that buffer, emacs
+would switch to the parent buffer. Root node is the ~*scratch~ buffer.
