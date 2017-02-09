@@ -156,6 +156,16 @@
 (use-package org
   :config
   (progn
+    ;; Key bindings
+    (global-set-key (kbd "C-c c") 'org-capture)
+
+    (setq org-startup-folded 'nofold)
+    (setq org-special-ctrl-a/e t)
+    (setq org-special-ctrl-k t)
+
+    ;; Files
+    (setq org-default-notes-file (concat org-directory "/notes.org"))
+
     ;; HTML exporting
     (setq org-html-checkbox-type 'html)
     (setq org-html-validation-link nil)
