@@ -156,6 +156,9 @@
 (use-package org
   :config
   (progn
+    ;; Mobile Org
+    (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
+
     ;; Key bindings
     (global-set-key (kbd "C-c c") 'org-capture)
     (global-set-key (kbd "C-c a") 'org-agenda)
@@ -172,6 +175,9 @@
     (define-key org-agenda-mode-map (kbd "N") 'org-agenda-next-line)
 
     ;; Files
+    (setq org-directory "~/Org")
+    (setq org-agenda-files
+	  `(,(concat org-directory "/agenda.org")))
     (setq org-default-notes-file (concat org-directory "/notes.org"))
 
     ;; HTML exporting
