@@ -158,6 +158,8 @@
   (progn
     ;; Key bindings
     (global-set-key (kbd "C-c c") 'org-capture)
+    (global-set-key (kbd "C-c a") 'org-agenda)
+    (global-set-key (kbd "C-c l") 'org-store-link)
 
     (setq org-startup-folded 'nofold)
     (setq org-special-ctrl-a/e t)
