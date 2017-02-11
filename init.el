@@ -190,6 +190,9 @@
     (setq org-latex-pdf-process
 	  '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))))
 
+;; Calendar
+(setq calendar-week-start-day 1)
+
 ;; Magit
 (use-package magit
   :defer t
