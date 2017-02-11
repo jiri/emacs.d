@@ -169,10 +169,11 @@
     (setq org-special-ctrl-k t)
 
     ;; Swap `n/p' and `N/P' in `org-agenda-mode'
-    (define-key org-agenda-mode-map (kbd "p") 'org-agenda-previous-item)
-    (define-key org-agenda-mode-map (kbd "n") 'org-agenda-next-item)
-    (define-key org-agenda-mode-map (kbd "P") 'org-agenda-previous-line)
-    (define-key org-agenda-mode-map (kbd "N") 'org-agenda-next-line)
+    (with-eval-after-load 'org-agenda
+      (define-key org-agenda-mode-map (kbd "p") 'org-agenda-previous-item)
+      (define-key org-agenda-mode-map (kbd "n") 'org-agenda-next-item)
+      (define-key org-agenda-mode-map (kbd "P") 'org-agenda-previous-line)
+      (define-key org-agenda-mode-map (kbd "N") 'org-agenda-next-line))
 
     ;; Files
     (setq org-directory "~/Org")
