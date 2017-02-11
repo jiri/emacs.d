@@ -13,6 +13,7 @@
  - [ ] Better font loading with =after-make-frame-functions=
  - [ ] Bind =avy-pop-mark=
  - [ ] Configure =org-clock-idle-time=
+ - [ ] Emoji rendering
 
 ** Tree-style buffers
 
