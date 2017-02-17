@@ -279,7 +279,8 @@
   (setq expand-region-fast-keys-enabled nil)
   :config
   (with-eval-after-load 'hydra
-    ;; TODO - Make these mode-dependent?
+    ;; TODO: Make these mode-dependent?
+    ;; TODO: Make this hydra not exit when undefined key is pressed
     (defhydra hydra-mark
       (:body-pre (call-interactively 'set-mark-command))
       ;; Rectangle selection
@@ -317,6 +318,12 @@
       ("C-SPC" er/expand-region)
       ("x" er/expand-region)
       ("c" er/contract-region)
+
+      ;; Arrow keys
+      ("<up>" previous-line)
+      ("<down>" next-line)
+      ("<left>" left-char)
+      ("<right>" right-line)
 
       ;; Actions
       (";" (lambda ()
