@@ -258,7 +258,9 @@
 
     (defun match-starred-not-scratch (x)
       (and (not (string= x "*scratch*"))
-	   (string-match-p "^\\*.*\\*$" x)))
+	   (or
+	    (string-match-p "^\\*magit.*$" x)
+	    (string-match-p "^\\*.*\\*$" x))))
 
     (add-to-list 'ido-ignore-buffers 'match-starred-not-scratch)
 
