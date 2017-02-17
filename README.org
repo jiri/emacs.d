@@ -1,0 +1,12 @@
+* Jiri's Emacs config
+
+[[./screenshot.png]]
+
+** Installation
+
+Just clone this repository to your ~/.emacs.d/ folder. It will
+download all the necessary plugins and set itself up.
+
+#+BEGIN_SRC shell
+git clone https://github.com/jiri/emacs.d ~/.emacs.d/
+#+END_SRC
