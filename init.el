@@ -182,6 +182,9 @@
 		(concat org-directory "school/")))
     (setq org-default-notes-file (concat org-directory "notes.org"))
 
+    ;; Agenda
+    (setq org-agenda-hide-tags-regexp "noexport")
+
     ;; HTML exporting
     (use-package htmlize)
 
