@@ -191,8 +191,10 @@
 
     ;; Custom diary sexps
     (with-eval-after-load 'org-agenda
-      (defun fit-class (y1 m1 d1 y2 m2 d2 day time &optional parity)
-	(let* ((c (org-class y1 m1 d1 y2 m2 d2 day))
+      (setq semester-b6 '(2017 2 20 2017 5 20))
+
+      (defun fit-class (semester day time &optional parity)
+	(let* ((c (apply 'org-class (append semester (list day))))
 	       (w (car (calendar-iso-from-absolute
 			(calendar-absolute-from-gregorian date))))
 	       (p (if parity (funcall parity w) t)))
