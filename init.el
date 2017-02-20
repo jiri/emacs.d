@@ -183,8 +183,11 @@
     (setq org-default-notes-file (concat org-directory "notes.org"))
 
     ;; HTML exporting
+    (use-package htmlize)
+
     (setq org-html-checkbox-type 'html)
     (setq org-html-validation-link nil)
+    (setq org-html-postamble nil)
 
     ;; Custom diary sexps
     (with-eval-after-load 'org-agenda
