@@ -197,6 +197,8 @@
 
     ;; LaTeX exporting
     (add-to-list 'org-latex-packages-alist '("" "minted"))
+    (add-to-list 'org-latex-packages-alist '("" "xunicode"))
+    (add-to-list 'org-latex-packages-alist '("" "xltxtra"))
     (setq org-latex-listings 'minted)
     (setq org-latex-pdf-process
 	  '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))))
