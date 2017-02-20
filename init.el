@@ -321,10 +321,10 @@
       ("c" er/contract-region)
 
       ;; Arrow keys
-      ("<up>" previous-line)
-      ("<down>" next-line)
-      ("<left>" left-char)
-      ("<right>" right-line)
+      ;; ("<up>" previous-line)
+      ;; ("<down>" next-line)
+      ;; ("<left>" left-char)
+      ;; ("<right>" right-line)
 
       ;; Actions
       (";" (lambda ()
