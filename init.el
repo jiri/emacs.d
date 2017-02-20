@@ -176,10 +176,11 @@
       (define-key org-agenda-mode-map (kbd "N") 'org-agenda-next-line))
 
     ;; Files
-    (setq org-directory "~/Org")
+    (setq org-directory "~/Org/")
     (setq org-agenda-files
-	  `(,(concat org-directory "/agenda.org")))
-    (setq org-default-notes-file (concat org-directory "/notes.org"))
+	  (list (concat org-directory "agenda.org")
+		(concat org-directory "school/")))
+    (setq org-default-notes-file (concat org-directory "notes.org"))
 
     ;; HTML exporting
     (setq org-html-checkbox-type 'html)
