@@ -186,6 +186,15 @@
     (setq org-html-checkbox-type 'html)
     (setq org-html-validation-link nil)
 
+    ;; Custom diary sexps
+    (with-eval-after-load 'org-agenda
+      (defun fit-class (y1 m1 d1 y2 m2 d2 day time &optional parity)
+	(let* ((c (org-class y1 m1 d1 y2 m2 d2 day))
+	       (w (car (calendar-iso-from-absolute
+			(calendar-absolute-from-gregorian date))))
+	       (p (if parity (funcall parity w) t)))
+	  (when (and c p) (concat c time)))))
+
     ;; LaTeX exporting
     (add-to-list 'org-latex-packages-alist '("" "minted"))
     (setq org-latex-listings 'minted)
