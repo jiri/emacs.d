@@ -220,6 +220,17 @@
     (setq org-latex-pdf-process
 	  '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))))
 
+;; Org-wiki
+(use-package org-wiki
+  :pin manual
+  :config
+  (progn
+    (setq elnode-do-init nil
+	  elnode-error-log-to-messages nil
+	  elnode-log-files-directory nil)
+
+    (org-wiki/start "~/Org/wiki")))
+
 ;; Calendar
 (setq calendar-week-start-day 1)
 
