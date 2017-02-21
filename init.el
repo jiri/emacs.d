@@ -185,6 +185,15 @@
     ;; Agenda
     (setq org-agenda-hide-tags-regexp "noexport")
 
+    ;; Org-babel
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((emacs-lisp . t)
+       (python . t)))
+
+    (setq org-src-window-setup 'current-window)
+    (setq org-src-preserve-indentation t)
+
     ;; HTML exporting
     (use-package htmlize)
 
