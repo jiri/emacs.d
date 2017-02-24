@@ -179,7 +179,8 @@
     (setq org-directory "~/Org/")
     (setq org-agenda-files
 	  (list (concat org-directory "agenda.org")
-		(concat org-directory "school/")))
+		(concat org-directory "school/")
+		(concat org-directory "rust.org")))
     (setq org-default-notes-file (concat org-directory "notes.org"))
 
     ;; Agenda
