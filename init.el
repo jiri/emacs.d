@@ -223,6 +223,7 @@
 
 ;; Org-wiki
 (use-package org-wiki
+  :ensure nil
   :pin manual
   :config
   (progn
