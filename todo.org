@@ -15,7 +15,11 @@
  - [ ] Configure =org-clock-idle-time=
  - [ ] Emoji rendering
 
-** Tree-style buffers
+** Package ideas
 
-Every buffer could have a parent and after killing that buffer, emacs
-would switch to the parent buffer. Root node is the ~*scratch~ buffer.
+*** Tree-style buffers
+
+    Every buffer could have a parent and after killing that buffer, emacs
+    would switch to the parent buffer. Root node is the ~*scratch~ buffer.
+
+*** Trakt app
