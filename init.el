@@ -198,10 +198,14 @@
 		(concat org-directory "school/")
 		(concat org-directory "rust.org")))
     (setq org-default-notes-file (concat org-directory "notes.org"))
+    (setq org-refile-targets '((org-agenda-files :maxlevel . 2)))
 
     ;; Agenda
     (setq org-agenda-hide-tags-regexp "noexport")
     (setq org-agenda-window-setup 'current-window)
+
+    ;; TODO keyword faces
+    (setq org-todo-keyword-faces '(("WAITING" . "yellow")))
 
     ;; Org-babel
     (org-babel-do-load-languages
