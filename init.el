@@ -123,6 +123,19 @@
 
 (global-prettify-symbols-mode)
 
+;; Center all newly created frames
+(defun sindriava/center-frame (&optional frame)
+  "Center FRAME on the screen. If it's `nil', center the selected frame."
+  (interactive)
+  (let* ((f (or frame (selected-frame)))
+	 (w (- (display-pixel-width f)
+	       (frame-pixel-width f)))
+	 (h (- (display-pixel-height f)
+	       (frame-pixel-height f))))
+    (set-frame-position f (/ w 2) (/ h 2))))
+
+(push 'sindriava/center-frame after-make-frame-functions)
+
 ;; Font settings
 (defun font-available-p (font)
   "Check if FONT is available on the system"
