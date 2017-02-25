@@ -152,6 +152,9 @@
 ;; Modify file I/O
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; Paragraph filling
+(setq-default fill-column 80)
+
 ;; Org mode
 (use-package org
   :config
