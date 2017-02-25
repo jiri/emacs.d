@@ -307,9 +307,13 @@
 
 ;; Set up Ivy
 (use-package swiper
+  :init
+  (setq ivy-use-virtual-buffers t)
   :config
   (progn
     (mode-line-clean 'ivy-mode)
+
+    (global-set-key (kbd "C-s") 'swiper)
 
     (ivy-mode 1)))
 
