@@ -305,25 +305,13 @@
 ;; Prevent ⌘ + q from killing the Emacs server
 (global-set-key (kbd "s-q") 'save-buffers-kill-terminal)
 
-;; Set up `ido-mode'
-(use-package ido
+;; Set up Ivy
+(use-package swiper
   :config
   (progn
-    (setq ido-enable-flex-matching t)
+    (mode-line-clean 'ivy-mode)
 
-    (use-package smex
-      :config
-      (global-set-key (kbd "M-x") 'smex))
-
-    (defun match-starred-not-scratch (x)
-      (and (not (string= x "*scratch*"))
-	   (or
-	    (string-match-p "^\\*magit.*$" x)
-	    (string-match-p "^\\*.*\\*$" x))))
-
-    (add-to-list 'ido-ignore-buffers 'match-starred-not-scratch)
-
-    (ido-mode)))
+    (ivy-mode 1)))
 
 ;; Prettier cursor
 (setq-default cursor-type 'bar)
