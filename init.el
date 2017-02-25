@@ -188,6 +188,7 @@
 
     ;; Agenda
     (setq org-agenda-hide-tags-regexp "noexport")
+    (setq org-agenda-window-setup 'current-window)
 
     ;; Org-babel
     (org-babel-do-load-languages
