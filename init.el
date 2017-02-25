@@ -168,6 +168,9 @@
 ;; Paragraph filling
 (setq-default fill-column 80)
 
+;; Always follow symlinks into Git
+(setq vc-follow-symlinks t)
+
 ;; Org mode
 (use-package org
   :config
