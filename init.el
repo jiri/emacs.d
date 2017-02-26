@@ -135,6 +135,7 @@
     (set-frame-position f (/ w 2) (/ h 2))))
 
 (push 'sindriava/center-frame after-make-frame-functions)
+(push 'select-frame-set-input-focus after-make-frame-functions)
 
 ;; Font settings
 (defun font-available-p (font)
