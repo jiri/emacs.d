@@ -220,6 +220,13 @@
     (setq org-src-window-setup 'current-window)
     (setq org-src-preserve-indentation t)
 
+    ;; Redisplay inline images after code is evaluated
+    (defun sindriava/org-redisplay-images (&rest args)
+      (org-redisplay-inline-images))
+
+    (advice-add 'org-babel-execute-src-block
+		:after #'sindriava/org-redisplay-images)
+
     ;; HTML exporting
     (use-package htmlize)
 
