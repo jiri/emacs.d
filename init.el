@@ -227,6 +227,12 @@
     (advice-add 'org-babel-execute-src-block
 		:after #'sindriava/org-redisplay-images)
 
+    ;; Evaluation of Graphviz code should be reasonably safe
+    (defun sindriava/confirm-babel-evaluate (lang body)
+      (not (string= lang "dot")))
+
+    (setq org-confirm-babel-evaluate 'sindriava/confirm-babel-evaluate)
+
     ;; HTML exporting
     (use-package htmlize)
 
