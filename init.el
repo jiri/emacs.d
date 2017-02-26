@@ -172,6 +172,11 @@
 ;; Always follow symlinks into Git
 (setq vc-follow-symlinks t)
 
+;; Graphviz
+(use-package graphviz-dot-mode
+  :init
+  (setq default-tab-width 4))
+
 ;; Org mode
 (use-package org
   :config
@@ -215,7 +220,11 @@
     (org-babel-do-load-languages
      'org-babel-load-languages
      '((emacs-lisp . t)
-       (python . t)))
+       (python . t)
+       (dot . t)))
+
+    (add-to-list 'org-src-lang-modes
+		 '("dot" . graphviz-dot))
 
     (setq org-src-window-setup 'current-window)
     (setq org-src-preserve-indentation t)
