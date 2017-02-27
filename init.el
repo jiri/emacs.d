@@ -186,9 +186,11 @@
     (global-set-key (kbd "C-c a") 'org-agenda)
     (global-set-key (kbd "C-c l") 'org-store-link)
 
+    (setq org-startup-indented t)
     (setq org-startup-folded 'nofold)
     (setq org-special-ctrl-a/e t)
     (setq org-special-ctrl-k t)
+    (setq org-fast-tag-selection-single-key t)
 
     ;; Swap `n/p' and `N/P' in `org-agenda-mode'
     (with-eval-after-load 'org-agenda
