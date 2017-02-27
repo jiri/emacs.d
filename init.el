@@ -166,9 +166,6 @@
 ;; Modify file I/O
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-;; Paragraph filling
-(setq-default fill-column 80)
-
 ;; Always follow symlinks into Git
 (setq vc-follow-symlinks t)
 
