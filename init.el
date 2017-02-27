@@ -212,8 +212,22 @@
     (setq org-agenda-hide-tags-regexp "noexport")
     (setq org-agenda-window-setup 'current-window)
 
-    ;; TODO keyword faces
-    (setq org-todo-keyword-faces '(("WAITING" . "yellow")))
+    ;; TODO keywords
+    (setq org-todo-keywords
+	  '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)")
+	    (sequence "SOMEDAY(s)" "|")))
+
+    (setq org-todo-keyword-faces '(("WAITING" . "yellow")
+				   ("SOMEDAY" . "LightCyan3")))
+
+    ;; Tags
+    (setq org-tag-persistent-alist
+	  '((:startgroup . nil)
+	    ("@school" . ?s) ("@home" . ?h)
+	    (:endgroup . nil)))
+
+    (setq org-fast-tag-selection-include-todo t)
+    (setq org-tags-column 0)
 
     ;; Org-babel
     (org-babel-do-load-languages
