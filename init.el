@@ -361,10 +361,14 @@
   (setq ivy-use-virtual-buffers t)
   :config
   (progn
-    (mode-line-clean 'ivy-mode)
+    (use-package counsel
+      :config
+      (progn
+	(global-set-key (kbd "M-y") 'counsel-yank-pop)))
 
     (global-set-key (kbd "C-s") 'swiper)
 
+    (mode-line-clean 'ivy-mode)
     (ivy-mode 1)))
 
 ;; Prettier cursor
