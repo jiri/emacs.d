@@ -351,6 +351,10 @@
 ;; Prevent ⌘ + q from killing the Emacs server
 (global-set-key (kbd "s-q") 'save-buffers-kill-terminal)
 
+;; Swap `open-line' and `other-window'
+(global-set-key (kbd "C-x o") 'open-line)
+(global-set-key (kbd "C-o") 'other-window)
+
 ;; Set up Ivy
 (use-package swiper
   :init
