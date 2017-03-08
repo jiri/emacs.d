@@ -171,6 +171,10 @@
 ;; Always follow symlinks into Git
 (setq vc-follow-symlinks t)
 
+;; Always automatically fill in text modes
+(setq-default fill-column 70)
+(add-hook 'text-mode-hook 'auto-fill-mode)
+
 ;; Graphviz
 (use-package graphviz-dot-mode
   :init
