@@ -108,6 +108,8 @@
 
     (mode-line-clean 'paredit-mode "π")
 
+    (define-key paredit-mode-map (kbd "C-<backspace>") 'paredit-backward-kill-word)
+
     (use-package rainbow-delimiters
       :config
       (add-hook 'paredit-mode-hook 'rainbow-delimiters-mode))))
