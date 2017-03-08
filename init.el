@@ -375,6 +375,8 @@
       (progn
 	(global-set-key (kbd "M-y") 'counsel-yank-pop)))
 
+    (setq ivy-extra-directories nil)
+
     (global-set-key (kbd "C-s") 'swiper)
 
     (mode-line-clean 'ivy-mode)
