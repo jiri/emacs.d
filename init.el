@@ -171,6 +171,9 @@
 ;; Always follow symlinks into Git
 (setq vc-follow-symlinks t)
 
+;; Always show the most actual version of a file
+(global-auto-revert-mode)
+
 ;; Always automatically fill in text modes
 (setq-default fill-column 70)
 (add-hook 'text-mode-hook 'auto-fill-mode)
