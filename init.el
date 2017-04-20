@@ -375,6 +375,9 @@
       (progn
 	(global-set-key (kbd "M-y") 'counsel-yank-pop)))
 
+    (setq ivy-re-builders-alist
+	  '((t . ivy--regex-ignore-order)))
+
     (setq ivy-extra-directories nil)
 
     (global-set-key (kbd "C-s") 'swiper)
