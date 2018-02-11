@@ -11,7 +11,7 @@
 ;; Add MELPA to `package-archives'
 (unless (assoc "melpa" package-archives)
   (add-to-list 'package-archives
-	       '("melpa" . "https://melpa.org/packages/") t))
+               '("melpa" . "https://melpa.org/packages/") t))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -66,17 +66,17 @@
 (defun mode-line-cleaner ()
   "Substitute mode names according to `mode-line-cleaner-alist'."
   (let ((cleaner-modes (delete-dups
-			(mapcar 'car mode-line-cleaner-alist))))
+                        (mapcar 'car mode-line-cleaner-alist))))
     (dolist (mode cleaner-modes)
       (let* ((mode-str (cdr (assq mode mode-line-cleaner-alist)))
-	     (old-mode-str (cdr (assq mode minor-mode-alist))))
-	;; Minor modes
-	(when old-mode-str
-	  (setcar old-mode-str (concat (when mode-str " ") mode-str)))
+             (old-mode-str (cdr (assq mode minor-mode-alist))))
+        ;; Minor modes
+        (when old-mode-str
+          (setcar old-mode-str (concat (when mode-str " ") mode-str)))
 
-	;; Major mode
-	(when (eq mode major-mode)
-	  (setq mode-name mode-str))))))
+        ;; Major mode
+        (when (eq mode major-mode)
+          (setq mode-name mode-str))))))
 
 (add-hook 'after-change-major-mode-hook 'mode-line-cleaner)
 
@@ -92,6 +92,9 @@
 
 (delete-selection-mode)
 (setq delete-active-region t)
+
+;; Disable tab indentation
+(setq-default indent-tabs-mode nil)
 
 ;; Smoother scrolling
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 3)))
@@ -130,10 +133,10 @@
   "Center FRAME on the screen. If it's `nil', center the selected frame."
   (interactive)
   (let* ((f (or frame (selected-frame)))
-	 (w (- (display-pixel-width f)
-	       (frame-pixel-width f)))
-	 (h (- (display-pixel-height f)
-	       (frame-pixel-height f))))
+         (w (- (display-pixel-width f)
+               (frame-pixel-width f)))
+         (h (- (display-pixel-height f)
+               (frame-pixel-height f))))
     (set-frame-position f (/ w 2) (/ h 2))))
 
 (push 'sindriava/center-frame after-make-frame-functions)
@@ -214,9 +217,9 @@
     ;; Files
     (setq org-directory "~/Org/")
     (setq org-agenda-files
-	  (list (concat org-directory "agenda.org")
-		(concat org-directory "school/")
-		(concat org-directory "rust.org")))
+          (list (concat org-directory "agenda.org")
+                (concat org-directory "school/")
+                (concat org-directory "rust.org")))
     (setq org-default-notes-file (concat org-directory "notes.org"))
     (setq org-refile-targets '((org-agenda-files :maxlevel . 2)))
 
@@ -226,17 +229,17 @@
 
     ;; TODO keywords
     (setq org-todo-keywords
-	  '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)")
-	    (sequence "SOMEDAY(s)" "|")))
+          '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)")
+            (sequence "SOMEDAY(s)" "|")))
 
     (setq org-todo-keyword-faces '(("WAITING" . "yellow")
-				   ("SOMEDAY" . "LightCyan3")))
+                                   ("SOMEDAY" . "LightCyan3")))
 
     ;; Tags
     (setq org-tag-persistent-alist
-	  '((:startgroup . nil)
-	    ("@school" . ?s) ("@home" . ?h)
-	    (:endgroup . nil)))
+          '((:startgroup . nil)
+            ("@school" . ?s) ("@home" . ?h)
+            (:endgroup . nil)))
 
     (setq org-fast-tag-selection-include-todo t)
     (setq org-tags-column 0)
@@ -249,7 +252,7 @@
        (dot . t)))
 
     (add-to-list 'org-src-lang-modes
-		 '("dot" . graphviz-dot))
+                 '("dot" . graphviz-dot))
 
     (setq org-src-window-setup 'current-window)
     (setq org-src-preserve-indentation t)
@@ -259,7 +262,7 @@
       (org-redisplay-inline-images))
 
     (advice-add 'org-babel-execute-src-block
-		:after #'sindriava/org-redisplay-images)
+                :after #'sindriava/org-redisplay-images)
 
     ;; Evaluation of Graphviz code should be reasonably safe
     (defun sindriava/confirm-babel-evaluate (lang body)
@@ -279,11 +282,11 @@
       (setq semester-b6 '(2017 2 20 2017 5 20))
 
       (defun fit-class (semester day time &optional parity)
-	(let* ((c (apply 'org-class (append semester (list day))))
-	       (w (car (calendar-iso-from-absolute
-			(calendar-absolute-from-gregorian date))))
-	       (p (if parity (funcall parity w) t)))
-	  (when (and c p) (concat c time)))))
+        (let* ((c (apply 'org-class (append semester (list day))))
+               (w (car (calendar-iso-from-absolute
+                        (calendar-absolute-from-gregorian date))))
+               (p (if parity (funcall parity w) t)))
+          (when (and c p) (concat c time)))))
 
     ;; LaTeX exporting
     (add-to-list 'org-latex-packages-alist '("" "minted"))
@@ -291,7 +294,7 @@
     (add-to-list 'org-latex-packages-alist '("" "xltxtra"))
     (setq org-latex-listings 'minted)
     (setq org-latex-pdf-process
-	  '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))))
+          '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))))
 
 ;; Org-wiki
 (use-package org-wiki
@@ -300,8 +303,8 @@
   :config
   (progn
     (setq elnode-do-init nil
-	  elnode-error-log-to-messages nil
-	  elnode-log-files-directory nil)
+          elnode-error-log-to-messages nil
+          elnode-log-files-directory nil)
 
     (org-wiki/start "~/Org/wiki")))
 
@@ -350,10 +353,10 @@
   (interactive)
   (let ((buffer (buffer-name)))
     (if (equal buffer "*scratch*")
-	(message "Cannot kill scratch buffer.")
+        (message "Cannot kill scratch buffer.")
       (progn
-	(kill-buffer buffer)
-	(switch-to-buffer "*scratch*")))))
+        (kill-buffer buffer)
+        (switch-to-buffer "*scratch*")))))
 
 (global-set-key (kbd "C-x k") 'sindriava/kill-buffer)
 
@@ -373,10 +376,10 @@
     (use-package counsel
       :config
       (progn
-	(global-set-key (kbd "M-y") 'counsel-yank-pop)))
+        (global-set-key (kbd "M-y") 'counsel-yank-pop)))
 
     (setq ivy-re-builders-alist
-	  '((t . ivy--regex-ignore-order)))
+          '((t . ivy--regex-ignore-order)))
 
     (setq ivy-extra-directories nil)
 
@@ -446,11 +449,11 @@
 
       ;; Actions
       (";" (lambda ()
-      	     (interactive)
-      	     (when (region-active-p)
-      	       (comment-or-uncomment-region (region-beginning)
-      					    (region-end)))
-      	     (setq deactivate-mark nil)))
+             (interactive)
+             (when (region-active-p)
+               (comment-or-uncomment-region (region-beginning)
+                                            (region-end)))
+             (setq deactivate-mark nil)))
       ("=" indent-region))
 
     (global-set-key (kbd "C-SPC") 'hydra-mark/body)))
