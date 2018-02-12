@@ -418,10 +418,7 @@
 
     (global-set-key (kbd "C-SPC") 'hydra-mark/body)))
 
-;; (use-package helm
-;;   :config
-;;   (global-set-key (kbd "M-x") 'helm-M-x))
-
+;; Set up Avy
 (use-package avy
   :config
   (global-set-key (kbd "C-:") 'avy-goto-char))
