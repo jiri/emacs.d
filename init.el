@@ -271,9 +271,6 @@
 
     (org-wiki/start "~/Org/wiki")))
 
-;; Calendar
-(setq calendar-week-start-day 1)
-
 ;; Magit
 (use-package magit
   :defer t
