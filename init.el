@@ -181,11 +181,6 @@
 (setq-default fill-column 70)
 (add-hook 'text-mode-hook 'auto-fill-mode)
 
-;; Graphviz
-(use-package graphviz-dot-mode
-  :init
-  (setq default-tab-width 4))
-
 ;; Org mode
 (use-package org
   :config
