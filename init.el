@@ -185,9 +185,6 @@
 (use-package org
   :config
   (progn
-    ;; Mobile Org
-    (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
-
     ;; Key bindings
     (global-set-key (kbd "C-c c") 'org-capture)
     (global-set-key (kbd "C-c a") 'org-agenda)
@@ -242,28 +239,10 @@
     ;; Org-babel
     (org-babel-do-load-languages
      'org-babel-load-languages
-     '((emacs-lisp . t)
-       (python . t)
-       (dot . t)))
-
-    (add-to-list 'org-src-lang-modes
-                 '("dot" . graphviz-dot))
+     '((emacs-lisp . t)))
 
     (setq org-src-window-setup 'current-window)
     (setq org-src-preserve-indentation t)
-
-    ;; Redisplay inline images after code is evaluated
-    (defun sindriava/org-redisplay-images (&rest args)
-      (org-redisplay-inline-images))
-
-    (advice-add 'org-babel-execute-src-block
-                :after #'sindriava/org-redisplay-images)
-
-    ;; Evaluation of Graphviz code should be reasonably safe
-    (defun sindriava/confirm-babel-evaluate (lang body)
-      (not (string= lang "dot")))
-
-    (setq org-confirm-babel-evaluate 'sindriava/confirm-babel-evaluate)
 
     ;; HTML exporting
     (use-package htmlize)
@@ -271,17 +250,6 @@
     (setq org-html-checkbox-type 'html)
     (setq org-html-validation-link nil)
     (setq org-html-postamble nil)
-
-    ;; Custom diary sexps
-    (with-eval-after-load 'org-agenda
-      (setq semester-b6 '(2017 2 20 2017 5 20))
-
-      (defun fit-class (semester day time &optional parity)
-        (let* ((c (apply 'org-class (append semester (list day))))
-               (w (car (calendar-iso-from-absolute
-                        (calendar-absolute-from-gregorian date))))
-               (p (if parity (funcall parity w) t)))
-          (when (and c p) (concat c time)))))
 
     ;; LaTeX exporting
     (add-to-list 'org-latex-packages-alist '("" "minted"))
