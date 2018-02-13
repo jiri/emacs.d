@@ -357,8 +357,14 @@
 (use-package multiple-cursors
   :config
   (progn
-    (global-set-key (kbd "C->") 'mc/mark-next-like-this)
-    (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)))
+    (global-set-key (kbd "C->") (lambda (&rest args)
+                                  (interactive "p")
+                                  (setq cursor-type 'box)
+                                  (apply 'mc/mark-next-like-this args)))
+    (global-set-key (kbd "C-<") 'mc/unmark-next-like-this)
+
+    (add-hook 'multiple-cursors-mode-disabled-hook (lambda ()
+                                                     (setq cursor-type 'bar)))))
 
 ;; Plugins
 (use-package hydra)
