@@ -353,6 +353,13 @@
 ;;(set-cursor-color "#F92672")
 (add-to-list 'default-frame-alist '(cursor-color . "#F92672"))
 
+;; Multiple cursors
+(use-package multiple-cursors
+  :config
+  (progn
+    (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+    (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)))
+
 ;; Plugins
 (use-package hydra)
 
